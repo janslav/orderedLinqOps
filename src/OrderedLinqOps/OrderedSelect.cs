@@ -42,7 +42,7 @@ namespace OrderedLinqOps
 
                 // for the first item, there is nothing to compare it to, so we only extract the key
                 var item = iterator.Current;
-                var previousKey = keySelector(item); ;
+                var previousKey = keySelector(item);
                 yield return resultSelector(previousKey, item);
 
                 // for all the other items, we compare the current key to the previous one
