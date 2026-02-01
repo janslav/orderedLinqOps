@@ -168,10 +168,7 @@ namespace OrderedLinqOps
 
         private static class IdentityFunction<T>
         {
-            public static Func<T, T> Instance
-            {
-                get { return x => x; }
-            }
+            public static readonly Func<T, T> Instance = x => x;
         }
     }
 }

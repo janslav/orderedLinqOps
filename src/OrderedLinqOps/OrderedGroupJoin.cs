@@ -72,12 +72,12 @@ namespace OrderedLinqOps
                             if (comparisonResult != 0)
                             {
                                 // yield an empty group
-                                innerGroup = new TInner[0];
+                                innerGroup = Array.Empty<TInner>();
                             }
                         }
                         else
                         {
-                            innerGroup = new TInner[0];
+                            innerGroup = Array.Empty<TInner>();
                         }
 
                         foreach (var outerValue in outerGroup)
