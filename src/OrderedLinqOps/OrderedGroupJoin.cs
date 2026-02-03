@@ -25,10 +25,10 @@ namespace OrderedLinqOps
         /// <param name="resultSelector">A function to create a result element from two matching elements.</param>
         /// <param name="comparer">A "sorting" comparer to compare keys with.</param>
         /// <returns>A collection that has elements of type TResult that are obtained by performing a grouped join on two sequences.</returns>
-        /// <exception cref="ArgumentException">Any of the input sequences is out of order.</exception>
+        /// <exception cref="ArgumentException">Any of the input sequences are out of order.</exception>
         public static IEnumerable<TResult> OrderedGroupJoin<TOuter, TInner, TKey, TResult>(this IEnumerable<TOuter> outer,
             IEnumerable<TInner> inner, Func<TOuter, TKey> outerKeySelector, Func<TInner, TKey> innerKeySelector,
-            Func<TOuter, IReadOnlyCollection<TInner>, TResult> resultSelector, IComparer<TKey> comparer = null)
+            Func<TOuter, IReadOnlyCollection<TInner>, TResult> resultSelector, IComparer<TKey>? comparer = null)
         {
             if (outer == null) throw new ArgumentNullException(nameof(outer));
             if (inner == null) throw new ArgumentNullException(nameof(inner));

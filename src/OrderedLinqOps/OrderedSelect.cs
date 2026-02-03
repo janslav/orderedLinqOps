@@ -25,7 +25,7 @@ namespace OrderedLinqOps
         /// <param name="comparer">A "sorting" comparer to compare keys with.</param>
         /// <returns>An <see cref="IEnumerable{T}"/> whose elements are the result of invoking the transform function on each element of source.</returns>
         public static IEnumerable<TResult> OrderedSelect<TSource, TKey, TResult>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, 
-            Func<TKey, TSource, TResult> resultSelector, IComparer<TKey> comparer = null)
+            Func<TKey, TSource, TResult> resultSelector, IComparer<TKey>? comparer = null)
         {
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
