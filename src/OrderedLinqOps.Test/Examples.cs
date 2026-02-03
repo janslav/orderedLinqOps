@@ -13,20 +13,16 @@ namespace OrderedLinqOps.Test
     [TestFixture]
     public class Examples
     {
-        class Pet
-        {
-            public string Name { get; set; }
-            public int Age { get; set; }
-        }
-
         [Test]
         public static void OrderedGroupByExam1()
         {
-            var pets = new[] {
-                new Pet { Name="Whiskers", Age=1 },
-                new Pet { Name="Boots", Age=4 },
-                new Pet { Name="Daisy", Age=4 },
-                new Pet { Name="Barley", Age=8 } };
+            var pets = new[]
+            {
+                new { Name = "Whiskers", Age = 1 },
+                new { Name = "Boots", Age = 4 },
+                new { Name = "Daisy", Age = 4 },
+                new { Name = "Barley", Age = 8 }
+            };
 
             // Group the pets using Age as the key value and selecting only the pet's Name for each value.
             var query = pets.OrderedGroupBy(pet => pet.Age, pet => pet.Name);
