@@ -1,54 +1,191 @@
-# orderedLinqOps
-Alternatives to some hashing-based LINQ operators (GroupBy, Join, GroupJoin), based on ordered inputs. Available as a nuget.
+# OrderedLinqOps
 
-The advantage of these operators is they don't buffer and are faster.
-The limitation is that they only operate on pre-sorted input.
+[![CI](https://github.com/janslav/orderedLinqOps/actions/workflows/ci.yml/badge.svg)](https://github.com/janslav/orderedLinqOps/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/janslav/orderedLinqOps/branch/master/graph/badge.svg)](https://codecov.io/gh/janslav/orderedLinqOps)
+[![NuGet](https://img.shields.io/nuget/v/OrderedLinqOps.svg)](https://www.nuget.org/packages/OrderedLinqOps/)
+[![NuGet Downloads](https://img.shields.io/nuget/dt/OrderedLinqOps.svg)](https://www.nuget.org/packages/OrderedLinqOps/)
+[![License](https://img.shields.io/badge/license-LGPL--3.0-blue.svg)](LICENSE.txt)
 
-## Installing
-[It's a nuget!](https://www.nuget.org/packages/OrderedLinqOps/)
+Alternatives to some hashing-based LINQ operators (`GroupBy`, `Join`, `GroupJoin`), based on ordered inputs. Available as a NuGet package.
 
-## Usage
-The example is inspired by the one at LINQs GroupBy, and it is almost equivalent. The one important difference is that the input collection has to be pre-sorted by age. If it's not, an exception is thrown during the iteration.
+**Key Benefits:**
+- **Memory Efficient**: Operators don't buffer data in memory, making them ideal for large datasets
+- **Performance**: Faster than hash-based LINQ operators when data is already sorted
+- **Stream-Friendly**: Process data as it arrives without waiting for the entire collection
 
-```C#
-var pets = new[] {
-    new Pet { Name="Whiskers", Age=1 },
-    new Pet { Name="Boots", Age=4 },
-    new Pet { Name="Daisy", Age=4 },
-    new Pet { Name="Barley", Age=8 } };
+**Important Limitation:**
+- Input collections **must be pre-sorted** by the key. If not sorted, an exception is thrown during iteration.
 
-// Group the pets using Age as the key value and selecting only the pet's Name for each value.
-var query = pets.OrderedGroupBy(pet => pet.Age, pet => pet.Name);
+## Installation
 
-foreach (var cohort in query)
-{
-    Console.WriteLine(cohort.Key);
-    foreach (var name in cohort)
-        Console.WriteLine("  {0}", name);
-}
+Install via NuGet Package Manager:
 
-/*
- This code produces the following output:
-    1
-      Whiskers
-    4
-      Boots
-      Daisy
-    8
-      Barley
-*/
+```bash
+dotnet add package OrderedLinqOps
 ```
 
+Or via Package Manager Console in Visual Studio:
+
+```powershell
+Install-Package OrderedLinqOps
+```
+
+Or add directly to your `.csproj` file:
+
+```xml
+<PackageReference Include="OrderedLinqOps" Version="*" />
+```
+
+**Supported Frameworks:**
+- .NET Standard 2.0
+- .NET Standard 2.1
+- .NET 6.0
+- .NET 8.0
+
+## Usage
+
+### OrderedGroupBy
+
+The example below is inspired by the one at LINQ's `GroupBy`, with one crucial difference: the input collection **must be pre-sorted** by the grouping key (Age). If not sorted, an exception is thrown during iteration.
+
+```C#
+using OrderedLinqOps;
+
+var pets = new[] // Input must be ordered by Age
+{
+    new { Name = "Whiskers", Age = 1 },
+    new { Name = "Boots", Age = 4 },
+    new { Name = "Daisy", Age = 4 },
+    new { Name = "Barley", Age = 8 }
+};
+
+var grouped = pets.OrderedGroupBy(p => p.Age, p => p.Name);
+
+// yields:
+// 1 -> ["Whiskers"]
+// 4 -> ["Boots", "Daisy"]
+// 8 -> ["Barley"]
+```
+
+### Available Operators
+
+All operators require pre-sorted input:
+
+- **`OrderedGroupBy`**: Groups elements by a key, similar to LINQ's `GroupBy` but requires sorted input
+- **`OrderedJoin`**: Joins two sorted sequences, similar to LINQ's `Join`
+- **`OrderedGroupJoin`**: Performs a grouped join on two sorted sequences, similar to LINQ's `GroupJoin`
+
+Each operator has multiple overloads to support different scenarios and custom comparers.
+
 ## Motivation
-LINQ operators, based on hashing and "true-false equality", are good enough for most purposes. 
 
-Sometimes however, you are working with big data that you can't or won't buffer all in memory, but you can source them ordered. For example, when they come from a SQL database. You put the "ORDER BY" clause in the SQL query, and then in C# you group/join the data as they come and go, without overflowing memory. All you need to do is define an "ordered equality" comparer that is equivalent to the SQL ordering rules.
+LINQ operators based on hashing and "true-false equality" are good enough for most purposes. 
 
-Also, generally, in cases you have pre-ordered data and the ordering comparer, it makes sense to use that fact to speed up processing. Without the need to pre-build a hashtable, and without the hash-lookups, order-based processing will be much faster than normal LINQs hash-based one and use less memory.
+Sometimes, however, you are working with big data that you can't or won't buffer all in memory, but you can source it in sorted order. For example, when data comes from a SQL database with an `ORDER BY` clause. You can then group/join the data as it streams through, without overflowing memory. All you need is to define an "ordered equality" comparer that matches the SQL ordering rules.
 
-## See also
-Stephen Cleary's [Comparers](https://github.com/StephenCleary/Comparers) library for easy declarative creation of both hashing and sorting comparers.
+Additionally, when you have pre-ordered data and an ordering comparer, it makes sense to leverage that for better performance. Without needing to build hash tables or perform hash lookups, order-based processing is:
+- **Faster** than normal LINQ's hash-based operators
+- **More memory-efficient** for large datasets
+- **Stream-compatible** for processing data pipelines
+
+### Use Cases
+
+Perfect for scenarios such as:
+- Processing large datasets from databases with `ORDER BY` clauses
+- Streaming data that arrives in sorted order
+- ETL (Extract, Transform, Load) operations on sorted files
+- Any case where you already have sorted data and want optimal performance
+
+## Building and Testing
+
+### Prerequisites
+- [.NET SDK 8.0](https://dotnet.microsoft.com/download) or later
+- .NET 6.0 runtime (for running tests on .NET 6.0 target)
+
+### Build
+```bash
+dotnet restore
+dotnet build
+```
+
+### Run Tests
+```bash
+dotnet test
+```
+
+### Generate Coverage Report
+```bash
+dotnet test --collect:"XPlat Code Coverage"
+```
+
+Coverage reports are generated in the `coverage` directory in Cobertura XML format.
+
+## Continuous Integration
+
+This project uses GitHub Actions for CI/CD:
+
+### CI Workflow
+- **Trigger**: Pushes to `master` and all pull requests
+- **Actions**:
+  - Builds the project for all target frameworks
+  - Runs all tests with code coverage
+  - Uploads coverage to Codecov
+  - Generates coverage summary in Actions UI
+  - Uploads test results and NuGet packages as artifacts
+- **Status**: [![CI](https://github.com/janslav/orderedLinqOps/actions/workflows/ci.yml/badge.svg)](https://github.com/janslav/orderedLinqOps/actions/workflows/ci.yml)
+
+### Publish Workflow
+- **Trigger**: Git tags matching `v*.*.*` (e.g., `v1.2.0`)
+- **Actions**:
+  - Builds and tests the project
+  - Packs NuGet package with version from tag
+  - Publishes to NuGet.org using `NUGET_API_KEY` secret
+  - Uploads package as artifact
+
+## Release Process (for Maintainers)
+
+To publish a new version to NuGet.org:
+
+1. **Update Version**: Edit `src/OrderedLinqOps/OrderedLinqOps.csproj` and update the `<Version>` element and `<PackageReleaseNotes>`
+
+2. **Commit Changes**:
+   ```bash
+   git add src/OrderedLinqOps/OrderedLinqOps.csproj
+   git commit -m "Bump version to X.Y.Z"
+   git push origin master
+   ```
+
+3. **Create and Push Tag**:
+   ```bash
+   git tag vX.Y.Z
+   git push origin vX.Y.Z
+   ```
+   
+   Example for version 1.3.0:
+   ```bash
+   git tag v1.3.0
+   git push origin v1.3.0
+   ```
+
+4. **Automated Publishing**: The GitHub Actions workflow will automatically:
+   - Build and test the project
+   - Pack the NuGet package with the version from the tag
+   - Publish to NuGet.org (requires `NUGET_API_KEY` repository secret)
+   - Upload the package as a workflow artifact
+
+5. **Verify**: Check the [Actions tab](https://github.com/janslav/orderedLinqOps/actions) to ensure the publish workflow completes successfully
+
+**Note**: The `NUGET_API_KEY` secret must be configured in the repository settings with a valid NuGet.org API key.
+
+## See Also
+
+- Stephen Cleary's [Comparers](https://github.com/StephenCleary/Comparers) library for easy declarative creation of both hashing and sorting comparers
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-This project is licensed under LGPL 3.0 - see the [LICENSE.md](LICENSE.md) file for details
+
+This project is licensed under LGPL 3.0 - see the [LICENSE.txt](LICENSE.txt) file for details
 

@@ -242,4 +242,10 @@ ModelManifest.xml
 .paket/paket.exe
 
 # FAKE - F# Make
-.fake/.nuget/
+.fake/
+
+.nuget/
+
+# Code coverage results
+coverage/
+TestResults/
