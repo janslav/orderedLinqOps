@@ -38,9 +38,7 @@ Or add directly to your `.csproj` file:
 
 **Supported Frameworks:**
 - .NET Standard 2.0
-- .NET Standard 2.1
-- .NET 6.0
-- .NET 8.0
+- .NET 10.0
 
 ## Usage
 
@@ -99,8 +97,7 @@ Perfect for scenarios such as:
 ## Building and Testing
 
 ### Prerequisites
-- [.NET SDK 8.0](https://dotnet.microsoft.com/download) or later
-- .NET 6.0 runtime (for running tests on .NET 6.0 target)
+- [.NET SDK 10.0](https://dotnet.microsoft.com/download) or later
 
 ### Build
 ```bash
@@ -127,8 +124,9 @@ This project uses GitHub Actions for CI/CD:
 ### CI Workflow
 - **Trigger**: Pushes to `master` and all pull requests
 - **Actions**:
-  - Builds the project for all target frameworks
-  - Runs all tests with code coverage
+  - Uses .NET SDK 10.0.x
+  - Builds the project for all target frameworks (`netstandard2.0`, `net10.0`)
+  - Runs tests (targeting `net10.0`) with code coverage
   - Uploads coverage to Codecov
   - Generates coverage summary in Actions UI
   - Uploads test results and NuGet packages as artifacts
@@ -188,4 +186,3 @@ Contributions are welcome! Please feel free to submit a Pull Request. For major 
 ## License
 
 This project is licensed under LGPL 3.0 - see the [LICENSE.txt](LICENSE.txt) file for details
-
