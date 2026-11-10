@@ -13,7 +13,7 @@ Thanks for contributing.
 ## Required for Code Changes
 
 - Update `CHANGELOG.md` in `Unreleased` for meaningful repository changes.
-- Each changelog entry should describe the delta relative to the repository state before the PR; do not list internal cleanup or self-corrections that only fix mistakes made while working on the same PR.
+- Follow the changelog semantics described in `CHANGELOG.md`: entries describe the delta relative to the repository state before the PR, not internal cleanup or self-corrections made while working on the same PR.
 - Keep public API XML docs complete and accurate.
 - Keep comments current; remove stale comments.
 - Add/update tests for changed behavior, including edge/error cases.
