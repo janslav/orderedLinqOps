@@ -1,2501 +1,2501 @@
-customer_id	order_id	region	amount	label
-1	1	East	30.25	vip-1-1
-1	2	West	34.50	standard-1-2
-1	3	North	38.75	new-1-3
-1	4	South	43.00	repeat-1-4
-1	5	East	47.25	vip-1-5
-1	6	West	51.50	standard-1-6
-1	7	North	55.75	new-1-7
-1	8	South	60.00	repeat-1-8
-1	9	East	64.25	vip-1-9
-1	10	West	68.50	standard-1-10
-2	11	West	56.25	standard-2-1
-2	12	North	60.50	new-2-2
-2	13	South	64.75	repeat-2-3
-2	14	East	69.00	vip-2-4
-2	15	West	73.25	standard-2-5
-2	16	North	77.50	new-2-6
-2	17	South	81.75	repeat-2-7
-2	18	East	86.00	vip-2-8
-2	19	West	90.25	standard-2-9
-2	20	North	94.50	new-2-10
-3	21	North	82.25	new-3-1
-3	22	South	86.50	repeat-3-2
-3	23	East	90.75	vip-3-3
-3	24	West	95.00	standard-3-4
-3	25	North	99.25	new-3-5
-3	26	South	103.50	repeat-3-6
-3	27	East	107.75	vip-3-7
-3	28	West	112.00	standard-3-8
-3	29	North	116.25	new-3-9
-3	30	South	120.50	repeat-3-10
-4	31	South	108.25	repeat-4-1
-4	32	East	112.50	vip-4-2
-4	33	West	116.75	standard-4-3
-4	34	North	121.00	new-4-4
-4	35	South	125.25	repeat-4-5
-4	36	East	129.50	vip-4-6
-4	37	West	133.75	standard-4-7
-4	38	North	138.00	new-4-8
-4	39	South	142.25	repeat-4-9
-4	40	East	146.50	vip-4-10
-5	41	East	134.25	vip-5-1
-5	42	West	138.50	standard-5-2
-5	43	North	142.75	new-5-3
-5	44	South	147.00	repeat-5-4
-5	45	East	151.25	vip-5-5
-5	46	West	155.50	standard-5-6
-5	47	North	159.75	new-5-7
-5	48	South	164.00	repeat-5-8
-5	49	East	168.25	vip-5-9
-5	50	West	172.50	standard-5-10
-6	51	West	160.25	standard-6-1
-6	52	North	164.50	new-6-2
-6	53	South	168.75	repeat-6-3
-6	54	East	173.00	vip-6-4
-6	55	West	177.25	standard-6-5
-6	56	North	181.50	new-6-6
-6	57	South	185.75	repeat-6-7
-6	58	East	190.00	vip-6-8
-6	59	West	194.25	standard-6-9
-6	60	North	198.50	new-6-10
-7	61	North	179.25	new-7-1
-7	62	South	183.50	repeat-7-2
-7	63	East	187.75	vip-7-3
-7	64	West	192.00	standard-7-4
-7	65	North	196.25	new-7-5
-7	66	South	200.50	repeat-7-6
-7	67	East	204.75	vip-7-7
-7	68	West	209.00	standard-7-8
-7	69	North	213.25	new-7-9
-7	70	South	217.50	repeat-7-10
-8	71	South	205.25	repeat-8-1
-8	72	East	209.50	vip-8-2
-8	73	West	213.75	standard-8-3
-8	74	North	218.00	new-8-4
-8	75	South	222.25	repeat-8-5
-8	76	East	226.50	vip-8-6
-8	77	West	230.75	standard-8-7
-8	78	North	235.00	new-8-8
-8	79	South	239.25	repeat-8-9
-8	80	East	243.50	vip-8-10
-9	81	East	231.25	vip-9-1
-9	82	West	235.50	standard-9-2
-9	83	North	239.75	new-9-3
-9	84	South	244.00	repeat-9-4
-9	85	East	248.25	vip-9-5
-9	86	West	252.50	standard-9-6
-9	87	North	256.75	new-9-7
-9	88	South	261.00	repeat-9-8
-9	89	East	265.25	vip-9-9
-9	90	West	269.50	standard-9-10
-10	91	West	257.25	standard-10-1
-10	92	North	261.50	new-10-2
-10	93	South	265.75	repeat-10-3
-10	94	East	270.00	vip-10-4
-10	95	West	274.25	standard-10-5
-10	96	North	278.50	new-10-6
-10	97	South	282.75	repeat-10-7
-10	98	East	287.00	vip-10-8
-10	99	West	291.25	standard-10-9
-10	100	North	295.50	new-10-10
-11	101	North	283.25	new-11-1
-11	102	South	287.50	repeat-11-2
-11	103	East	291.75	vip-11-3
-11	104	West	296.00	standard-11-4
-11	105	North	300.25	new-11-5
-11	106	South	304.50	repeat-11-6
-11	107	East	308.75	vip-11-7
-11	108	West	313.00	standard-11-8
-11	109	North	317.25	new-11-9
-11	110	South	321.50	repeat-11-10
-12	111	South	309.25	repeat-12-1
-12	112	East	313.50	vip-12-2
-12	113	West	317.75	standard-12-3
-12	114	North	322.00	new-12-4
-12	115	South	326.25	repeat-12-5
-12	116	East	330.50	vip-12-6
-12	117	West	334.75	standard-12-7
-12	118	North	339.00	new-12-8
-12	119	South	343.25	repeat-12-9
-12	120	East	347.50	vip-12-10
-13	121	East	335.25	vip-13-1
-13	122	West	339.50	standard-13-2
-13	123	North	343.75	new-13-3
-13	124	South	348.00	repeat-13-4
-13	125	East	352.25	vip-13-5
-13	126	West	356.50	standard-13-6
-13	127	North	360.75	new-13-7
-13	128	South	365.00	repeat-13-8
-13	129	East	369.25	vip-13-9
-13	130	West	373.50	standard-13-10
-14	131	West	354.25	standard-14-1
-14	132	North	358.50	new-14-2
-14	133	South	362.75	repeat-14-3
-14	134	East	367.00	vip-14-4
-14	135	West	371.25	standard-14-5
-14	136	North	375.50	new-14-6
-14	137	South	379.75	repeat-14-7
-14	138	East	384.00	vip-14-8
-14	139	West	388.25	standard-14-9
-14	140	North	392.50	new-14-10
-15	141	North	380.25	new-15-1
-15	142	South	384.50	repeat-15-2
-15	143	East	388.75	vip-15-3
-15	144	West	393.00	standard-15-4
-15	145	North	397.25	new-15-5
-15	146	South	401.50	repeat-15-6
-15	147	East	405.75	vip-15-7
-15	148	West	410.00	standard-15-8
-15	149	North	414.25	new-15-9
-15	150	South	418.50	repeat-15-10
-16	151	South	406.25	repeat-16-1
-16	152	East	410.50	vip-16-2
-16	153	West	414.75	standard-16-3
-16	154	North	419.00	new-16-4
-16	155	South	423.25	repeat-16-5
-16	156	East	427.50	vip-16-6
-16	157	West	431.75	standard-16-7
-16	158	North	436.00	new-16-8
-16	159	South	440.25	repeat-16-9
-16	160	East	444.50	vip-16-10
-17	161	East	432.25	vip-17-1
-17	162	West	436.50	standard-17-2
-17	163	North	440.75	new-17-3
-17	164	South	445.00	repeat-17-4
-17	165	East	449.25	vip-17-5
-17	166	West	453.50	standard-17-6
-17	167	North	457.75	new-17-7
-17	168	South	462.00	repeat-17-8
-17	169	East	466.25	vip-17-9
-17	170	West	470.50	standard-17-10
-18	171	West	458.25	standard-18-1
-18	172	North	462.50	new-18-2
-18	173	South	466.75	repeat-18-3
-18	174	East	471.00	vip-18-4
-18	175	West	475.25	standard-18-5
-18	176	North	479.50	new-18-6
-18	177	South	483.75	repeat-18-7
-18	178	East	488.00	vip-18-8
-18	179	West	492.25	standard-18-9
-18	180	North	496.50	new-18-10
-19	181	North	484.25	new-19-1
-19	182	South	488.50	repeat-19-2
-19	183	East	492.75	vip-19-3
-19	184	West	497.00	standard-19-4
-19	185	North	501.25	new-19-5
-19	186	South	505.50	repeat-19-6
-19	187	East	509.75	vip-19-7
-19	188	West	514.00	standard-19-8
-19	189	North	518.25	new-19-9
-19	190	South	522.50	repeat-19-10
-20	191	South	510.25	repeat-20-1
-20	192	East	514.50	vip-20-2
-20	193	West	518.75	standard-20-3
-20	194	North	523.00	new-20-4
-20	195	South	527.25	repeat-20-5
-20	196	East	531.50	vip-20-6
-20	197	West	535.75	standard-20-7
-20	198	North	540.00	new-20-8
-20	199	South	544.25	repeat-20-9
-20	200	East	548.50	vip-20-10
-21	201	East	529.25	vip-21-1
-21	202	West	533.50	standard-21-2
-21	203	North	537.75	new-21-3
-21	204	South	542.00	repeat-21-4
-21	205	East	546.25	vip-21-5
-21	206	West	550.50	standard-21-6
-21	207	North	554.75	new-21-7
-21	208	South	559.00	repeat-21-8
-21	209	East	563.25	vip-21-9
-21	210	West	567.50	standard-21-10
-22	211	West	555.25	standard-22-1
-22	212	North	559.50	new-22-2
-22	213	South	563.75	repeat-22-3
-22	214	East	568.00	vip-22-4
-22	215	West	572.25	standard-22-5
-22	216	North	576.50	new-22-6
-22	217	South	580.75	repeat-22-7
-22	218	East	585.00	vip-22-8
-22	219	West	589.25	standard-22-9
-22	220	North	593.50	new-22-10
-23	221	North	581.25	new-23-1
-23	222	South	585.50	repeat-23-2
-23	223	East	589.75	vip-23-3
-23	224	West	594.00	standard-23-4
-23	225	North	598.25	new-23-5
-23	226	South	602.50	repeat-23-6
-23	227	East	606.75	vip-23-7
-23	228	West	611.00	standard-23-8
-23	229	North	615.25	new-23-9
-23	230	South	619.50	repeat-23-10
-24	231	South	607.25	repeat-24-1
-24	232	East	611.50	vip-24-2
-24	233	West	615.75	standard-24-3
-24	234	North	620.00	new-24-4
-24	235	South	624.25	repeat-24-5
-24	236	East	628.50	vip-24-6
-24	237	West	632.75	standard-24-7
-24	238	North	637.00	new-24-8
-24	239	South	641.25	repeat-24-9
-24	240	East	645.50	vip-24-10
-25	241	East	633.25	vip-25-1
-25	242	West	637.50	standard-25-2
-25	243	North	641.75	new-25-3
-25	244	South	646.00	repeat-25-4
-25	245	East	650.25	vip-25-5
-25	246	West	654.50	standard-25-6
-25	247	North	658.75	new-25-7
-25	248	South	663.00	repeat-25-8
-25	249	East	667.25	vip-25-9
-25	250	West	671.50	standard-25-10
-26	251	West	659.25	standard-26-1
-26	252	North	663.50	new-26-2
-26	253	South	667.75	repeat-26-3
-26	254	East	672.00	vip-26-4
-26	255	West	676.25	standard-26-5
-26	256	North	680.50	new-26-6
-26	257	South	684.75	repeat-26-7
-26	258	East	689.00	vip-26-8
-26	259	West	693.25	standard-26-9
-26	260	North	697.50	new-26-10
-27	261	North	685.25	new-27-1
-27	262	South	689.50	repeat-27-2
-27	263	East	693.75	vip-27-3
-27	264	West	698.00	standard-27-4
-27	265	North	702.25	new-27-5
-27	266	South	706.50	repeat-27-6
-27	267	East	710.75	vip-27-7
-27	268	West	715.00	standard-27-8
-27	269	North	719.25	new-27-9
-27	270	South	723.50	repeat-27-10
-28	271	South	704.25	repeat-28-1
-28	272	East	708.50	vip-28-2
-28	273	West	712.75	standard-28-3
-28	274	North	717.00	new-28-4
-28	275	South	721.25	repeat-28-5
-28	276	East	725.50	vip-28-6
-28	277	West	729.75	standard-28-7
-28	278	North	734.00	new-28-8
-28	279	South	738.25	repeat-28-9
-28	280	East	742.50	vip-28-10
-29	281	East	730.25	vip-29-1
-29	282	West	734.50	standard-29-2
-29	283	North	738.75	new-29-3
-29	284	South	743.00	repeat-29-4
-29	285	East	747.25	vip-29-5
-29	286	West	751.50	standard-29-6
-29	287	North	755.75	new-29-7
-29	288	South	760.00	repeat-29-8
-29	289	East	764.25	vip-29-9
-29	290	West	768.50	standard-29-10
-30	291	West	756.25	standard-30-1
-30	292	North	760.50	new-30-2
-30	293	South	764.75	repeat-30-3
-30	294	East	769.00	vip-30-4
-30	295	West	773.25	standard-30-5
-30	296	North	777.50	new-30-6
-30	297	South	781.75	repeat-30-7
-30	298	East	786.00	vip-30-8
-30	299	West	790.25	standard-30-9
-30	300	North	794.50	new-30-10
-31	301	North	782.25	new-31-1
-31	302	South	786.50	repeat-31-2
-31	303	East	790.75	vip-31-3
-31	304	West	795.00	standard-31-4
-31	305	North	799.25	new-31-5
-31	306	South	803.50	repeat-31-6
-31	307	East	807.75	vip-31-7
-31	308	West	812.00	standard-31-8
-31	309	North	816.25	new-31-9
-31	310	South	820.50	repeat-31-10
-32	311	South	808.25	repeat-32-1
-32	312	East	812.50	vip-32-2
-32	313	West	816.75	standard-32-3
-32	314	North	821.00	new-32-4
-32	315	South	825.25	repeat-32-5
-32	316	East	829.50	vip-32-6
-32	317	West	833.75	standard-32-7
-32	318	North	838.00	new-32-8
-32	319	South	842.25	repeat-32-9
-32	320	East	846.50	vip-32-10
-33	321	East	834.25	vip-33-1
-33	322	West	838.50	standard-33-2
-33	323	North	842.75	new-33-3
-33	324	South	847.00	repeat-33-4
-33	325	East	851.25	vip-33-5
-33	326	West	855.50	standard-33-6
-33	327	North	859.75	new-33-7
-33	328	South	864.00	repeat-33-8
-33	329	East	868.25	vip-33-9
-33	330	West	872.50	standard-33-10
-34	331	West	860.25	standard-34-1
-34	332	North	864.50	new-34-2
-34	333	South	868.75	repeat-34-3
-34	334	East	873.00	vip-34-4
-34	335	West	877.25	standard-34-5
-34	336	North	881.50	new-34-6
-34	337	South	885.75	repeat-34-7
-34	338	East	890.00	vip-34-8
-34	339	West	894.25	standard-34-9
-34	340	North	898.50	new-34-10
-35	341	North	879.25	new-35-1
-35	342	South	883.50	repeat-35-2
-35	343	East	887.75	vip-35-3
-35	344	West	892.00	standard-35-4
-35	345	North	896.25	new-35-5
-35	346	South	900.50	repeat-35-6
-35	347	East	904.75	vip-35-7
-35	348	West	909.00	standard-35-8
-35	349	North	913.25	new-35-9
-35	350	South	917.50	repeat-35-10
-36	351	South	905.25	repeat-36-1
-36	352	East	909.50	vip-36-2
-36	353	West	913.75	standard-36-3
-36	354	North	918.00	new-36-4
-36	355	South	922.25	repeat-36-5
-36	356	East	926.50	vip-36-6
-36	357	West	930.75	standard-36-7
-36	358	North	935.00	new-36-8
-36	359	South	939.25	repeat-36-9
-36	360	East	943.50	vip-36-10
-37	361	East	931.25	vip-37-1
-37	362	West	935.50	standard-37-2
-37	363	North	939.75	new-37-3
-37	364	South	944.00	repeat-37-4
-37	365	East	948.25	vip-37-5
-37	366	West	952.50	standard-37-6
-37	367	North	956.75	new-37-7
-37	368	South	961.00	repeat-37-8
-37	369	East	965.25	vip-37-9
-37	370	West	969.50	standard-37-10
-38	371	West	957.25	standard-38-1
-38	372	North	961.50	new-38-2
-38	373	South	965.75	repeat-38-3
-38	374	East	970.00	vip-38-4
-38	375	West	974.25	standard-38-5
-38	376	North	978.50	new-38-6
-38	377	South	982.75	repeat-38-7
-38	378	East	987.00	vip-38-8
-38	379	West	991.25	standard-38-9
-38	380	North	995.50	new-38-10
-39	381	North	983.25	new-39-1
-39	382	South	987.50	repeat-39-2
-39	383	East	991.75	vip-39-3
-39	384	West	996.00	standard-39-4
-39	385	North	1000.25	new-39-5
-39	386	South	1004.50	repeat-39-6
-39	387	East	1008.75	vip-39-7
-39	388	West	1013.00	standard-39-8
-39	389	North	1017.25	new-39-9
-39	390	South	1021.50	repeat-39-10
-40	391	South	1009.25	repeat-40-1
-40	392	East	1013.50	vip-40-2
-40	393	West	1017.75	standard-40-3
-40	394	North	1022.00	new-40-4
-40	395	South	1026.25	repeat-40-5
-40	396	East	1030.50	vip-40-6
-40	397	West	1034.75	standard-40-7
-40	398	North	1039.00	new-40-8
-40	399	South	1043.25	repeat-40-9
-40	400	East	1047.50	vip-40-10
-41	401	East	1035.25	vip-41-1
-41	402	West	1039.50	standard-41-2
-41	403	North	1043.75	new-41-3
-41	404	South	1048.00	repeat-41-4
-41	405	East	1052.25	vip-41-5
-41	406	West	1056.50	standard-41-6
-41	407	North	1060.75	new-41-7
-41	408	South	1065.00	repeat-41-8
-41	409	East	1069.25	vip-41-9
-41	410	West	1073.50	standard-41-10
-42	411	West	1054.25	standard-42-1
-42	412	North	1058.50	new-42-2
-42	413	South	1062.75	repeat-42-3
-42	414	East	1067.00	vip-42-4
-42	415	West	1071.25	standard-42-5
-42	416	North	1075.50	new-42-6
-42	417	South	1079.75	repeat-42-7
-42	418	East	1084.00	vip-42-8
-42	419	West	1088.25	standard-42-9
-42	420	North	1092.50	new-42-10
-43	421	North	1080.25	new-43-1
-43	422	South	1084.50	repeat-43-2
-43	423	East	1088.75	vip-43-3
-43	424	West	1093.00	standard-43-4
-43	425	North	1097.25	new-43-5
-43	426	South	1101.50	repeat-43-6
-43	427	East	1105.75	vip-43-7
-43	428	West	1110.00	standard-43-8
-43	429	North	1114.25	new-43-9
-43	430	South	1118.50	repeat-43-10
-44	431	South	1106.25	repeat-44-1
-44	432	East	1110.50	vip-44-2
-44	433	West	1114.75	standard-44-3
-44	434	North	1119.00	new-44-4
-44	435	South	1123.25	repeat-44-5
-44	436	East	1127.50	vip-44-6
-44	437	West	1131.75	standard-44-7
-44	438	North	1136.00	new-44-8
-44	439	South	1140.25	repeat-44-9
-44	440	East	1144.50	vip-44-10
-45	441	East	1132.25	vip-45-1
-45	442	West	1136.50	standard-45-2
-45	443	North	1140.75	new-45-3
-45	444	South	1145.00	repeat-45-4
-45	445	East	1149.25	vip-45-5
-45	446	West	1153.50	standard-45-6
-45	447	North	1157.75	new-45-7
-45	448	South	1162.00	repeat-45-8
-45	449	East	1166.25	vip-45-9
-45	450	West	1170.50	standard-45-10
-46	451	West	1158.25	standard-46-1
-46	452	North	1162.50	new-46-2
-46	453	South	1166.75	repeat-46-3
-46	454	East	1171.00	vip-46-4
-46	455	West	1175.25	standard-46-5
-46	456	North	1179.50	new-46-6
-46	457	South	1183.75	repeat-46-7
-46	458	East	1188.00	vip-46-8
-46	459	West	1192.25	standard-46-9
-46	460	North	1196.50	new-46-10
-47	461	North	1184.25	new-47-1
-47	462	South	1188.50	repeat-47-2
-47	463	East	1192.75	vip-47-3
-47	464	West	1197.00	standard-47-4
-47	465	North	1201.25	new-47-5
-47	466	South	1205.50	repeat-47-6
-47	467	East	1209.75	vip-47-7
-47	468	West	1214.00	standard-47-8
-47	469	North	1218.25	new-47-9
-47	470	South	1222.50	repeat-47-10
-48	471	South	1210.25	repeat-48-1
-48	472	East	1214.50	vip-48-2
-48	473	West	1218.75	standard-48-3
-48	474	North	1223.00	new-48-4
-48	475	South	1227.25	repeat-48-5
-48	476	East	1231.50	vip-48-6
-48	477	West	1235.75	standard-48-7
-48	478	North	1240.00	new-48-8
-48	479	South	1244.25	repeat-48-9
-48	480	East	1248.50	vip-48-10
-49	481	East	1229.25	vip-49-1
-49	482	West	1233.50	standard-49-2
-49	483	North	1237.75	new-49-3
-49	484	South	1242.00	repeat-49-4
-49	485	East	1246.25	vip-49-5
-49	486	West	1250.50	standard-49-6
-49	487	North	1254.75	new-49-7
-49	488	South	1259.00	repeat-49-8
-49	489	East	1263.25	vip-49-9
-49	490	West	1267.50	standard-49-10
-50	491	West	1255.25	standard-50-1
-50	492	North	1259.50	new-50-2
-50	493	South	1263.75	repeat-50-3
-50	494	East	1268.00	vip-50-4
-50	495	West	1272.25	standard-50-5
-50	496	North	1276.50	new-50-6
-50	497	South	1280.75	repeat-50-7
-50	498	East	1285.00	vip-50-8
-50	499	West	1289.25	standard-50-9
-50	500	North	1293.50	new-50-10
-51	501	North	1281.25	new-51-1
-51	502	South	1285.50	repeat-51-2
-51	503	East	1289.75	vip-51-3
-51	504	West	1294.00	standard-51-4
-51	505	North	1298.25	new-51-5
-51	506	South	1302.50	repeat-51-6
-51	507	East	1306.75	vip-51-7
-51	508	West	1311.00	standard-51-8
-51	509	North	1315.25	new-51-9
-51	510	South	1319.50	repeat-51-10
-52	511	South	1307.25	repeat-52-1
-52	512	East	1311.50	vip-52-2
-52	513	West	1315.75	standard-52-3
-52	514	North	1320.00	new-52-4
-52	515	South	1324.25	repeat-52-5
-52	516	East	1328.50	vip-52-6
-52	517	West	1332.75	standard-52-7
-52	518	North	1337.00	new-52-8
-52	519	South	1341.25	repeat-52-9
-52	520	East	1345.50	vip-52-10
-53	521	East	1333.25	vip-53-1
-53	522	West	1337.50	standard-53-2
-53	523	North	1341.75	new-53-3
-53	524	South	1346.00	repeat-53-4
-53	525	East	1350.25	vip-53-5
-53	526	West	1354.50	standard-53-6
-53	527	North	1358.75	new-53-7
-53	528	South	1363.00	repeat-53-8
-53	529	East	1367.25	vip-53-9
-53	530	West	1371.50	standard-53-10
-54	531	West	1359.25	standard-54-1
-54	532	North	1363.50	new-54-2
-54	533	South	1367.75	repeat-54-3
-54	534	East	1372.00	vip-54-4
-54	535	West	1376.25	standard-54-5
-54	536	North	1380.50	new-54-6
-54	537	South	1384.75	repeat-54-7
-54	538	East	1389.00	vip-54-8
-54	539	West	1393.25	standard-54-9
-54	540	North	1397.50	new-54-10
-55	541	North	1385.25	new-55-1
-55	542	South	1389.50	repeat-55-2
-55	543	East	1393.75	vip-55-3
-55	544	West	1398.00	standard-55-4
-55	545	North	1402.25	new-55-5
-55	546	South	1406.50	repeat-55-6
-55	547	East	1410.75	vip-55-7
-55	548	West	1415.00	standard-55-8
-55	549	North	1419.25	new-55-9
-55	550	South	1423.50	repeat-55-10
-56	551	South	1404.25	repeat-56-1
-56	552	East	1408.50	vip-56-2
-56	553	West	1412.75	standard-56-3
-56	554	North	1417.00	new-56-4
-56	555	South	1421.25	repeat-56-5
-56	556	East	1425.50	vip-56-6
-56	557	West	1429.75	standard-56-7
-56	558	North	1434.00	new-56-8
-56	559	South	1438.25	repeat-56-9
-56	560	East	1442.50	vip-56-10
-57	561	East	1430.25	vip-57-1
-57	562	West	1434.50	standard-57-2
-57	563	North	1438.75	new-57-3
-57	564	South	1443.00	repeat-57-4
-57	565	East	1447.25	vip-57-5
-57	566	West	1451.50	standard-57-6
-57	567	North	1455.75	new-57-7
-57	568	South	1460.00	repeat-57-8
-57	569	East	1464.25	vip-57-9
-57	570	West	1468.50	standard-57-10
-58	571	West	1456.25	standard-58-1
-58	572	North	1460.50	new-58-2
-58	573	South	1464.75	repeat-58-3
-58	574	East	1469.00	vip-58-4
-58	575	West	1473.25	standard-58-5
-58	576	North	1477.50	new-58-6
-58	577	South	1481.75	repeat-58-7
-58	578	East	1486.00	vip-58-8
-58	579	West	1490.25	standard-58-9
-58	580	North	1494.50	new-58-10
-59	581	North	1482.25	new-59-1
-59	582	South	1486.50	repeat-59-2
-59	583	East	1490.75	vip-59-3
-59	584	West	1495.00	standard-59-4
-59	585	North	1499.25	new-59-5
-59	586	South	1503.50	repeat-59-6
-59	587	East	1507.75	vip-59-7
-59	588	West	1512.00	standard-59-8
-59	589	North	1516.25	new-59-9
-59	590	South	1520.50	repeat-59-10
-60	591	South	1508.25	repeat-60-1
-60	592	East	1512.50	vip-60-2
-60	593	West	1516.75	standard-60-3
-60	594	North	1521.00	new-60-4
-60	595	South	1525.25	repeat-60-5
-60	596	East	1529.50	vip-60-6
-60	597	West	1533.75	standard-60-7
-60	598	North	1538.00	new-60-8
-60	599	South	1542.25	repeat-60-9
-60	600	East	1546.50	vip-60-10
-61	601	East	1534.25	vip-61-1
-61	602	West	1538.50	standard-61-2
-61	603	North	1542.75	new-61-3
-61	604	South	1547.00	repeat-61-4
-61	605	East	1551.25	vip-61-5
-61	606	West	1555.50	standard-61-6
-61	607	North	1559.75	new-61-7
-61	608	South	1564.00	repeat-61-8
-61	609	East	1568.25	vip-61-9
-61	610	West	1572.50	standard-61-10
-62	611	West	1560.25	standard-62-1
-62	612	North	1564.50	new-62-2
-62	613	South	1568.75	repeat-62-3
-62	614	East	1573.00	vip-62-4
-62	615	West	1577.25	standard-62-5
-62	616	North	1581.50	new-62-6
-62	617	South	1585.75	repeat-62-7
-62	618	East	1590.00	vip-62-8
-62	619	West	1594.25	standard-62-9
-62	620	North	1598.50	new-62-10
-63	621	North	1579.25	new-63-1
-63	622	South	1583.50	repeat-63-2
-63	623	East	1587.75	vip-63-3
-63	624	West	1592.00	standard-63-4
-63	625	North	1596.25	new-63-5
-63	626	South	1600.50	repeat-63-6
-63	627	East	1604.75	vip-63-7
-63	628	West	1609.00	standard-63-8
-63	629	North	1613.25	new-63-9
-63	630	South	1617.50	repeat-63-10
-64	631	South	1605.25	repeat-64-1
-64	632	East	1609.50	vip-64-2
-64	633	West	1613.75	standard-64-3
-64	634	North	1618.00	new-64-4
-64	635	South	1622.25	repeat-64-5
-64	636	East	1626.50	vip-64-6
-64	637	West	1630.75	standard-64-7
-64	638	North	1635.00	new-64-8
-64	639	South	1639.25	repeat-64-9
-64	640	East	1643.50	vip-64-10
-65	641	East	1631.25	vip-65-1
-65	642	West	1635.50	standard-65-2
-65	643	North	1639.75	new-65-3
-65	644	South	1644.00	repeat-65-4
-65	645	East	1648.25	vip-65-5
-65	646	West	1652.50	standard-65-6
-65	647	North	1656.75	new-65-7
-65	648	South	1661.00	repeat-65-8
-65	649	East	1665.25	vip-65-9
-65	650	West	1669.50	standard-65-10
-66	651	West	1657.25	standard-66-1
-66	652	North	1661.50	new-66-2
-66	653	South	1665.75	repeat-66-3
-66	654	East	1670.00	vip-66-4
-66	655	West	1674.25	standard-66-5
-66	656	North	1678.50	new-66-6
-66	657	South	1682.75	repeat-66-7
-66	658	East	1687.00	vip-66-8
-66	659	West	1691.25	standard-66-9
-66	660	North	1695.50	new-66-10
-67	661	North	1683.25	new-67-1
-67	662	South	1687.50	repeat-67-2
-67	663	East	1691.75	vip-67-3
-67	664	West	1696.00	standard-67-4
-67	665	North	1700.25	new-67-5
-67	666	South	1704.50	repeat-67-6
-67	667	East	1708.75	vip-67-7
-67	668	West	1713.00	standard-67-8
-67	669	North	1717.25	new-67-9
-67	670	South	1721.50	repeat-67-10
-68	671	South	1709.25	repeat-68-1
-68	672	East	1713.50	vip-68-2
-68	673	West	1717.75	standard-68-3
-68	674	North	1722.00	new-68-4
-68	675	South	1726.25	repeat-68-5
-68	676	East	1730.50	vip-68-6
-68	677	West	1734.75	standard-68-7
-68	678	North	1739.00	new-68-8
-68	679	South	1743.25	repeat-68-9
-68	680	East	1747.50	vip-68-10
-69	681	East	1735.25	vip-69-1
-69	682	West	1739.50	standard-69-2
-69	683	North	1743.75	new-69-3
-69	684	South	1748.00	repeat-69-4
-69	685	East	1752.25	vip-69-5
-69	686	West	1756.50	standard-69-6
-69	687	North	1760.75	new-69-7
-69	688	South	1765.00	repeat-69-8
-69	689	East	1769.25	vip-69-9
-69	690	West	1773.50	standard-69-10
-70	691	West	1754.25	standard-70-1
-70	692	North	1758.50	new-70-2
-70	693	South	1762.75	repeat-70-3
-70	694	East	1767.00	vip-70-4
-70	695	West	1771.25	standard-70-5
-70	696	North	1775.50	new-70-6
-70	697	South	1779.75	repeat-70-7
-70	698	East	1784.00	vip-70-8
-70	699	West	1788.25	standard-70-9
-70	700	North	1792.50	new-70-10
-71	701	North	1780.25	new-71-1
-71	702	South	1784.50	repeat-71-2
-71	703	East	1788.75	vip-71-3
-71	704	West	1793.00	standard-71-4
-71	705	North	1797.25	new-71-5
-71	706	South	1801.50	repeat-71-6
-71	707	East	1805.75	vip-71-7
-71	708	West	1810.00	standard-71-8
-71	709	North	1814.25	new-71-9
-71	710	South	1818.50	repeat-71-10
-72	711	South	1806.25	repeat-72-1
-72	712	East	1810.50	vip-72-2
-72	713	West	1814.75	standard-72-3
-72	714	North	1819.00	new-72-4
-72	715	South	1823.25	repeat-72-5
-72	716	East	1827.50	vip-72-6
-72	717	West	1831.75	standard-72-7
-72	718	North	1836.00	new-72-8
-72	719	South	1840.25	repeat-72-9
-72	720	East	1844.50	vip-72-10
-73	721	East	1832.25	vip-73-1
-73	722	West	1836.50	standard-73-2
-73	723	North	1840.75	new-73-3
-73	724	South	1845.00	repeat-73-4
-73	725	East	1849.25	vip-73-5
-73	726	West	1853.50	standard-73-6
-73	727	North	1857.75	new-73-7
-73	728	South	1862.00	repeat-73-8
-73	729	East	1866.25	vip-73-9
-73	730	West	1870.50	standard-73-10
-74	731	West	1858.25	standard-74-1
-74	732	North	1862.50	new-74-2
-74	733	South	1866.75	repeat-74-3
-74	734	East	1871.00	vip-74-4
-74	735	West	1875.25	standard-74-5
-74	736	North	1879.50	new-74-6
-74	737	South	1883.75	repeat-74-7
-74	738	East	1888.00	vip-74-8
-74	739	West	1892.25	standard-74-9
-74	740	North	1896.50	new-74-10
-75	741	North	1884.25	new-75-1
-75	742	South	1888.50	repeat-75-2
-75	743	East	1892.75	vip-75-3
-75	744	West	1897.00	standard-75-4
-75	745	North	1901.25	new-75-5
-75	746	South	1905.50	repeat-75-6
-75	747	East	1909.75	vip-75-7
-75	748	West	1914.00	standard-75-8
-75	749	North	1918.25	new-75-9
-75	750	South	1922.50	repeat-75-10
-76	751	South	1910.25	repeat-76-1
-76	752	East	1914.50	vip-76-2
-76	753	West	1918.75	standard-76-3
-76	754	North	1923.00	new-76-4
-76	755	South	1927.25	repeat-76-5
-76	756	East	1931.50	vip-76-6
-76	757	West	1935.75	standard-76-7
-76	758	North	1940.00	new-76-8
-76	759	South	1944.25	repeat-76-9
-76	760	East	1948.50	vip-76-10
-77	761	East	1929.25	vip-77-1
-77	762	West	1933.50	standard-77-2
-77	763	North	1937.75	new-77-3
-77	764	South	1942.00	repeat-77-4
-77	765	East	1946.25	vip-77-5
-77	766	West	1950.50	standard-77-6
-77	767	North	1954.75	new-77-7
-77	768	South	1959.00	repeat-77-8
-77	769	East	1963.25	vip-77-9
-77	770	West	1967.50	standard-77-10
-78	771	West	1955.25	standard-78-1
-78	772	North	1959.50	new-78-2
-78	773	South	1963.75	repeat-78-3
-78	774	East	1968.00	vip-78-4
-78	775	West	1972.25	standard-78-5
-78	776	North	1976.50	new-78-6
-78	777	South	1980.75	repeat-78-7
-78	778	East	1985.00	vip-78-8
-78	779	West	1989.25	standard-78-9
-78	780	North	1993.50	new-78-10
-79	781	North	1981.25	new-79-1
-79	782	South	1985.50	repeat-79-2
-79	783	East	1989.75	vip-79-3
-79	784	West	1994.00	standard-79-4
-79	785	North	1998.25	new-79-5
-79	786	South	2002.50	repeat-79-6
-79	787	East	2006.75	vip-79-7
-79	788	West	2011.00	standard-79-8
-79	789	North	2015.25	new-79-9
-79	790	South	2019.50	repeat-79-10
-80	791	South	2007.25	repeat-80-1
-80	792	East	2011.50	vip-80-2
-80	793	West	2015.75	standard-80-3
-80	794	North	2020.00	new-80-4
-80	795	South	2024.25	repeat-80-5
-80	796	East	2028.50	vip-80-6
-80	797	West	2032.75	standard-80-7
-80	798	North	2037.00	new-80-8
-80	799	South	2041.25	repeat-80-9
-80	800	East	2045.50	vip-80-10
-81	801	East	2033.25	vip-81-1
-81	802	West	2037.50	standard-81-2
-81	803	North	2041.75	new-81-3
-81	804	South	2046.00	repeat-81-4
-81	805	East	2050.25	vip-81-5
-81	806	West	2054.50	standard-81-6
-81	807	North	2058.75	new-81-7
-81	808	South	2063.00	repeat-81-8
-81	809	East	2067.25	vip-81-9
-81	810	West	2071.50	standard-81-10
-82	811	West	2059.25	standard-82-1
-82	812	North	2063.50	new-82-2
-82	813	South	2067.75	repeat-82-3
-82	814	East	2072.00	vip-82-4
-82	815	West	2076.25	standard-82-5
-82	816	North	2080.50	new-82-6
-82	817	South	2084.75	repeat-82-7
-82	818	East	2089.00	vip-82-8
-82	819	West	2093.25	standard-82-9
-82	820	North	2097.50	new-82-10
-83	821	North	2085.25	new-83-1
-83	822	South	2089.50	repeat-83-2
-83	823	East	2093.75	vip-83-3
-83	824	West	2098.00	standard-83-4
-83	825	North	2102.25	new-83-5
-83	826	South	2106.50	repeat-83-6
-83	827	East	2110.75	vip-83-7
-83	828	West	2115.00	standard-83-8
-83	829	North	2119.25	new-83-9
-83	830	South	2123.50	repeat-83-10
-84	831	South	2104.25	repeat-84-1
-84	832	East	2108.50	vip-84-2
-84	833	West	2112.75	standard-84-3
-84	834	North	2117.00	new-84-4
-84	835	South	2121.25	repeat-84-5
-84	836	East	2125.50	vip-84-6
-84	837	West	2129.75	standard-84-7
-84	838	North	2134.00	new-84-8
-84	839	South	2138.25	repeat-84-9
-84	840	East	2142.50	vip-84-10
-85	841	East	2130.25	vip-85-1
-85	842	West	2134.50	standard-85-2
-85	843	North	2138.75	new-85-3
-85	844	South	2143.00	repeat-85-4
-85	845	East	2147.25	vip-85-5
-85	846	West	2151.50	standard-85-6
-85	847	North	2155.75	new-85-7
-85	848	South	2160.00	repeat-85-8
-85	849	East	2164.25	vip-85-9
-85	850	West	2168.50	standard-85-10
-86	851	West	2156.25	standard-86-1
-86	852	North	2160.50	new-86-2
-86	853	South	2164.75	repeat-86-3
-86	854	East	2169.00	vip-86-4
-86	855	West	2173.25	standard-86-5
-86	856	North	2177.50	new-86-6
-86	857	South	2181.75	repeat-86-7
-86	858	East	2186.00	vip-86-8
-86	859	West	2190.25	standard-86-9
-86	860	North	2194.50	new-86-10
-87	861	North	2182.25	new-87-1
-87	862	South	2186.50	repeat-87-2
-87	863	East	2190.75	vip-87-3
-87	864	West	2195.00	standard-87-4
-87	865	North	2199.25	new-87-5
-87	866	South	2203.50	repeat-87-6
-87	867	East	2207.75	vip-87-7
-87	868	West	2212.00	standard-87-8
-87	869	North	2216.25	new-87-9
-87	870	South	2220.50	repeat-87-10
-88	871	South	2208.25	repeat-88-1
-88	872	East	2212.50	vip-88-2
-88	873	West	2216.75	standard-88-3
-88	874	North	2221.00	new-88-4
-88	875	South	2225.25	repeat-88-5
-88	876	East	2229.50	vip-88-6
-88	877	West	2233.75	standard-88-7
-88	878	North	2238.00	new-88-8
-88	879	South	2242.25	repeat-88-9
-88	880	East	2246.50	vip-88-10
-89	881	East	2234.25	vip-89-1
-89	882	West	2238.50	standard-89-2
-89	883	North	2242.75	new-89-3
-89	884	South	2247.00	repeat-89-4
-89	885	East	2251.25	vip-89-5
-89	886	West	2255.50	standard-89-6
-89	887	North	2259.75	new-89-7
-89	888	South	2264.00	repeat-89-8
-89	889	East	2268.25	vip-89-9
-89	890	West	2272.50	standard-89-10
-90	891	West	2260.25	standard-90-1
-90	892	North	2264.50	new-90-2
-90	893	South	2268.75	repeat-90-3
-90	894	East	2273.00	vip-90-4
-90	895	West	2277.25	standard-90-5
-90	896	North	2281.50	new-90-6
-90	897	South	2285.75	repeat-90-7
-90	898	East	2290.00	vip-90-8
-90	899	West	2294.25	standard-90-9
-90	900	North	2298.50	new-90-10
-91	901	North	2279.25	new-91-1
-91	902	South	2283.50	repeat-91-2
-91	903	East	2287.75	vip-91-3
-91	904	West	2292.00	standard-91-4
-91	905	North	2296.25	new-91-5
-91	906	South	2300.50	repeat-91-6
-91	907	East	2304.75	vip-91-7
-91	908	West	2309.00	standard-91-8
-91	909	North	2313.25	new-91-9
-91	910	South	2317.50	repeat-91-10
-92	911	South	2305.25	repeat-92-1
-92	912	East	2309.50	vip-92-2
-92	913	West	2313.75	standard-92-3
-92	914	North	2318.00	new-92-4
-92	915	South	2322.25	repeat-92-5
-92	916	East	2326.50	vip-92-6
-92	917	West	2330.75	standard-92-7
-92	918	North	2335.00	new-92-8
-92	919	South	2339.25	repeat-92-9
-92	920	East	2343.50	vip-92-10
-93	921	East	2331.25	vip-93-1
-93	922	West	2335.50	standard-93-2
-93	923	North	2339.75	new-93-3
-93	924	South	2344.00	repeat-93-4
-93	925	East	2348.25	vip-93-5
-93	926	West	2352.50	standard-93-6
-93	927	North	2356.75	new-93-7
-93	928	South	2361.00	repeat-93-8
-93	929	East	2365.25	vip-93-9
-93	930	West	2369.50	standard-93-10
-94	931	West	2357.25	standard-94-1
-94	932	North	2361.50	new-94-2
-94	933	South	2365.75	repeat-94-3
-94	934	East	2370.00	vip-94-4
-94	935	West	2374.25	standard-94-5
-94	936	North	2378.50	new-94-6
-94	937	South	2382.75	repeat-94-7
-94	938	East	2387.00	vip-94-8
-94	939	West	2391.25	standard-94-9
-94	940	North	2395.50	new-94-10
-95	941	North	2383.25	new-95-1
-95	942	South	2387.50	repeat-95-2
-95	943	East	2391.75	vip-95-3
-95	944	West	2396.00	standard-95-4
-95	945	North	2400.25	new-95-5
-95	946	South	2404.50	repeat-95-6
-95	947	East	2408.75	vip-95-7
-95	948	West	2413.00	standard-95-8
-95	949	North	2417.25	new-95-9
-95	950	South	2421.50	repeat-95-10
-96	951	South	2409.25	repeat-96-1
-96	952	East	2413.50	vip-96-2
-96	953	West	2417.75	standard-96-3
-96	954	North	2422.00	new-96-4
-96	955	South	2426.25	repeat-96-5
-96	956	East	2430.50	vip-96-6
-96	957	West	2434.75	standard-96-7
-96	958	North	2439.00	new-96-8
-96	959	South	2443.25	repeat-96-9
-96	960	East	2447.50	vip-96-10
-97	961	East	2435.25	vip-97-1
-97	962	West	2439.50	standard-97-2
-97	963	North	2443.75	new-97-3
-97	964	South	2448.00	repeat-97-4
-97	965	East	2452.25	vip-97-5
-97	966	West	2456.50	standard-97-6
-97	967	North	2460.75	new-97-7
-97	968	South	2465.00	repeat-97-8
-97	969	East	2469.25	vip-97-9
-97	970	West	2473.50	standard-97-10
-98	971	West	2454.25	standard-98-1
-98	972	North	2458.50	new-98-2
-98	973	South	2462.75	repeat-98-3
-98	974	East	2467.00	vip-98-4
-98	975	West	2471.25	standard-98-5
-98	976	North	2475.50	new-98-6
-98	977	South	2479.75	repeat-98-7
-98	978	East	2484.00	vip-98-8
-98	979	West	2488.25	standard-98-9
-98	980	North	2492.50	new-98-10
-99	981	North	2480.25	new-99-1
-99	982	South	2484.50	repeat-99-2
-99	983	East	2488.75	vip-99-3
-99	984	West	2493.00	standard-99-4
-99	985	North	2497.25	new-99-5
-99	986	South	2501.50	repeat-99-6
-99	987	East	2505.75	vip-99-7
-99	988	West	2510.00	standard-99-8
-99	989	North	2514.25	new-99-9
-99	990	South	2518.50	repeat-99-10
-100	991	South	2506.25	repeat-100-1
-100	992	East	2510.50	vip-100-2
-100	993	West	2514.75	standard-100-3
-100	994	North	2519.00	new-100-4
-100	995	South	2523.25	repeat-100-5
-100	996	East	2527.50	vip-100-6
-100	997	West	2531.75	standard-100-7
-100	998	North	2536.00	new-100-8
-100	999	South	2540.25	repeat-100-9
-100	1000	East	2544.50	vip-100-10
-101	1001	East	2532.25	vip-101-1
-101	1002	West	2536.50	standard-101-2
-101	1003	North	2540.75	new-101-3
-101	1004	South	2545.00	repeat-101-4
-101	1005	East	2549.25	vip-101-5
-101	1006	West	2553.50	standard-101-6
-101	1007	North	2557.75	new-101-7
-101	1008	South	2562.00	repeat-101-8
-101	1009	East	2566.25	vip-101-9
-101	1010	West	2570.50	standard-101-10
-102	1011	West	2558.25	standard-102-1
-102	1012	North	2562.50	new-102-2
-102	1013	South	2566.75	repeat-102-3
-102	1014	East	2571.00	vip-102-4
-102	1015	West	2575.25	standard-102-5
-102	1016	North	2579.50	new-102-6
-102	1017	South	2583.75	repeat-102-7
-102	1018	East	2588.00	vip-102-8
-102	1019	West	2592.25	standard-102-9
-102	1020	North	2596.50	new-102-10
-103	1021	North	2584.25	new-103-1
-103	1022	South	2588.50	repeat-103-2
-103	1023	East	2592.75	vip-103-3
-103	1024	West	2597.00	standard-103-4
-103	1025	North	2601.25	new-103-5
-103	1026	South	2605.50	repeat-103-6
-103	1027	East	2609.75	vip-103-7
-103	1028	West	2614.00	standard-103-8
-103	1029	North	2618.25	new-103-9
-103	1030	South	2622.50	repeat-103-10
-104	1031	South	2610.25	repeat-104-1
-104	1032	East	2614.50	vip-104-2
-104	1033	West	2618.75	standard-104-3
-104	1034	North	2623.00	new-104-4
-104	1035	South	2627.25	repeat-104-5
-104	1036	East	2631.50	vip-104-6
-104	1037	West	2635.75	standard-104-7
-104	1038	North	2640.00	new-104-8
-104	1039	South	2644.25	repeat-104-9
-104	1040	East	2648.50	vip-104-10
-105	1041	East	2629.25	vip-105-1
-105	1042	West	2633.50	standard-105-2
-105	1043	North	2637.75	new-105-3
-105	1044	South	2642.00	repeat-105-4
-105	1045	East	2646.25	vip-105-5
-105	1046	West	2650.50	standard-105-6
-105	1047	North	2654.75	new-105-7
-105	1048	South	2659.00	repeat-105-8
-105	1049	East	2663.25	vip-105-9
-105	1050	West	2667.50	standard-105-10
-106	1051	West	2655.25	standard-106-1
-106	1052	North	2659.50	new-106-2
-106	1053	South	2663.75	repeat-106-3
-106	1054	East	2668.00	vip-106-4
-106	1055	West	2672.25	standard-106-5
-106	1056	North	2676.50	new-106-6
-106	1057	South	2680.75	repeat-106-7
-106	1058	East	2685.00	vip-106-8
-106	1059	West	2689.25	standard-106-9
-106	1060	North	2693.50	new-106-10
-107	1061	North	2681.25	new-107-1
-107	1062	South	2685.50	repeat-107-2
-107	1063	East	2689.75	vip-107-3
-107	1064	West	2694.00	standard-107-4
-107	1065	North	2698.25	new-107-5
-107	1066	South	2702.50	repeat-107-6
-107	1067	East	2706.75	vip-107-7
-107	1068	West	2711.00	standard-107-8
-107	1069	North	2715.25	new-107-9
-107	1070	South	2719.50	repeat-107-10
-108	1071	South	2707.25	repeat-108-1
-108	1072	East	2711.50	vip-108-2
-108	1073	West	2715.75	standard-108-3
-108	1074	North	2720.00	new-108-4
-108	1075	South	2724.25	repeat-108-5
-108	1076	East	2728.50	vip-108-6
-108	1077	West	2732.75	standard-108-7
-108	1078	North	2737.00	new-108-8
-108	1079	South	2741.25	repeat-108-9
-108	1080	East	2745.50	vip-108-10
-109	1081	East	2733.25	vip-109-1
-109	1082	West	2737.50	standard-109-2
-109	1083	North	2741.75	new-109-3
-109	1084	South	2746.00	repeat-109-4
-109	1085	East	2750.25	vip-109-5
-109	1086	West	2754.50	standard-109-6
-109	1087	North	2758.75	new-109-7
-109	1088	South	2763.00	repeat-109-8
-109	1089	East	2767.25	vip-109-9
-109	1090	West	2771.50	standard-109-10
-110	1091	West	2759.25	standard-110-1
-110	1092	North	2763.50	new-110-2
-110	1093	South	2767.75	repeat-110-3
-110	1094	East	2772.00	vip-110-4
-110	1095	West	2776.25	standard-110-5
-110	1096	North	2780.50	new-110-6
-110	1097	South	2784.75	repeat-110-7
-110	1098	East	2789.00	vip-110-8
-110	1099	West	2793.25	standard-110-9
-110	1100	North	2797.50	new-110-10
-111	1101	North	2785.25	new-111-1
-111	1102	South	2789.50	repeat-111-2
-111	1103	East	2793.75	vip-111-3
-111	1104	West	2798.00	standard-111-4
-111	1105	North	2802.25	new-111-5
-111	1106	South	2806.50	repeat-111-6
-111	1107	East	2810.75	vip-111-7
-111	1108	West	2815.00	standard-111-8
-111	1109	North	2819.25	new-111-9
-111	1110	South	2823.50	repeat-111-10
-112	1111	South	2804.25	repeat-112-1
-112	1112	East	2808.50	vip-112-2
-112	1113	West	2812.75	standard-112-3
-112	1114	North	2817.00	new-112-4
-112	1115	South	2821.25	repeat-112-5
-112	1116	East	2825.50	vip-112-6
-112	1117	West	2829.75	standard-112-7
-112	1118	North	2834.00	new-112-8
-112	1119	South	2838.25	repeat-112-9
-112	1120	East	2842.50	vip-112-10
-113	1121	East	2830.25	vip-113-1
-113	1122	West	2834.50	standard-113-2
-113	1123	North	2838.75	new-113-3
-113	1124	South	2843.00	repeat-113-4
-113	1125	East	2847.25	vip-113-5
-113	1126	West	2851.50	standard-113-6
-113	1127	North	2855.75	new-113-7
-113	1128	South	2860.00	repeat-113-8
-113	1129	East	2864.25	vip-113-9
-113	1130	West	2868.50	standard-113-10
-114	1131	West	2856.25	standard-114-1
-114	1132	North	2860.50	new-114-2
-114	1133	South	2864.75	repeat-114-3
-114	1134	East	2869.00	vip-114-4
-114	1135	West	2873.25	standard-114-5
-114	1136	North	2877.50	new-114-6
-114	1137	South	2881.75	repeat-114-7
-114	1138	East	2886.00	vip-114-8
-114	1139	West	2890.25	standard-114-9
-114	1140	North	2894.50	new-114-10
-115	1141	North	2882.25	new-115-1
-115	1142	South	2886.50	repeat-115-2
-115	1143	East	2890.75	vip-115-3
-115	1144	West	2895.00	standard-115-4
-115	1145	North	2899.25	new-115-5
-115	1146	South	2903.50	repeat-115-6
-115	1147	East	2907.75	vip-115-7
-115	1148	West	2912.00	standard-115-8
-115	1149	North	2916.25	new-115-9
-115	1150	South	2920.50	repeat-115-10
-116	1151	South	2908.25	repeat-116-1
-116	1152	East	2912.50	vip-116-2
-116	1153	West	2916.75	standard-116-3
-116	1154	North	2921.00	new-116-4
-116	1155	South	2925.25	repeat-116-5
-116	1156	East	2929.50	vip-116-6
-116	1157	West	2933.75	standard-116-7
-116	1158	North	2938.00	new-116-8
-116	1159	South	2942.25	repeat-116-9
-116	1160	East	2946.50	vip-116-10
-117	1161	East	2934.25	vip-117-1
-117	1162	West	2938.50	standard-117-2
-117	1163	North	2942.75	new-117-3
-117	1164	South	2947.00	repeat-117-4
-117	1165	East	2951.25	vip-117-5
-117	1166	West	2955.50	standard-117-6
-117	1167	North	2959.75	new-117-7
-117	1168	South	2964.00	repeat-117-8
-117	1169	East	2968.25	vip-117-9
-117	1170	West	2972.50	standard-117-10
-118	1171	West	2960.25	standard-118-1
-118	1172	North	2964.50	new-118-2
-118	1173	South	2968.75	repeat-118-3
-118	1174	East	2973.00	vip-118-4
-118	1175	West	2977.25	standard-118-5
-118	1176	North	2981.50	new-118-6
-118	1177	South	2985.75	repeat-118-7
-118	1178	East	2990.00	vip-118-8
-118	1179	West	2994.25	standard-118-9
-118	1180	North	2998.50	new-118-10
-119	1181	North	2979.25	new-119-1
-119	1182	South	2983.50	repeat-119-2
-119	1183	East	2987.75	vip-119-3
-119	1184	West	2992.00	standard-119-4
-119	1185	North	2996.25	new-119-5
-119	1186	South	3000.50	repeat-119-6
-119	1187	East	3004.75	vip-119-7
-119	1188	West	3009.00	standard-119-8
-119	1189	North	3013.25	new-119-9
-119	1190	South	3017.50	repeat-119-10
-120	1191	South	3005.25	repeat-120-1
-120	1192	East	3009.50	vip-120-2
-120	1193	West	3013.75	standard-120-3
-120	1194	North	3018.00	new-120-4
-120	1195	South	3022.25	repeat-120-5
-120	1196	East	3026.50	vip-120-6
-120	1197	West	3030.75	standard-120-7
-120	1198	North	3035.00	new-120-8
-120	1199	South	3039.25	repeat-120-9
-120	1200	East	3043.50	vip-120-10
-121	1201	East	3031.25	vip-121-1
-121	1202	West	3035.50	standard-121-2
-121	1203	North	3039.75	new-121-3
-121	1204	South	3044.00	repeat-121-4
-121	1205	East	3048.25	vip-121-5
-121	1206	West	3052.50	standard-121-6
-121	1207	North	3056.75	new-121-7
-121	1208	South	3061.00	repeat-121-8
-121	1209	East	3065.25	vip-121-9
-121	1210	West	3069.50	standard-121-10
-122	1211	West	3057.25	standard-122-1
-122	1212	North	3061.50	new-122-2
-122	1213	South	3065.75	repeat-122-3
-122	1214	East	3070.00	vip-122-4
-122	1215	West	3074.25	standard-122-5
-122	1216	North	3078.50	new-122-6
-122	1217	South	3082.75	repeat-122-7
-122	1218	East	3087.00	vip-122-8
-122	1219	West	3091.25	standard-122-9
-122	1220	North	3095.50	new-122-10
-123	1221	North	3083.25	new-123-1
-123	1222	South	3087.50	repeat-123-2
-123	1223	East	3091.75	vip-123-3
-123	1224	West	3096.00	standard-123-4
-123	1225	North	3100.25	new-123-5
-123	1226	South	3104.50	repeat-123-6
-123	1227	East	3108.75	vip-123-7
-123	1228	West	3113.00	standard-123-8
-123	1229	North	3117.25	new-123-9
-123	1230	South	3121.50	repeat-123-10
-124	1231	South	3109.25	repeat-124-1
-124	1232	East	3113.50	vip-124-2
-124	1233	West	3117.75	standard-124-3
-124	1234	North	3122.00	new-124-4
-124	1235	South	3126.25	repeat-124-5
-124	1236	East	3130.50	vip-124-6
-124	1237	West	3134.75	standard-124-7
-124	1238	North	3139.00	new-124-8
-124	1239	South	3143.25	repeat-124-9
-124	1240	East	3147.50	vip-124-10
-125	1241	East	3135.25	vip-125-1
-125	1242	West	3139.50	standard-125-2
-125	1243	North	3143.75	new-125-3
-125	1244	South	3148.00	repeat-125-4
-125	1245	East	3152.25	vip-125-5
-125	1246	West	3156.50	standard-125-6
-125	1247	North	3160.75	new-125-7
-125	1248	South	3165.00	repeat-125-8
-125	1249	East	3169.25	vip-125-9
-125	1250	West	3173.50	standard-125-10
-126	1251	West	3154.25	standard-126-1
-126	1252	North	3158.50	new-126-2
-126	1253	South	3162.75	repeat-126-3
-126	1254	East	3167.00	vip-126-4
-126	1255	West	3171.25	standard-126-5
-126	1256	North	3175.50	new-126-6
-126	1257	South	3179.75	repeat-126-7
-126	1258	East	3184.00	vip-126-8
-126	1259	West	3188.25	standard-126-9
-126	1260	North	3192.50	new-126-10
-127	1261	North	3180.25	new-127-1
-127	1262	South	3184.50	repeat-127-2
-127	1263	East	3188.75	vip-127-3
-127	1264	West	3193.00	standard-127-4
-127	1265	North	3197.25	new-127-5
-127	1266	South	3201.50	repeat-127-6
-127	1267	East	3205.75	vip-127-7
-127	1268	West	3210.00	standard-127-8
-127	1269	North	3214.25	new-127-9
-127	1270	South	3218.50	repeat-127-10
-128	1271	South	3206.25	repeat-128-1
-128	1272	East	3210.50	vip-128-2
-128	1273	West	3214.75	standard-128-3
-128	1274	North	3219.00	new-128-4
-128	1275	South	3223.25	repeat-128-5
-128	1276	East	3227.50	vip-128-6
-128	1277	West	3231.75	standard-128-7
-128	1278	North	3236.00	new-128-8
-128	1279	South	3240.25	repeat-128-9
-128	1280	East	3244.50	vip-128-10
-129	1281	East	3232.25	vip-129-1
-129	1282	West	3236.50	standard-129-2
-129	1283	North	3240.75	new-129-3
-129	1284	South	3245.00	repeat-129-4
-129	1285	East	3249.25	vip-129-5
-129	1286	West	3253.50	standard-129-6
-129	1287	North	3257.75	new-129-7
-129	1288	South	3262.00	repeat-129-8
-129	1289	East	3266.25	vip-129-9
-129	1290	West	3270.50	standard-129-10
-130	1291	West	3258.25	standard-130-1
-130	1292	North	3262.50	new-130-2
-130	1293	South	3266.75	repeat-130-3
-130	1294	East	3271.00	vip-130-4
-130	1295	West	3275.25	standard-130-5
-130	1296	North	3279.50	new-130-6
-130	1297	South	3283.75	repeat-130-7
-130	1298	East	3288.00	vip-130-8
-130	1299	West	3292.25	standard-130-9
-130	1300	North	3296.50	new-130-10
-131	1301	North	3284.25	new-131-1
-131	1302	South	3288.50	repeat-131-2
-131	1303	East	3292.75	vip-131-3
-131	1304	West	3297.00	standard-131-4
-131	1305	North	3301.25	new-131-5
-131	1306	South	3305.50	repeat-131-6
-131	1307	East	3309.75	vip-131-7
-131	1308	West	3314.00	standard-131-8
-131	1309	North	3318.25	new-131-9
-131	1310	South	3322.50	repeat-131-10
-132	1311	South	3310.25	repeat-132-1
-132	1312	East	3314.50	vip-132-2
-132	1313	West	3318.75	standard-132-3
-132	1314	North	3323.00	new-132-4
-132	1315	South	3327.25	repeat-132-5
-132	1316	East	3331.50	vip-132-6
-132	1317	West	3335.75	standard-132-7
-132	1318	North	3340.00	new-132-8
-132	1319	South	3344.25	repeat-132-9
-132	1320	East	3348.50	vip-132-10
-133	1321	East	3329.25	vip-133-1
-133	1322	West	3333.50	standard-133-2
-133	1323	North	3337.75	new-133-3
-133	1324	South	3342.00	repeat-133-4
-133	1325	East	3346.25	vip-133-5
-133	1326	West	3350.50	standard-133-6
-133	1327	North	3354.75	new-133-7
-133	1328	South	3359.00	repeat-133-8
-133	1329	East	3363.25	vip-133-9
-133	1330	West	3367.50	standard-133-10
-134	1331	West	3355.25	standard-134-1
-134	1332	North	3359.50	new-134-2
-134	1333	South	3363.75	repeat-134-3
-134	1334	East	3368.00	vip-134-4
-134	1335	West	3372.25	standard-134-5
-134	1336	North	3376.50	new-134-6
-134	1337	South	3380.75	repeat-134-7
-134	1338	East	3385.00	vip-134-8
-134	1339	West	3389.25	standard-134-9
-134	1340	North	3393.50	new-134-10
-135	1341	North	3381.25	new-135-1
-135	1342	South	3385.50	repeat-135-2
-135	1343	East	3389.75	vip-135-3
-135	1344	West	3394.00	standard-135-4
-135	1345	North	3398.25	new-135-5
-135	1346	South	3402.50	repeat-135-6
-135	1347	East	3406.75	vip-135-7
-135	1348	West	3411.00	standard-135-8
-135	1349	North	3415.25	new-135-9
-135	1350	South	3419.50	repeat-135-10
-136	1351	South	3407.25	repeat-136-1
-136	1352	East	3411.50	vip-136-2
-136	1353	West	3415.75	standard-136-3
-136	1354	North	3420.00	new-136-4
-136	1355	South	3424.25	repeat-136-5
-136	1356	East	3428.50	vip-136-6
-136	1357	West	3432.75	standard-136-7
-136	1358	North	3437.00	new-136-8
-136	1359	South	3441.25	repeat-136-9
-136	1360	East	3445.50	vip-136-10
-137	1361	East	3433.25	vip-137-1
-137	1362	West	3437.50	standard-137-2
-137	1363	North	3441.75	new-137-3
-137	1364	South	3446.00	repeat-137-4
-137	1365	East	3450.25	vip-137-5
-137	1366	West	3454.50	standard-137-6
-137	1367	North	3458.75	new-137-7
-137	1368	South	3463.00	repeat-137-8
-137	1369	East	3467.25	vip-137-9
-137	1370	West	3471.50	standard-137-10
-138	1371	West	3459.25	standard-138-1
-138	1372	North	3463.50	new-138-2
-138	1373	South	3467.75	repeat-138-3
-138	1374	East	3472.00	vip-138-4
-138	1375	West	3476.25	standard-138-5
-138	1376	North	3480.50	new-138-6
-138	1377	South	3484.75	repeat-138-7
-138	1378	East	3489.00	vip-138-8
-138	1379	West	3493.25	standard-138-9
-138	1380	North	3497.50	new-138-10
-139	1381	North	3485.25	new-139-1
-139	1382	South	3489.50	repeat-139-2
-139	1383	East	3493.75	vip-139-3
-139	1384	West	3498.00	standard-139-4
-139	1385	North	3502.25	new-139-5
-139	1386	South	3506.50	repeat-139-6
-139	1387	East	3510.75	vip-139-7
-139	1388	West	3515.00	standard-139-8
-139	1389	North	3519.25	new-139-9
-139	1390	South	3523.50	repeat-139-10
-140	1391	South	3504.25	repeat-140-1
-140	1392	East	3508.50	vip-140-2
-140	1393	West	3512.75	standard-140-3
-140	1394	North	3517.00	new-140-4
-140	1395	South	3521.25	repeat-140-5
-140	1396	East	3525.50	vip-140-6
-140	1397	West	3529.75	standard-140-7
-140	1398	North	3534.00	new-140-8
-140	1399	South	3538.25	repeat-140-9
-140	1400	East	3542.50	vip-140-10
-141	1401	East	3530.25	vip-141-1
-141	1402	West	3534.50	standard-141-2
-141	1403	North	3538.75	new-141-3
-141	1404	South	3543.00	repeat-141-4
-141	1405	East	3547.25	vip-141-5
-141	1406	West	3551.50	standard-141-6
-141	1407	North	3555.75	new-141-7
-141	1408	South	3560.00	repeat-141-8
-141	1409	East	3564.25	vip-141-9
-141	1410	West	3568.50	standard-141-10
-142	1411	West	3556.25	standard-142-1
-142	1412	North	3560.50	new-142-2
-142	1413	South	3564.75	repeat-142-3
-142	1414	East	3569.00	vip-142-4
-142	1415	West	3573.25	standard-142-5
-142	1416	North	3577.50	new-142-6
-142	1417	South	3581.75	repeat-142-7
-142	1418	East	3586.00	vip-142-8
-142	1419	West	3590.25	standard-142-9
-142	1420	North	3594.50	new-142-10
-143	1421	North	3582.25	new-143-1
-143	1422	South	3586.50	repeat-143-2
-143	1423	East	3590.75	vip-143-3
-143	1424	West	3595.00	standard-143-4
-143	1425	North	3599.25	new-143-5
-143	1426	South	3603.50	repeat-143-6
-143	1427	East	3607.75	vip-143-7
-143	1428	West	3612.00	standard-143-8
-143	1429	North	3616.25	new-143-9
-143	1430	South	3620.50	repeat-143-10
-144	1431	South	3608.25	repeat-144-1
-144	1432	East	3612.50	vip-144-2
-144	1433	West	3616.75	standard-144-3
-144	1434	North	3621.00	new-144-4
-144	1435	South	3625.25	repeat-144-5
-144	1436	East	3629.50	vip-144-6
-144	1437	West	3633.75	standard-144-7
-144	1438	North	3638.00	new-144-8
-144	1439	South	3642.25	repeat-144-9
-144	1440	East	3646.50	vip-144-10
-145	1441	East	3634.25	vip-145-1
-145	1442	West	3638.50	standard-145-2
-145	1443	North	3642.75	new-145-3
-145	1444	South	3647.00	repeat-145-4
-145	1445	East	3651.25	vip-145-5
-145	1446	West	3655.50	standard-145-6
-145	1447	North	3659.75	new-145-7
-145	1448	South	3664.00	repeat-145-8
-145	1449	East	3668.25	vip-145-9
-145	1450	West	3672.50	standard-145-10
-146	1451	West	3660.25	standard-146-1
-146	1452	North	3664.50	new-146-2
-146	1453	South	3668.75	repeat-146-3
-146	1454	East	3673.00	vip-146-4
-146	1455	West	3677.25	standard-146-5
-146	1456	North	3681.50	new-146-6
-146	1457	South	3685.75	repeat-146-7
-146	1458	East	3690.00	vip-146-8
-146	1459	West	3694.25	standard-146-9
-146	1460	North	3698.50	new-146-10
-147	1461	North	3679.25	new-147-1
-147	1462	South	3683.50	repeat-147-2
-147	1463	East	3687.75	vip-147-3
-147	1464	West	3692.00	standard-147-4
-147	1465	North	3696.25	new-147-5
-147	1466	South	3700.50	repeat-147-6
-147	1467	East	3704.75	vip-147-7
-147	1468	West	3709.00	standard-147-8
-147	1469	North	3713.25	new-147-9
-147	1470	South	3717.50	repeat-147-10
-148	1471	South	3705.25	repeat-148-1
-148	1472	East	3709.50	vip-148-2
-148	1473	West	3713.75	standard-148-3
-148	1474	North	3718.00	new-148-4
-148	1475	South	3722.25	repeat-148-5
-148	1476	East	3726.50	vip-148-6
-148	1477	West	3730.75	standard-148-7
-148	1478	North	3735.00	new-148-8
-148	1479	South	3739.25	repeat-148-9
-148	1480	East	3743.50	vip-148-10
-149	1481	East	3731.25	vip-149-1
-149	1482	West	3735.50	standard-149-2
-149	1483	North	3739.75	new-149-3
-149	1484	South	3744.00	repeat-149-4
-149	1485	East	3748.25	vip-149-5
-149	1486	West	3752.50	standard-149-6
-149	1487	North	3756.75	new-149-7
-149	1488	South	3761.00	repeat-149-8
-149	1489	East	3765.25	vip-149-9
-149	1490	West	3769.50	standard-149-10
-150	1491	West	3757.25	standard-150-1
-150	1492	North	3761.50	new-150-2
-150	1493	South	3765.75	repeat-150-3
-150	1494	East	3770.00	vip-150-4
-150	1495	West	3774.25	standard-150-5
-150	1496	North	3778.50	new-150-6
-150	1497	South	3782.75	repeat-150-7
-150	1498	East	3787.00	vip-150-8
-150	1499	West	3791.25	standard-150-9
-150	1500	North	3795.50	new-150-10
-151	1501	North	3783.25	new-151-1
-151	1502	South	3787.50	repeat-151-2
-151	1503	East	3791.75	vip-151-3
-151	1504	West	3796.00	standard-151-4
-151	1505	North	3800.25	new-151-5
-151	1506	South	3804.50	repeat-151-6
-151	1507	East	3808.75	vip-151-7
-151	1508	West	3813.00	standard-151-8
-151	1509	North	3817.25	new-151-9
-151	1510	South	3821.50	repeat-151-10
-152	1511	South	3809.25	repeat-152-1
-152	1512	East	3813.50	vip-152-2
-152	1513	West	3817.75	standard-152-3
-152	1514	North	3822.00	new-152-4
-152	1515	South	3826.25	repeat-152-5
-152	1516	East	3830.50	vip-152-6
-152	1517	West	3834.75	standard-152-7
-152	1518	North	3839.00	new-152-8
-152	1519	South	3843.25	repeat-152-9
-152	1520	East	3847.50	vip-152-10
-153	1521	East	3835.25	vip-153-1
-153	1522	West	3839.50	standard-153-2
-153	1523	North	3843.75	new-153-3
-153	1524	South	3848.00	repeat-153-4
-153	1525	East	3852.25	vip-153-5
-153	1526	West	3856.50	standard-153-6
-153	1527	North	3860.75	new-153-7
-153	1528	South	3865.00	repeat-153-8
-153	1529	East	3869.25	vip-153-9
-153	1530	West	3873.50	standard-153-10
-154	1531	West	3854.25	standard-154-1
-154	1532	North	3858.50	new-154-2
-154	1533	South	3862.75	repeat-154-3
-154	1534	East	3867.00	vip-154-4
-154	1535	West	3871.25	standard-154-5
-154	1536	North	3875.50	new-154-6
-154	1537	South	3879.75	repeat-154-7
-154	1538	East	3884.00	vip-154-8
-154	1539	West	3888.25	standard-154-9
-154	1540	North	3892.50	new-154-10
-155	1541	North	3880.25	new-155-1
-155	1542	South	3884.50	repeat-155-2
-155	1543	East	3888.75	vip-155-3
-155	1544	West	3893.00	standard-155-4
-155	1545	North	3897.25	new-155-5
-155	1546	South	3901.50	repeat-155-6
-155	1547	East	3905.75	vip-155-7
-155	1548	West	3910.00	standard-155-8
-155	1549	North	3914.25	new-155-9
-155	1550	South	3918.50	repeat-155-10
-156	1551	South	3906.25	repeat-156-1
-156	1552	East	3910.50	vip-156-2
-156	1553	West	3914.75	standard-156-3
-156	1554	North	3919.00	new-156-4
-156	1555	South	3923.25	repeat-156-5
-156	1556	East	3927.50	vip-156-6
-156	1557	West	3931.75	standard-156-7
-156	1558	North	3936.00	new-156-8
-156	1559	South	3940.25	repeat-156-9
-156	1560	East	3944.50	vip-156-10
-157	1561	East	3932.25	vip-157-1
-157	1562	West	3936.50	standard-157-2
-157	1563	North	3940.75	new-157-3
-157	1564	South	3945.00	repeat-157-4
-157	1565	East	3949.25	vip-157-5
-157	1566	West	3953.50	standard-157-6
-157	1567	North	3957.75	new-157-7
-157	1568	South	3962.00	repeat-157-8
-157	1569	East	3966.25	vip-157-9
-157	1570	West	3970.50	standard-157-10
-158	1571	West	3958.25	standard-158-1
-158	1572	North	3962.50	new-158-2
-158	1573	South	3966.75	repeat-158-3
-158	1574	East	3971.00	vip-158-4
-158	1575	West	3975.25	standard-158-5
-158	1576	North	3979.50	new-158-6
-158	1577	South	3983.75	repeat-158-7
-158	1578	East	3988.00	vip-158-8
-158	1579	West	3992.25	standard-158-9
-158	1580	North	3996.50	new-158-10
-159	1581	North	3984.25	new-159-1
-159	1582	South	3988.50	repeat-159-2
-159	1583	East	3992.75	vip-159-3
-159	1584	West	3997.00	standard-159-4
-159	1585	North	4001.25	new-159-5
-159	1586	South	4005.50	repeat-159-6
-159	1587	East	4009.75	vip-159-7
-159	1588	West	4014.00	standard-159-8
-159	1589	North	4018.25	new-159-9
-159	1590	South	4022.50	repeat-159-10
-160	1591	South	4010.25	repeat-160-1
-160	1592	East	4014.50	vip-160-2
-160	1593	West	4018.75	standard-160-3
-160	1594	North	4023.00	new-160-4
-160	1595	South	4027.25	repeat-160-5
-160	1596	East	4031.50	vip-160-6
-160	1597	West	4035.75	standard-160-7
-160	1598	North	4040.00	new-160-8
-160	1599	South	4044.25	repeat-160-9
-160	1600	East	4048.50	vip-160-10
-161	1601	East	4029.25	vip-161-1
-161	1602	West	4033.50	standard-161-2
-161	1603	North	4037.75	new-161-3
-161	1604	South	4042.00	repeat-161-4
-161	1605	East	4046.25	vip-161-5
-161	1606	West	4050.50	standard-161-6
-161	1607	North	4054.75	new-161-7
-161	1608	South	4059.00	repeat-161-8
-161	1609	East	4063.25	vip-161-9
-161	1610	West	4067.50	standard-161-10
-162	1611	West	4055.25	standard-162-1
-162	1612	North	4059.50	new-162-2
-162	1613	South	4063.75	repeat-162-3
-162	1614	East	4068.00	vip-162-4
-162	1615	West	4072.25	standard-162-5
-162	1616	North	4076.50	new-162-6
-162	1617	South	4080.75	repeat-162-7
-162	1618	East	4085.00	vip-162-8
-162	1619	West	4089.25	standard-162-9
-162	1620	North	4093.50	new-162-10
-163	1621	North	4081.25	new-163-1
-163	1622	South	4085.50	repeat-163-2
-163	1623	East	4089.75	vip-163-3
-163	1624	West	4094.00	standard-163-4
-163	1625	North	4098.25	new-163-5
-163	1626	South	4102.50	repeat-163-6
-163	1627	East	4106.75	vip-163-7
-163	1628	West	4111.00	standard-163-8
-163	1629	North	4115.25	new-163-9
-163	1630	South	4119.50	repeat-163-10
-164	1631	South	4107.25	repeat-164-1
-164	1632	East	4111.50	vip-164-2
-164	1633	West	4115.75	standard-164-3
-164	1634	North	4120.00	new-164-4
-164	1635	South	4124.25	repeat-164-5
-164	1636	East	4128.50	vip-164-6
-164	1637	West	4132.75	standard-164-7
-164	1638	North	4137.00	new-164-8
-164	1639	South	4141.25	repeat-164-9
-164	1640	East	4145.50	vip-164-10
-165	1641	East	4133.25	vip-165-1
-165	1642	West	4137.50	standard-165-2
-165	1643	North	4141.75	new-165-3
-165	1644	South	4146.00	repeat-165-4
-165	1645	East	4150.25	vip-165-5
-165	1646	West	4154.50	standard-165-6
-165	1647	North	4158.75	new-165-7
-165	1648	South	4163.00	repeat-165-8
-165	1649	East	4167.25	vip-165-9
-165	1650	West	4171.50	standard-165-10
-166	1651	West	4159.25	standard-166-1
-166	1652	North	4163.50	new-166-2
-166	1653	South	4167.75	repeat-166-3
-166	1654	East	4172.00	vip-166-4
-166	1655	West	4176.25	standard-166-5
-166	1656	North	4180.50	new-166-6
-166	1657	South	4184.75	repeat-166-7
-166	1658	East	4189.00	vip-166-8
-166	1659	West	4193.25	standard-166-9
-166	1660	North	4197.50	new-166-10
-167	1661	North	4185.25	new-167-1
-167	1662	South	4189.50	repeat-167-2
-167	1663	East	4193.75	vip-167-3
-167	1664	West	4198.00	standard-167-4
-167	1665	North	4202.25	new-167-5
-167	1666	South	4206.50	repeat-167-6
-167	1667	East	4210.75	vip-167-7
-167	1668	West	4215.00	standard-167-8
-167	1669	North	4219.25	new-167-9
-167	1670	South	4223.50	repeat-167-10
-168	1671	South	4204.25	repeat-168-1
-168	1672	East	4208.50	vip-168-2
-168	1673	West	4212.75	standard-168-3
-168	1674	North	4217.00	new-168-4
-168	1675	South	4221.25	repeat-168-5
-168	1676	East	4225.50	vip-168-6
-168	1677	West	4229.75	standard-168-7
-168	1678	North	4234.00	new-168-8
-168	1679	South	4238.25	repeat-168-9
-168	1680	East	4242.50	vip-168-10
-169	1681	East	4230.25	vip-169-1
-169	1682	West	4234.50	standard-169-2
-169	1683	North	4238.75	new-169-3
-169	1684	South	4243.00	repeat-169-4
-169	1685	East	4247.25	vip-169-5
-169	1686	West	4251.50	standard-169-6
-169	1687	North	4255.75	new-169-7
-169	1688	South	4260.00	repeat-169-8
-169	1689	East	4264.25	vip-169-9
-169	1690	West	4268.50	standard-169-10
-170	1691	West	4256.25	standard-170-1
-170	1692	North	4260.50	new-170-2
-170	1693	South	4264.75	repeat-170-3
-170	1694	East	4269.00	vip-170-4
-170	1695	West	4273.25	standard-170-5
-170	1696	North	4277.50	new-170-6
-170	1697	South	4281.75	repeat-170-7
-170	1698	East	4286.00	vip-170-8
-170	1699	West	4290.25	standard-170-9
-170	1700	North	4294.50	new-170-10
-171	1701	North	4282.25	new-171-1
-171	1702	South	4286.50	repeat-171-2
-171	1703	East	4290.75	vip-171-3
-171	1704	West	4295.00	standard-171-4
-171	1705	North	4299.25	new-171-5
-171	1706	South	4303.50	repeat-171-6
-171	1707	East	4307.75	vip-171-7
-171	1708	West	4312.00	standard-171-8
-171	1709	North	4316.25	new-171-9
-171	1710	South	4320.50	repeat-171-10
-172	1711	South	4308.25	repeat-172-1
-172	1712	East	4312.50	vip-172-2
-172	1713	West	4316.75	standard-172-3
-172	1714	North	4321.00	new-172-4
-172	1715	South	4325.25	repeat-172-5
-172	1716	East	4329.50	vip-172-6
-172	1717	West	4333.75	standard-172-7
-172	1718	North	4338.00	new-172-8
-172	1719	South	4342.25	repeat-172-9
-172	1720	East	4346.50	vip-172-10
-173	1721	East	4334.25	vip-173-1
-173	1722	West	4338.50	standard-173-2
-173	1723	North	4342.75	new-173-3
-173	1724	South	4347.00	repeat-173-4
-173	1725	East	4351.25	vip-173-5
-173	1726	West	4355.50	standard-173-6
-173	1727	North	4359.75	new-173-7
-173	1728	South	4364.00	repeat-173-8
-173	1729	East	4368.25	vip-173-9
-173	1730	West	4372.50	standard-173-10
-174	1731	West	4360.25	standard-174-1
-174	1732	North	4364.50	new-174-2
-174	1733	South	4368.75	repeat-174-3
-174	1734	East	4373.00	vip-174-4
-174	1735	West	4377.25	standard-174-5
-174	1736	North	4381.50	new-174-6
-174	1737	South	4385.75	repeat-174-7
-174	1738	East	4390.00	vip-174-8
-174	1739	West	4394.25	standard-174-9
-174	1740	North	4398.50	new-174-10
-175	1741	North	4379.25	new-175-1
-175	1742	South	4383.50	repeat-175-2
-175	1743	East	4387.75	vip-175-3
-175	1744	West	4392.00	standard-175-4
-175	1745	North	4396.25	new-175-5
-175	1746	South	4400.50	repeat-175-6
-175	1747	East	4404.75	vip-175-7
-175	1748	West	4409.00	standard-175-8
-175	1749	North	4413.25	new-175-9
-175	1750	South	4417.50	repeat-175-10
-176	1751	South	4405.25	repeat-176-1
-176	1752	East	4409.50	vip-176-2
-176	1753	West	4413.75	standard-176-3
-176	1754	North	4418.00	new-176-4
-176	1755	South	4422.25	repeat-176-5
-176	1756	East	4426.50	vip-176-6
-176	1757	West	4430.75	standard-176-7
-176	1758	North	4435.00	new-176-8
-176	1759	South	4439.25	repeat-176-9
-176	1760	East	4443.50	vip-176-10
-177	1761	East	4431.25	vip-177-1
-177	1762	West	4435.50	standard-177-2
-177	1763	North	4439.75	new-177-3
-177	1764	South	4444.00	repeat-177-4
-177	1765	East	4448.25	vip-177-5
-177	1766	West	4452.50	standard-177-6
-177	1767	North	4456.75	new-177-7
-177	1768	South	4461.00	repeat-177-8
-177	1769	East	4465.25	vip-177-9
-177	1770	West	4469.50	standard-177-10
-178	1771	West	4457.25	standard-178-1
-178	1772	North	4461.50	new-178-2
-178	1773	South	4465.75	repeat-178-3
-178	1774	East	4470.00	vip-178-4
-178	1775	West	4474.25	standard-178-5
-178	1776	North	4478.50	new-178-6
-178	1777	South	4482.75	repeat-178-7
-178	1778	East	4487.00	vip-178-8
-178	1779	West	4491.25	standard-178-9
-178	1780	North	4495.50	new-178-10
-179	1781	North	4483.25	new-179-1
-179	1782	South	4487.50	repeat-179-2
-179	1783	East	4491.75	vip-179-3
-179	1784	West	4496.00	standard-179-4
-179	1785	North	4500.25	new-179-5
-179	1786	South	4504.50	repeat-179-6
-179	1787	East	4508.75	vip-179-7
-179	1788	West	4513.00	standard-179-8
-179	1789	North	4517.25	new-179-9
-179	1790	South	4521.50	repeat-179-10
-180	1791	South	4509.25	repeat-180-1
-180	1792	East	4513.50	vip-180-2
-180	1793	West	4517.75	standard-180-3
-180	1794	North	4522.00	new-180-4
-180	1795	South	4526.25	repeat-180-5
-180	1796	East	4530.50	vip-180-6
-180	1797	West	4534.75	standard-180-7
-180	1798	North	4539.00	new-180-8
-180	1799	South	4543.25	repeat-180-9
-180	1800	East	4547.50	vip-180-10
-181	1801	East	4535.25	vip-181-1
-181	1802	West	4539.50	standard-181-2
-181	1803	North	4543.75	new-181-3
-181	1804	South	4548.00	repeat-181-4
-181	1805	East	4552.25	vip-181-5
-181	1806	West	4556.50	standard-181-6
-181	1807	North	4560.75	new-181-7
-181	1808	South	4565.00	repeat-181-8
-181	1809	East	4569.25	vip-181-9
-181	1810	West	4573.50	standard-181-10
-182	1811	West	4554.25	standard-182-1
-182	1812	North	4558.50	new-182-2
-182	1813	South	4562.75	repeat-182-3
-182	1814	East	4567.00	vip-182-4
-182	1815	West	4571.25	standard-182-5
-182	1816	North	4575.50	new-182-6
-182	1817	South	4579.75	repeat-182-7
-182	1818	East	4584.00	vip-182-8
-182	1819	West	4588.25	standard-182-9
-182	1820	North	4592.50	new-182-10
-183	1821	North	4580.25	new-183-1
-183	1822	South	4584.50	repeat-183-2
-183	1823	East	4588.75	vip-183-3
-183	1824	West	4593.00	standard-183-4
-183	1825	North	4597.25	new-183-5
-183	1826	South	4601.50	repeat-183-6
-183	1827	East	4605.75	vip-183-7
-183	1828	West	4610.00	standard-183-8
-183	1829	North	4614.25	new-183-9
-183	1830	South	4618.50	repeat-183-10
-184	1831	South	4606.25	repeat-184-1
-184	1832	East	4610.50	vip-184-2
-184	1833	West	4614.75	standard-184-3
-184	1834	North	4619.00	new-184-4
-184	1835	South	4623.25	repeat-184-5
-184	1836	East	4627.50	vip-184-6
-184	1837	West	4631.75	standard-184-7
-184	1838	North	4636.00	new-184-8
-184	1839	South	4640.25	repeat-184-9
-184	1840	East	4644.50	vip-184-10
-185	1841	East	4632.25	vip-185-1
-185	1842	West	4636.50	standard-185-2
-185	1843	North	4640.75	new-185-3
-185	1844	South	4645.00	repeat-185-4
-185	1845	East	4649.25	vip-185-5
-185	1846	West	4653.50	standard-185-6
-185	1847	North	4657.75	new-185-7
-185	1848	South	4662.00	repeat-185-8
-185	1849	East	4666.25	vip-185-9
-185	1850	West	4670.50	standard-185-10
-186	1851	West	4658.25	standard-186-1
-186	1852	North	4662.50	new-186-2
-186	1853	South	4666.75	repeat-186-3
-186	1854	East	4671.00	vip-186-4
-186	1855	West	4675.25	standard-186-5
-186	1856	North	4679.50	new-186-6
-186	1857	South	4683.75	repeat-186-7
-186	1858	East	4688.00	vip-186-8
-186	1859	West	4692.25	standard-186-9
-186	1860	North	4696.50	new-186-10
-187	1861	North	4684.25	new-187-1
-187	1862	South	4688.50	repeat-187-2
-187	1863	East	4692.75	vip-187-3
-187	1864	West	4697.00	standard-187-4
-187	1865	North	4701.25	new-187-5
-187	1866	South	4705.50	repeat-187-6
-187	1867	East	4709.75	vip-187-7
-187	1868	West	4714.00	standard-187-8
-187	1869	North	4718.25	new-187-9
-187	1870	South	4722.50	repeat-187-10
-188	1871	South	4710.25	repeat-188-1
-188	1872	East	4714.50	vip-188-2
-188	1873	West	4718.75	standard-188-3
-188	1874	North	4723.00	new-188-4
-188	1875	South	4727.25	repeat-188-5
-188	1876	East	4731.50	vip-188-6
-188	1877	West	4735.75	standard-188-7
-188	1878	North	4740.00	new-188-8
-188	1879	South	4744.25	repeat-188-9
-188	1880	East	4748.50	vip-188-10
-189	1881	East	4729.25	vip-189-1
-189	1882	West	4733.50	standard-189-2
-189	1883	North	4737.75	new-189-3
-189	1884	South	4742.00	repeat-189-4
-189	1885	East	4746.25	vip-189-5
-189	1886	West	4750.50	standard-189-6
-189	1887	North	4754.75	new-189-7
-189	1888	South	4759.00	repeat-189-8
-189	1889	East	4763.25	vip-189-9
-189	1890	West	4767.50	standard-189-10
-190	1891	West	4755.25	standard-190-1
-190	1892	North	4759.50	new-190-2
-190	1893	South	4763.75	repeat-190-3
-190	1894	East	4768.00	vip-190-4
-190	1895	West	4772.25	standard-190-5
-190	1896	North	4776.50	new-190-6
-190	1897	South	4780.75	repeat-190-7
-190	1898	East	4785.00	vip-190-8
-190	1899	West	4789.25	standard-190-9
-190	1900	North	4793.50	new-190-10
-191	1901	North	4781.25	new-191-1
-191	1902	South	4785.50	repeat-191-2
-191	1903	East	4789.75	vip-191-3
-191	1904	West	4794.00	standard-191-4
-191	1905	North	4798.25	new-191-5
-191	1906	South	4802.50	repeat-191-6
-191	1907	East	4806.75	vip-191-7
-191	1908	West	4811.00	standard-191-8
-191	1909	North	4815.25	new-191-9
-191	1910	South	4819.50	repeat-191-10
-192	1911	South	4807.25	repeat-192-1
-192	1912	East	4811.50	vip-192-2
-192	1913	West	4815.75	standard-192-3
-192	1914	North	4820.00	new-192-4
-192	1915	South	4824.25	repeat-192-5
-192	1916	East	4828.50	vip-192-6
-192	1917	West	4832.75	standard-192-7
-192	1918	North	4837.00	new-192-8
-192	1919	South	4841.25	repeat-192-9
-192	1920	East	4845.50	vip-192-10
-193	1921	East	4833.25	vip-193-1
-193	1922	West	4837.50	standard-193-2
-193	1923	North	4841.75	new-193-3
-193	1924	South	4846.00	repeat-193-4
-193	1925	East	4850.25	vip-193-5
-193	1926	West	4854.50	standard-193-6
-193	1927	North	4858.75	new-193-7
-193	1928	South	4863.00	repeat-193-8
-193	1929	East	4867.25	vip-193-9
-193	1930	West	4871.50	standard-193-10
-194	1931	West	4859.25	standard-194-1
-194	1932	North	4863.50	new-194-2
-194	1933	South	4867.75	repeat-194-3
-194	1934	East	4872.00	vip-194-4
-194	1935	West	4876.25	standard-194-5
-194	1936	North	4880.50	new-194-6
-194	1937	South	4884.75	repeat-194-7
-194	1938	East	4889.00	vip-194-8
-194	1939	West	4893.25	standard-194-9
-194	1940	North	4897.50	new-194-10
-195	1941	North	4885.25	new-195-1
-195	1942	South	4889.50	repeat-195-2
-195	1943	East	4893.75	vip-195-3
-195	1944	West	4898.00	standard-195-4
-195	1945	North	4902.25	new-195-5
-195	1946	South	4906.50	repeat-195-6
-195	1947	East	4910.75	vip-195-7
-195	1948	West	4915.00	standard-195-8
-195	1949	North	4919.25	new-195-9
-195	1950	South	4923.50	repeat-195-10
-196	1951	South	4904.25	repeat-196-1
-196	1952	East	4908.50	vip-196-2
-196	1953	West	4912.75	standard-196-3
-196	1954	North	4917.00	new-196-4
-196	1955	South	4921.25	repeat-196-5
-196	1956	East	4925.50	vip-196-6
-196	1957	West	4929.75	standard-196-7
-196	1958	North	4934.00	new-196-8
-196	1959	South	4938.25	repeat-196-9
-196	1960	East	4942.50	vip-196-10
-197	1961	East	4930.25	vip-197-1
-197	1962	West	4934.50	standard-197-2
-197	1963	North	4938.75	new-197-3
-197	1964	South	4943.00	repeat-197-4
-197	1965	East	4947.25	vip-197-5
-197	1966	West	4951.50	standard-197-6
-197	1967	North	4955.75	new-197-7
-197	1968	South	4960.00	repeat-197-8
-197	1969	East	4964.25	vip-197-9
-197	1970	West	4968.50	standard-197-10
-198	1971	West	4956.25	standard-198-1
-198	1972	North	4960.50	new-198-2
-198	1973	South	4964.75	repeat-198-3
-198	1974	East	4969.00	vip-198-4
-198	1975	West	4973.25	standard-198-5
-198	1976	North	4977.50	new-198-6
-198	1977	South	4981.75	repeat-198-7
-198	1978	East	4986.00	vip-198-8
-198	1979	West	4990.25	standard-198-9
-198	1980	North	4994.50	new-198-10
-199	1981	North	4982.25	new-199-1
-199	1982	South	4986.50	repeat-199-2
-199	1983	East	4990.75	vip-199-3
-199	1984	West	4995.00	standard-199-4
-199	1985	North	4999.25	new-199-5
-199	1986	South	5003.50	repeat-199-6
-199	1987	East	5007.75	vip-199-7
-199	1988	West	5012.00	standard-199-8
-199	1989	North	5016.25	new-199-9
-199	1990	South	5020.50	repeat-199-10
-200	1991	South	5008.25	repeat-200-1
-200	1992	East	5012.50	vip-200-2
-200	1993	West	5016.75	standard-200-3
-200	1994	North	5021.00	new-200-4
-200	1995	South	5025.25	repeat-200-5
-200	1996	East	5029.50	vip-200-6
-200	1997	West	5033.75	standard-200-7
-200	1998	North	5038.00	new-200-8
-200	1999	South	5042.25	repeat-200-9
-200	2000	East	5046.50	vip-200-10
-201	2001	East	5034.25	vip-201-1
-201	2002	West	5038.50	standard-201-2
-201	2003	North	5042.75	new-201-3
-201	2004	South	5047.00	repeat-201-4
-201	2005	East	5051.25	vip-201-5
-201	2006	West	5055.50	standard-201-6
-201	2007	North	5059.75	new-201-7
-201	2008	South	5064.00	repeat-201-8
-201	2009	East	5068.25	vip-201-9
-201	2010	West	5072.50	standard-201-10
-202	2011	West	5060.25	standard-202-1
-202	2012	North	5064.50	new-202-2
-202	2013	South	5068.75	repeat-202-3
-202	2014	East	5073.00	vip-202-4
-202	2015	West	5077.25	standard-202-5
-202	2016	North	5081.50	new-202-6
-202	2017	South	5085.75	repeat-202-7
-202	2018	East	5090.00	vip-202-8
-202	2019	West	5094.25	standard-202-9
-202	2020	North	5098.50	new-202-10
-203	2021	North	5079.25	new-203-1
-203	2022	South	5083.50	repeat-203-2
-203	2023	East	5087.75	vip-203-3
-203	2024	West	5092.00	standard-203-4
-203	2025	North	5096.25	new-203-5
-203	2026	South	5100.50	repeat-203-6
-203	2027	East	5104.75	vip-203-7
-203	2028	West	5109.00	standard-203-8
-203	2029	North	5113.25	new-203-9
-203	2030	South	5117.50	repeat-203-10
-204	2031	South	5105.25	repeat-204-1
-204	2032	East	5109.50	vip-204-2
-204	2033	West	5113.75	standard-204-3
-204	2034	North	5118.00	new-204-4
-204	2035	South	5122.25	repeat-204-5
-204	2036	East	5126.50	vip-204-6
-204	2037	West	5130.75	standard-204-7
-204	2038	North	5135.00	new-204-8
-204	2039	South	5139.25	repeat-204-9
-204	2040	East	5143.50	vip-204-10
-205	2041	East	5131.25	vip-205-1
-205	2042	West	5135.50	standard-205-2
-205	2043	North	5139.75	new-205-3
-205	2044	South	5144.00	repeat-205-4
-205	2045	East	5148.25	vip-205-5
-205	2046	West	5152.50	standard-205-6
-205	2047	North	5156.75	new-205-7
-205	2048	South	5161.00	repeat-205-8
-205	2049	East	5165.25	vip-205-9
-205	2050	West	5169.50	standard-205-10
-206	2051	West	5157.25	standard-206-1
-206	2052	North	5161.50	new-206-2
-206	2053	South	5165.75	repeat-206-3
-206	2054	East	5170.00	vip-206-4
-206	2055	West	5174.25	standard-206-5
-206	2056	North	5178.50	new-206-6
-206	2057	South	5182.75	repeat-206-7
-206	2058	East	5187.00	vip-206-8
-206	2059	West	5191.25	standard-206-9
-206	2060	North	5195.50	new-206-10
-207	2061	North	5183.25	new-207-1
-207	2062	South	5187.50	repeat-207-2
-207	2063	East	5191.75	vip-207-3
-207	2064	West	5196.00	standard-207-4
-207	2065	North	5200.25	new-207-5
-207	2066	South	5204.50	repeat-207-6
-207	2067	East	5208.75	vip-207-7
-207	2068	West	5213.00	standard-207-8
-207	2069	North	5217.25	new-207-9
-207	2070	South	5221.50	repeat-207-10
-208	2071	South	5209.25	repeat-208-1
-208	2072	East	5213.50	vip-208-2
-208	2073	West	5217.75	standard-208-3
-208	2074	North	5222.00	new-208-4
-208	2075	South	5226.25	repeat-208-5
-208	2076	East	5230.50	vip-208-6
-208	2077	West	5234.75	standard-208-7
-208	2078	North	5239.00	new-208-8
-208	2079	South	5243.25	repeat-208-9
-208	2080	East	5247.50	vip-208-10
-209	2081	East	5235.25	vip-209-1
-209	2082	West	5239.50	standard-209-2
-209	2083	North	5243.75	new-209-3
-209	2084	South	5248.00	repeat-209-4
-209	2085	East	5252.25	vip-209-5
-209	2086	West	5256.50	standard-209-6
-209	2087	North	5260.75	new-209-7
-209	2088	South	5265.00	repeat-209-8
-209	2089	East	5269.25	vip-209-9
-209	2090	West	5273.50	standard-209-10
-210	2091	West	5254.25	standard-210-1
-210	2092	North	5258.50	new-210-2
-210	2093	South	5262.75	repeat-210-3
-210	2094	East	5267.00	vip-210-4
-210	2095	West	5271.25	standard-210-5
-210	2096	North	5275.50	new-210-6
-210	2097	South	5279.75	repeat-210-7
-210	2098	East	5284.00	vip-210-8
-210	2099	West	5288.25	standard-210-9
-210	2100	North	5292.50	new-210-10
-211	2101	North	5280.25	new-211-1
-211	2102	South	5284.50	repeat-211-2
-211	2103	East	5288.75	vip-211-3
-211	2104	West	5293.00	standard-211-4
-211	2105	North	5297.25	new-211-5
-211	2106	South	5301.50	repeat-211-6
-211	2107	East	5305.75	vip-211-7
-211	2108	West	5310.00	standard-211-8
-211	2109	North	5314.25	new-211-9
-211	2110	South	5318.50	repeat-211-10
-212	2111	South	5306.25	repeat-212-1
-212	2112	East	5310.50	vip-212-2
-212	2113	West	5314.75	standard-212-3
-212	2114	North	5319.00	new-212-4
-212	2115	South	5323.25	repeat-212-5
-212	2116	East	5327.50	vip-212-6
-212	2117	West	5331.75	standard-212-7
-212	2118	North	5336.00	new-212-8
-212	2119	South	5340.25	repeat-212-9
-212	2120	East	5344.50	vip-212-10
-213	2121	East	5332.25	vip-213-1
-213	2122	West	5336.50	standard-213-2
-213	2123	North	5340.75	new-213-3
-213	2124	South	5345.00	repeat-213-4
-213	2125	East	5349.25	vip-213-5
-213	2126	West	5353.50	standard-213-6
-213	2127	North	5357.75	new-213-7
-213	2128	South	5362.00	repeat-213-8
-213	2129	East	5366.25	vip-213-9
-213	2130	West	5370.50	standard-213-10
-214	2131	West	5358.25	standard-214-1
-214	2132	North	5362.50	new-214-2
-214	2133	South	5366.75	repeat-214-3
-214	2134	East	5371.00	vip-214-4
-214	2135	West	5375.25	standard-214-5
-214	2136	North	5379.50	new-214-6
-214	2137	South	5383.75	repeat-214-7
-214	2138	East	5388.00	vip-214-8
-214	2139	West	5392.25	standard-214-9
-214	2140	North	5396.50	new-214-10
-215	2141	North	5384.25	new-215-1
-215	2142	South	5388.50	repeat-215-2
-215	2143	East	5392.75	vip-215-3
-215	2144	West	5397.00	standard-215-4
-215	2145	North	5401.25	new-215-5
-215	2146	South	5405.50	repeat-215-6
-215	2147	East	5409.75	vip-215-7
-215	2148	West	5414.00	standard-215-8
-215	2149	North	5418.25	new-215-9
-215	2150	South	5422.50	repeat-215-10
-216	2151	South	5410.25	repeat-216-1
-216	2152	East	5414.50	vip-216-2
-216	2153	West	5418.75	standard-216-3
-216	2154	North	5423.00	new-216-4
-216	2155	South	5427.25	repeat-216-5
-216	2156	East	5431.50	vip-216-6
-216	2157	West	5435.75	standard-216-7
-216	2158	North	5440.00	new-216-8
-216	2159	South	5444.25	repeat-216-9
-216	2160	East	5448.50	vip-216-10
-217	2161	East	5429.25	vip-217-1
-217	2162	West	5433.50	standard-217-2
-217	2163	North	5437.75	new-217-3
-217	2164	South	5442.00	repeat-217-4
-217	2165	East	5446.25	vip-217-5
-217	2166	West	5450.50	standard-217-6
-217	2167	North	5454.75	new-217-7
-217	2168	South	5459.00	repeat-217-8
-217	2169	East	5463.25	vip-217-9
-217	2170	West	5467.50	standard-217-10
-218	2171	West	5455.25	standard-218-1
-218	2172	North	5459.50	new-218-2
-218	2173	South	5463.75	repeat-218-3
-218	2174	East	5468.00	vip-218-4
-218	2175	West	5472.25	standard-218-5
-218	2176	North	5476.50	new-218-6
-218	2177	South	5480.75	repeat-218-7
-218	2178	East	5485.00	vip-218-8
-218	2179	West	5489.25	standard-218-9
-218	2180	North	5493.50	new-218-10
-219	2181	North	5481.25	new-219-1
-219	2182	South	5485.50	repeat-219-2
-219	2183	East	5489.75	vip-219-3
-219	2184	West	5494.00	standard-219-4
-219	2185	North	5498.25	new-219-5
-219	2186	South	5502.50	repeat-219-6
-219	2187	East	5506.75	vip-219-7
-219	2188	West	5511.00	standard-219-8
-219	2189	North	5515.25	new-219-9
-219	2190	South	5519.50	repeat-219-10
-220	2191	South	5507.25	repeat-220-1
-220	2192	East	5511.50	vip-220-2
-220	2193	West	5515.75	standard-220-3
-220	2194	North	5520.00	new-220-4
-220	2195	South	5524.25	repeat-220-5
-220	2196	East	5528.50	vip-220-6
-220	2197	West	5532.75	standard-220-7
-220	2198	North	5537.00	new-220-8
-220	2199	South	5541.25	repeat-220-9
-220	2200	East	5545.50	vip-220-10
-221	2201	East	5533.25	vip-221-1
-221	2202	West	5537.50	standard-221-2
-221	2203	North	5541.75	new-221-3
-221	2204	South	5546.00	repeat-221-4
-221	2205	East	5550.25	vip-221-5
-221	2206	West	5554.50	standard-221-6
-221	2207	North	5558.75	new-221-7
-221	2208	South	5563.00	repeat-221-8
-221	2209	East	5567.25	vip-221-9
-221	2210	West	5571.50	standard-221-10
-222	2211	West	5559.25	standard-222-1
-222	2212	North	5563.50	new-222-2
-222	2213	South	5567.75	repeat-222-3
-222	2214	East	5572.00	vip-222-4
-222	2215	West	5576.25	standard-222-5
-222	2216	North	5580.50	new-222-6
-222	2217	South	5584.75	repeat-222-7
-222	2218	East	5589.00	vip-222-8
-222	2219	West	5593.25	standard-222-9
-222	2220	North	5597.50	new-222-10
-223	2221	North	5585.25	new-223-1
-223	2222	South	5589.50	repeat-223-2
-223	2223	East	5593.75	vip-223-3
-223	2224	West	5598.00	standard-223-4
-223	2225	North	5602.25	new-223-5
-223	2226	South	5606.50	repeat-223-6
-223	2227	East	5610.75	vip-223-7
-223	2228	West	5615.00	standard-223-8
-223	2229	North	5619.25	new-223-9
-223	2230	South	5623.50	repeat-223-10
-224	2231	South	5604.25	repeat-224-1
-224	2232	East	5608.50	vip-224-2
-224	2233	West	5612.75	standard-224-3
-224	2234	North	5617.00	new-224-4
-224	2235	South	5621.25	repeat-224-5
-224	2236	East	5625.50	vip-224-6
-224	2237	West	5629.75	standard-224-7
-224	2238	North	5634.00	new-224-8
-224	2239	South	5638.25	repeat-224-9
-224	2240	East	5642.50	vip-224-10
-225	2241	East	5630.25	vip-225-1
-225	2242	West	5634.50	standard-225-2
-225	2243	North	5638.75	new-225-3
-225	2244	South	5643.00	repeat-225-4
-225	2245	East	5647.25	vip-225-5
-225	2246	West	5651.50	standard-225-6
-225	2247	North	5655.75	new-225-7
-225	2248	South	5660.00	repeat-225-8
-225	2249	East	5664.25	vip-225-9
-225	2250	West	5668.50	standard-225-10
-226	2251	West	5656.25	standard-226-1
-226	2252	North	5660.50	new-226-2
-226	2253	South	5664.75	repeat-226-3
-226	2254	East	5669.00	vip-226-4
-226	2255	West	5673.25	standard-226-5
-226	2256	North	5677.50	new-226-6
-226	2257	South	5681.75	repeat-226-7
-226	2258	East	5686.00	vip-226-8
-226	2259	West	5690.25	standard-226-9
-226	2260	North	5694.50	new-226-10
-227	2261	North	5682.25	new-227-1
-227	2262	South	5686.50	repeat-227-2
-227	2263	East	5690.75	vip-227-3
-227	2264	West	5695.00	standard-227-4
-227	2265	North	5699.25	new-227-5
-227	2266	South	5703.50	repeat-227-6
-227	2267	East	5707.75	vip-227-7
-227	2268	West	5712.00	standard-227-8
-227	2269	North	5716.25	new-227-9
-227	2270	South	5720.50	repeat-227-10
-228	2271	South	5708.25	repeat-228-1
-228	2272	East	5712.50	vip-228-2
-228	2273	West	5716.75	standard-228-3
-228	2274	North	5721.00	new-228-4
-228	2275	South	5725.25	repeat-228-5
-228	2276	East	5729.50	vip-228-6
-228	2277	West	5733.75	standard-228-7
-228	2278	North	5738.00	new-228-8
-228	2279	South	5742.25	repeat-228-9
-228	2280	East	5746.50	vip-228-10
-229	2281	East	5734.25	vip-229-1
-229	2282	West	5738.50	standard-229-2
-229	2283	North	5742.75	new-229-3
-229	2284	South	5747.00	repeat-229-4
-229	2285	East	5751.25	vip-229-5
-229	2286	West	5755.50	standard-229-6
-229	2287	North	5759.75	new-229-7
-229	2288	South	5764.00	repeat-229-8
-229	2289	East	5768.25	vip-229-9
-229	2290	West	5772.50	standard-229-10
-230	2291	West	5760.25	standard-230-1
-230	2292	North	5764.50	new-230-2
-230	2293	South	5768.75	repeat-230-3
-230	2294	East	5773.00	vip-230-4
-230	2295	West	5777.25	standard-230-5
-230	2296	North	5781.50	new-230-6
-230	2297	South	5785.75	repeat-230-7
-230	2298	East	5790.00	vip-230-8
-230	2299	West	5794.25	standard-230-9
-230	2300	North	5798.50	new-230-10
-231	2301	North	5779.25	new-231-1
-231	2302	South	5783.50	repeat-231-2
-231	2303	East	5787.75	vip-231-3
-231	2304	West	5792.00	standard-231-4
-231	2305	North	5796.25	new-231-5
-231	2306	South	5800.50	repeat-231-6
-231	2307	East	5804.75	vip-231-7
-231	2308	West	5809.00	standard-231-8
-231	2309	North	5813.25	new-231-9
-231	2310	South	5817.50	repeat-231-10
-232	2311	South	5805.25	repeat-232-1
-232	2312	East	5809.50	vip-232-2
-232	2313	West	5813.75	standard-232-3
-232	2314	North	5818.00	new-232-4
-232	2315	South	5822.25	repeat-232-5
-232	2316	East	5826.50	vip-232-6
-232	2317	West	5830.75	standard-232-7
-232	2318	North	5835.00	new-232-8
-232	2319	South	5839.25	repeat-232-9
-232	2320	East	5843.50	vip-232-10
-233	2321	East	5831.25	vip-233-1
-233	2322	West	5835.50	standard-233-2
-233	2323	North	5839.75	new-233-3
-233	2324	South	5844.00	repeat-233-4
-233	2325	East	5848.25	vip-233-5
-233	2326	West	5852.50	standard-233-6
-233	2327	North	5856.75	new-233-7
-233	2328	South	5861.00	repeat-233-8
-233	2329	East	5865.25	vip-233-9
-233	2330	West	5869.50	standard-233-10
-234	2331	West	5857.25	standard-234-1
-234	2332	North	5861.50	new-234-2
-234	2333	South	5865.75	repeat-234-3
-234	2334	East	5870.00	vip-234-4
-234	2335	West	5874.25	standard-234-5
-234	2336	North	5878.50	new-234-6
-234	2337	South	5882.75	repeat-234-7
-234	2338	East	5887.00	vip-234-8
-234	2339	West	5891.25	standard-234-9
-234	2340	North	5895.50	new-234-10
-235	2341	North	5883.25	new-235-1
-235	2342	South	5887.50	repeat-235-2
-235	2343	East	5891.75	vip-235-3
-235	2344	West	5896.00	standard-235-4
-235	2345	North	5900.25	new-235-5
-235	2346	South	5904.50	repeat-235-6
-235	2347	East	5908.75	vip-235-7
-235	2348	West	5913.00	standard-235-8
-235	2349	North	5917.25	new-235-9
-235	2350	South	5921.50	repeat-235-10
-236	2351	South	5909.25	repeat-236-1
-236	2352	East	5913.50	vip-236-2
-236	2353	West	5917.75	standard-236-3
-236	2354	North	5922.00	new-236-4
-236	2355	South	5926.25	repeat-236-5
-236	2356	East	5930.50	vip-236-6
-236	2357	West	5934.75	standard-236-7
-236	2358	North	5939.00	new-236-8
-236	2359	South	5943.25	repeat-236-9
-236	2360	East	5947.50	vip-236-10
-237	2361	East	5935.25	vip-237-1
-237	2362	West	5939.50	standard-237-2
-237	2363	North	5943.75	new-237-3
-237	2364	South	5948.00	repeat-237-4
-237	2365	East	5952.25	vip-237-5
-237	2366	West	5956.50	standard-237-6
-237	2367	North	5960.75	new-237-7
-237	2368	South	5965.00	repeat-237-8
-237	2369	East	5969.25	vip-237-9
-237	2370	West	5973.50	standard-237-10
-238	2371	West	5954.25	standard-238-1
-238	2372	North	5958.50	new-238-2
-238	2373	South	5962.75	repeat-238-3
-238	2374	East	5967.00	vip-238-4
-238	2375	West	5971.25	standard-238-5
-238	2376	North	5975.50	new-238-6
-238	2377	South	5979.75	repeat-238-7
-238	2378	East	5984.00	vip-238-8
-238	2379	West	5988.25	standard-238-9
-238	2380	North	5992.50	new-238-10
-239	2381	North	5980.25	new-239-1
-239	2382	South	5984.50	repeat-239-2
-239	2383	East	5988.75	vip-239-3
-239	2384	West	5993.00	standard-239-4
-239	2385	North	5997.25	new-239-5
-239	2386	South	6001.50	repeat-239-6
-239	2387	East	6005.75	vip-239-7
-239	2388	West	6010.00	standard-239-8
-239	2389	North	6014.25	new-239-9
-239	2390	South	6018.50	repeat-239-10
-240	2391	South	6006.25	repeat-240-1
-240	2392	East	6010.50	vip-240-2
-240	2393	West	6014.75	standard-240-3
-240	2394	North	6019.00	new-240-4
-240	2395	South	6023.25	repeat-240-5
-240	2396	East	6027.50	vip-240-6
-240	2397	West	6031.75	standard-240-7
-240	2398	North	6036.00	new-240-8
-240	2399	South	6040.25	repeat-240-9
-240	2400	East	6044.50	vip-240-10
-241	2401	East	6032.25	vip-241-1
-241	2402	West	6036.50	standard-241-2
-241	2403	North	6040.75	new-241-3
-241	2404	South	6045.00	repeat-241-4
-241	2405	East	6049.25	vip-241-5
-241	2406	West	6053.50	standard-241-6
-241	2407	North	6057.75	new-241-7
-241	2408	South	6062.00	repeat-241-8
-241	2409	East	6066.25	vip-241-9
-241	2410	West	6070.50	standard-241-10
-242	2411	West	6058.25	standard-242-1
-242	2412	North	6062.50	new-242-2
-242	2413	South	6066.75	repeat-242-3
-242	2414	East	6071.00	vip-242-4
-242	2415	West	6075.25	standard-242-5
-242	2416	North	6079.50	new-242-6
-242	2417	South	6083.75	repeat-242-7
-242	2418	East	6088.00	vip-242-8
-242	2419	West	6092.25	standard-242-9
-242	2420	North	6096.50	new-242-10
-243	2421	North	6084.25	new-243-1
-243	2422	South	6088.50	repeat-243-2
-243	2423	East	6092.75	vip-243-3
-243	2424	West	6097.00	standard-243-4
-243	2425	North	6101.25	new-243-5
-243	2426	South	6105.50	repeat-243-6
-243	2427	East	6109.75	vip-243-7
-243	2428	West	6114.00	standard-243-8
-243	2429	North	6118.25	new-243-9
-243	2430	South	6122.50	repeat-243-10
-244	2431	South	6110.25	repeat-244-1
-244	2432	East	6114.50	vip-244-2
-244	2433	West	6118.75	standard-244-3
-244	2434	North	6123.00	new-244-4
-244	2435	South	6127.25	repeat-244-5
-244	2436	East	6131.50	vip-244-6
-244	2437	West	6135.75	standard-244-7
-244	2438	North	6140.00	new-244-8
-244	2439	South	6144.25	repeat-244-9
-244	2440	East	6148.50	vip-244-10
-245	2441	East	6129.25	vip-245-1
-245	2442	West	6133.50	standard-245-2
-245	2443	North	6137.75	new-245-3
-245	2444	South	6142.00	repeat-245-4
-245	2445	East	6146.25	vip-245-5
-245	2446	West	6150.50	standard-245-6
-245	2447	North	6154.75	new-245-7
-245	2448	South	6159.00	repeat-245-8
-245	2449	East	6163.25	vip-245-9
-245	2450	West	6167.50	standard-245-10
-246	2451	West	6155.25	standard-246-1
-246	2452	North	6159.50	new-246-2
-246	2453	South	6163.75	repeat-246-3
-246	2454	East	6168.00	vip-246-4
-246	2455	West	6172.25	standard-246-5
-246	2456	North	6176.50	new-246-6
-246	2457	South	6180.75	repeat-246-7
-246	2458	East	6185.00	vip-246-8
-246	2459	West	6189.25	standard-246-9
-246	2460	North	6193.50	new-246-10
-247	2461	North	6181.25	new-247-1
-247	2462	South	6185.50	repeat-247-2
-247	2463	East	6189.75	vip-247-3
-247	2464	West	6194.00	standard-247-4
-247	2465	North	6198.25	new-247-5
-247	2466	South	6202.50	repeat-247-6
-247	2467	East	6206.75	vip-247-7
-247	2468	West	6211.00	standard-247-8
-247	2469	North	6215.25	new-247-9
-247	2470	South	6219.50	repeat-247-10
-248	2471	South	6207.25	repeat-248-1
-248	2472	East	6211.50	vip-248-2
-248	2473	West	6215.75	standard-248-3
-248	2474	North	6220.00	new-248-4
-248	2475	South	6224.25	repeat-248-5
-248	2476	East	6228.50	vip-248-6
-248	2477	West	6232.75	standard-248-7
-248	2478	North	6237.00	new-248-8
-248	2479	South	6241.25	repeat-248-9
-248	2480	East	6245.50	vip-248-10
-249	2481	East	6233.25	vip-249-1
-249	2482	West	6237.50	standard-249-2
-249	2483	North	6241.75	new-249-3
-249	2484	South	6246.00	repeat-249-4
-249	2485	East	6250.25	vip-249-5
-249	2486	West	6254.50	standard-249-6
-249	2487	North	6258.75	new-249-7
-249	2488	South	6263.00	repeat-249-8
-249	2489	East	6267.25	vip-249-9
-249	2490	West	6271.50	standard-249-10
-250	2491	West	6259.25	standard-250-1
-250	2492	North	6263.50	new-250-2
-250	2493	South	6267.75	repeat-250-3
-250	2494	East	6272.00	vip-250-4
-250	2495	West	6276.25	standard-250-5
-250	2496	North	6280.50	new-250-6
-250	2497	South	6284.75	repeat-250-7
-250	2498	East	6289.00	vip-250-8
-250	2499	West	6293.25	standard-250-9
-250	2500	North	6297.50	new-250-10
+customer_id	amount
+1	30.25
+1	34.50
+1	38.75
+1	43.00
+1	47.25
+1	51.50
+1	55.75
+1	60.00
+1	64.25
+1	68.50
+2	56.25
+2	60.50
+2	64.75
+2	69.00
+2	73.25
+2	77.50
+2	81.75
+2	86.00
+2	90.25
+2	94.50
+3	82.25
+3	86.50
+3	90.75
+3	95.00
+3	99.25
+3	103.50
+3	107.75
+3	112.00
+3	116.25
+3	120.50
+4	108.25
+4	112.50
+4	116.75
+4	121.00
+4	125.25
+4	129.50
+4	133.75
+4	138.00
+4	142.25
+4	146.50
+5	134.25
+5	138.50
+5	142.75
+5	147.00
+5	151.25
+5	155.50
+5	159.75
+5	164.00
+5	168.25
+5	172.50
+6	160.25
+6	164.50
+6	168.75
+6	173.00
+6	177.25
+6	181.50
+6	185.75
+6	190.00
+6	194.25
+6	198.50
+7	179.25
+7	183.50
+7	187.75
+7	192.00
+7	196.25
+7	200.50
+7	204.75
+7	209.00
+7	213.25
+7	217.50
+8	205.25
+8	209.50
+8	213.75
+8	218.00
+8	222.25
+8	226.50
+8	230.75
+8	235.00
+8	239.25
+8	243.50
+9	231.25
+9	235.50
+9	239.75
+9	244.00
+9	248.25
+9	252.50
+9	256.75
+9	261.00
+9	265.25
+9	269.50
+10	257.25
+10	261.50
+10	265.75
+10	270.00
+10	274.25
+10	278.50
+10	282.75
+10	287.00
+10	291.25
+10	295.50
+11	283.25
+11	287.50
+11	291.75
+11	296.00
+11	300.25
+11	304.50
+11	308.75
+11	313.00
+11	317.25
+11	321.50
+12	309.25
+12	313.50
+12	317.75
+12	322.00
+12	326.25
+12	330.50
+12	334.75
+12	339.00
+12	343.25
+12	347.50
+13	335.25
+13	339.50
+13	343.75
+13	348.00
+13	352.25
+13	356.50
+13	360.75
+13	365.00
+13	369.25
+13	373.50
+14	354.25
+14	358.50
+14	362.75
+14	367.00
+14	371.25
+14	375.50
+14	379.75
+14	384.00
+14	388.25
+14	392.50
+15	380.25
+15	384.50
+15	388.75
+15	393.00
+15	397.25
+15	401.50
+15	405.75
+15	410.00
+15	414.25
+15	418.50
+16	406.25
+16	410.50
+16	414.75
+16	419.00
+16	423.25
+16	427.50
+16	431.75
+16	436.00
+16	440.25
+16	444.50
+17	432.25
+17	436.50
+17	440.75
+17	445.00
+17	449.25
+17	453.50
+17	457.75
+17	462.00
+17	466.25
+17	470.50
+18	458.25
+18	462.50
+18	466.75
+18	471.00
+18	475.25
+18	479.50
+18	483.75
+18	488.00
+18	492.25
+18	496.50
+19	484.25
+19	488.50
+19	492.75
+19	497.00
+19	501.25
+19	505.50
+19	509.75
+19	514.00
+19	518.25
+19	522.50
+20	510.25
+20	514.50
+20	518.75
+20	523.00
+20	527.25
+20	531.50
+20	535.75
+20	540.00
+20	544.25
+20	548.50
+21	529.25
+21	533.50
+21	537.75
+21	542.00
+21	546.25
+21	550.50
+21	554.75
+21	559.00
+21	563.25
+21	567.50
+22	555.25
+22	559.50
+22	563.75
+22	568.00
+22	572.25
+22	576.50
+22	580.75
+22	585.00
+22	589.25
+22	593.50
+23	581.25
+23	585.50
+23	589.75
+23	594.00
+23	598.25
+23	602.50
+23	606.75
+23	611.00
+23	615.25
+23	619.50
+24	607.25
+24	611.50
+24	615.75
+24	620.00
+24	624.25
+24	628.50
+24	632.75
+24	637.00
+24	641.25
+24	645.50
+25	633.25
+25	637.50
+25	641.75
+25	646.00
+25	650.25
+25	654.50
+25	658.75
+25	663.00
+25	667.25
+25	671.50
+26	659.25
+26	663.50
+26	667.75
+26	672.00
+26	676.25
+26	680.50
+26	684.75
+26	689.00
+26	693.25
+26	697.50
+27	685.25
+27	689.50
+27	693.75
+27	698.00
+27	702.25
+27	706.50
+27	710.75
+27	715.00
+27	719.25
+27	723.50
+28	704.25
+28	708.50
+28	712.75
+28	717.00
+28	721.25
+28	725.50
+28	729.75
+28	734.00
+28	738.25
+28	742.50
+29	730.25
+29	734.50
+29	738.75
+29	743.00
+29	747.25
+29	751.50
+29	755.75
+29	760.00
+29	764.25
+29	768.50
+30	756.25
+30	760.50
+30	764.75
+30	769.00
+30	773.25
+30	777.50
+30	781.75
+30	786.00
+30	790.25
+30	794.50
+31	782.25
+31	786.50
+31	790.75
+31	795.00
+31	799.25
+31	803.50
+31	807.75
+31	812.00
+31	816.25
+31	820.50
+32	808.25
+32	812.50
+32	816.75
+32	821.00
+32	825.25
+32	829.50
+32	833.75
+32	838.00
+32	842.25
+32	846.50
+33	834.25
+33	838.50
+33	842.75
+33	847.00
+33	851.25
+33	855.50
+33	859.75
+33	864.00
+33	868.25
+33	872.50
+34	860.25
+34	864.50
+34	868.75
+34	873.00
+34	877.25
+34	881.50
+34	885.75
+34	890.00
+34	894.25
+34	898.50
+35	879.25
+35	883.50
+35	887.75
+35	892.00
+35	896.25
+35	900.50
+35	904.75
+35	909.00
+35	913.25
+35	917.50
+36	905.25
+36	909.50
+36	913.75
+36	918.00
+36	922.25
+36	926.50
+36	930.75
+36	935.00
+36	939.25
+36	943.50
+37	931.25
+37	935.50
+37	939.75
+37	944.00
+37	948.25
+37	952.50
+37	956.75
+37	961.00
+37	965.25
+37	969.50
+38	957.25
+38	961.50
+38	965.75
+38	970.00
+38	974.25
+38	978.50
+38	982.75
+38	987.00
+38	991.25
+38	995.50
+39	983.25
+39	987.50
+39	991.75
+39	996.00
+39	1000.25
+39	1004.50
+39	1008.75
+39	1013.00
+39	1017.25
+39	1021.50
+40	1009.25
+40	1013.50
+40	1017.75
+40	1022.00
+40	1026.25
+40	1030.50
+40	1034.75
+40	1039.00
+40	1043.25
+40	1047.50
+41	1035.25
+41	1039.50
+41	1043.75
+41	1048.00
+41	1052.25
+41	1056.50
+41	1060.75
+41	1065.00
+41	1069.25
+41	1073.50
+42	1054.25
+42	1058.50
+42	1062.75
+42	1067.00
+42	1071.25
+42	1075.50
+42	1079.75
+42	1084.00
+42	1088.25
+42	1092.50
+43	1080.25
+43	1084.50
+43	1088.75
+43	1093.00
+43	1097.25
+43	1101.50
+43	1105.75
+43	1110.00
+43	1114.25
+43	1118.50
+44	1106.25
+44	1110.50
+44	1114.75
+44	1119.00
+44	1123.25
+44	1127.50
+44	1131.75
+44	1136.00
+44	1140.25
+44	1144.50
+45	1132.25
+45	1136.50
+45	1140.75
+45	1145.00
+45	1149.25
+45	1153.50
+45	1157.75
+45	1162.00
+45	1166.25
+45	1170.50
+46	1158.25
+46	1162.50
+46	1166.75
+46	1171.00
+46	1175.25
+46	1179.50
+46	1183.75
+46	1188.00
+46	1192.25
+46	1196.50
+47	1184.25
+47	1188.50
+47	1192.75
+47	1197.00
+47	1201.25
+47	1205.50
+47	1209.75
+47	1214.00
+47	1218.25
+47	1222.50
+48	1210.25
+48	1214.50
+48	1218.75
+48	1223.00
+48	1227.25
+48	1231.50
+48	1235.75
+48	1240.00
+48	1244.25
+48	1248.50
+49	1229.25
+49	1233.50
+49	1237.75
+49	1242.00
+49	1246.25
+49	1250.50
+49	1254.75
+49	1259.00
+49	1263.25
+49	1267.50
+50	1255.25
+50	1259.50
+50	1263.75
+50	1268.00
+50	1272.25
+50	1276.50
+50	1280.75
+50	1285.00
+50	1289.25
+50	1293.50
+51	1281.25
+51	1285.50
+51	1289.75
+51	1294.00
+51	1298.25
+51	1302.50
+51	1306.75
+51	1311.00
+51	1315.25
+51	1319.50
+52	1307.25
+52	1311.50
+52	1315.75
+52	1320.00
+52	1324.25
+52	1328.50
+52	1332.75
+52	1337.00
+52	1341.25
+52	1345.50
+53	1333.25
+53	1337.50
+53	1341.75
+53	1346.00
+53	1350.25
+53	1354.50
+53	1358.75
+53	1363.00
+53	1367.25
+53	1371.50
+54	1359.25
+54	1363.50
+54	1367.75
+54	1372.00
+54	1376.25
+54	1380.50
+54	1384.75
+54	1389.00
+54	1393.25
+54	1397.50
+55	1385.25
+55	1389.50
+55	1393.75
+55	1398.00
+55	1402.25
+55	1406.50
+55	1410.75
+55	1415.00
+55	1419.25
+55	1423.50
+56	1404.25
+56	1408.50
+56	1412.75
+56	1417.00
+56	1421.25
+56	1425.50
+56	1429.75
+56	1434.00
+56	1438.25
+56	1442.50
+57	1430.25
+57	1434.50
+57	1438.75
+57	1443.00
+57	1447.25
+57	1451.50
+57	1455.75
+57	1460.00
+57	1464.25
+57	1468.50
+58	1456.25
+58	1460.50
+58	1464.75
+58	1469.00
+58	1473.25
+58	1477.50
+58	1481.75
+58	1486.00
+58	1490.25
+58	1494.50
+59	1482.25
+59	1486.50
+59	1490.75
+59	1495.00
+59	1499.25
+59	1503.50
+59	1507.75
+59	1512.00
+59	1516.25
+59	1520.50
+60	1508.25
+60	1512.50
+60	1516.75
+60	1521.00
+60	1525.25
+60	1529.50
+60	1533.75
+60	1538.00
+60	1542.25
+60	1546.50
+61	1534.25
+61	1538.50
+61	1542.75
+61	1547.00
+61	1551.25
+61	1555.50
+61	1559.75
+61	1564.00
+61	1568.25
+61	1572.50
+62	1560.25
+62	1564.50
+62	1568.75
+62	1573.00
+62	1577.25
+62	1581.50
+62	1585.75
+62	1590.00
+62	1594.25
+62	1598.50
+63	1579.25
+63	1583.50
+63	1587.75
+63	1592.00
+63	1596.25
+63	1600.50
+63	1604.75
+63	1609.00
+63	1613.25
+63	1617.50
+64	1605.25
+64	1609.50
+64	1613.75
+64	1618.00
+64	1622.25
+64	1626.50
+64	1630.75
+64	1635.00
+64	1639.25
+64	1643.50
+65	1631.25
+65	1635.50
+65	1639.75
+65	1644.00
+65	1648.25
+65	1652.50
+65	1656.75
+65	1661.00
+65	1665.25
+65	1669.50
+66	1657.25
+66	1661.50
+66	1665.75
+66	1670.00
+66	1674.25
+66	1678.50
+66	1682.75
+66	1687.00
+66	1691.25
+66	1695.50
+67	1683.25
+67	1687.50
+67	1691.75
+67	1696.00
+67	1700.25
+67	1704.50
+67	1708.75
+67	1713.00
+67	1717.25
+67	1721.50
+68	1709.25
+68	1713.50
+68	1717.75
+68	1722.00
+68	1726.25
+68	1730.50
+68	1734.75
+68	1739.00
+68	1743.25
+68	1747.50
+69	1735.25
+69	1739.50
+69	1743.75
+69	1748.00
+69	1752.25
+69	1756.50
+69	1760.75
+69	1765.00
+69	1769.25
+69	1773.50
+70	1754.25
+70	1758.50
+70	1762.75
+70	1767.00
+70	1771.25
+70	1775.50
+70	1779.75
+70	1784.00
+70	1788.25
+70	1792.50
+71	1780.25
+71	1784.50
+71	1788.75
+71	1793.00
+71	1797.25
+71	1801.50
+71	1805.75
+71	1810.00
+71	1814.25
+71	1818.50
+72	1806.25
+72	1810.50
+72	1814.75
+72	1819.00
+72	1823.25
+72	1827.50
+72	1831.75
+72	1836.00
+72	1840.25
+72	1844.50
+73	1832.25
+73	1836.50
+73	1840.75
+73	1845.00
+73	1849.25
+73	1853.50
+73	1857.75
+73	1862.00
+73	1866.25
+73	1870.50
+74	1858.25
+74	1862.50
+74	1866.75
+74	1871.00
+74	1875.25
+74	1879.50
+74	1883.75
+74	1888.00
+74	1892.25
+74	1896.50
+75	1884.25
+75	1888.50
+75	1892.75
+75	1897.00
+75	1901.25
+75	1905.50
+75	1909.75
+75	1914.00
+75	1918.25
+75	1922.50
+76	1910.25
+76	1914.50
+76	1918.75
+76	1923.00
+76	1927.25
+76	1931.50
+76	1935.75
+76	1940.00
+76	1944.25
+76	1948.50
+77	1929.25
+77	1933.50
+77	1937.75
+77	1942.00
+77	1946.25
+77	1950.50
+77	1954.75
+77	1959.00
+77	1963.25
+77	1967.50
+78	1955.25
+78	1959.50
+78	1963.75
+78	1968.00
+78	1972.25
+78	1976.50
+78	1980.75
+78	1985.00
+78	1989.25
+78	1993.50
+79	1981.25
+79	1985.50
+79	1989.75
+79	1994.00
+79	1998.25
+79	2002.50
+79	2006.75
+79	2011.00
+79	2015.25
+79	2019.50
+80	2007.25
+80	2011.50
+80	2015.75
+80	2020.00
+80	2024.25
+80	2028.50
+80	2032.75
+80	2037.00
+80	2041.25
+80	2045.50
+81	2033.25
+81	2037.50
+81	2041.75
+81	2046.00
+81	2050.25
+81	2054.50
+81	2058.75
+81	2063.00
+81	2067.25
+81	2071.50
+82	2059.25
+82	2063.50
+82	2067.75
+82	2072.00
+82	2076.25
+82	2080.50
+82	2084.75
+82	2089.00
+82	2093.25
+82	2097.50
+83	2085.25
+83	2089.50
+83	2093.75
+83	2098.00
+83	2102.25
+83	2106.50
+83	2110.75
+83	2115.00
+83	2119.25
+83	2123.50
+84	2104.25
+84	2108.50
+84	2112.75
+84	2117.00
+84	2121.25
+84	2125.50
+84	2129.75
+84	2134.00
+84	2138.25
+84	2142.50
+85	2130.25
+85	2134.50
+85	2138.75
+85	2143.00
+85	2147.25
+85	2151.50
+85	2155.75
+85	2160.00
+85	2164.25
+85	2168.50
+86	2156.25
+86	2160.50
+86	2164.75
+86	2169.00
+86	2173.25
+86	2177.50
+86	2181.75
+86	2186.00
+86	2190.25
+86	2194.50
+87	2182.25
+87	2186.50
+87	2190.75
+87	2195.00
+87	2199.25
+87	2203.50
+87	2207.75
+87	2212.00
+87	2216.25
+87	2220.50
+88	2208.25
+88	2212.50
+88	2216.75
+88	2221.00
+88	2225.25
+88	2229.50
+88	2233.75
+88	2238.00
+88	2242.25
+88	2246.50
+89	2234.25
+89	2238.50
+89	2242.75
+89	2247.00
+89	2251.25
+89	2255.50
+89	2259.75
+89	2264.00
+89	2268.25
+89	2272.50
+90	2260.25
+90	2264.50
+90	2268.75
+90	2273.00
+90	2277.25
+90	2281.50
+90	2285.75
+90	2290.00
+90	2294.25
+90	2298.50
+91	2279.25
+91	2283.50
+91	2287.75
+91	2292.00
+91	2296.25
+91	2300.50
+91	2304.75
+91	2309.00
+91	2313.25
+91	2317.50
+92	2305.25
+92	2309.50
+92	2313.75
+92	2318.00
+92	2322.25
+92	2326.50
+92	2330.75
+92	2335.00
+92	2339.25
+92	2343.50
+93	2331.25
+93	2335.50
+93	2339.75
+93	2344.00
+93	2348.25
+93	2352.50
+93	2356.75
+93	2361.00
+93	2365.25
+93	2369.50
+94	2357.25
+94	2361.50
+94	2365.75
+94	2370.00
+94	2374.25
+94	2378.50
+94	2382.75
+94	2387.00
+94	2391.25
+94	2395.50
+95	2383.25
+95	2387.50
+95	2391.75
+95	2396.00
+95	2400.25
+95	2404.50
+95	2408.75
+95	2413.00
+95	2417.25
+95	2421.50
+96	2409.25
+96	2413.50
+96	2417.75
+96	2422.00
+96	2426.25
+96	2430.50
+96	2434.75
+96	2439.00
+96	2443.25
+96	2447.50
+97	2435.25
+97	2439.50
+97	2443.75
+97	2448.00
+97	2452.25
+97	2456.50
+97	2460.75
+97	2465.00
+97	2469.25
+97	2473.50
+98	2454.25
+98	2458.50
+98	2462.75
+98	2467.00
+98	2471.25
+98	2475.50
+98	2479.75
+98	2484.00
+98	2488.25
+98	2492.50
+99	2480.25
+99	2484.50
+99	2488.75
+99	2493.00
+99	2497.25
+99	2501.50
+99	2505.75
+99	2510.00
+99	2514.25
+99	2518.50
+100	2506.25
+100	2510.50
+100	2514.75
+100	2519.00
+100	2523.25
+100	2527.50
+100	2531.75
+100	2536.00
+100	2540.25
+100	2544.50
+101	2532.25
+101	2536.50
+101	2540.75
+101	2545.00
+101	2549.25
+101	2553.50
+101	2557.75
+101	2562.00
+101	2566.25
+101	2570.50
+102	2558.25
+102	2562.50
+102	2566.75
+102	2571.00
+102	2575.25
+102	2579.50
+102	2583.75
+102	2588.00
+102	2592.25
+102	2596.50
+103	2584.25
+103	2588.50
+103	2592.75
+103	2597.00
+103	2601.25
+103	2605.50
+103	2609.75
+103	2614.00
+103	2618.25
+103	2622.50
+104	2610.25
+104	2614.50
+104	2618.75
+104	2623.00
+104	2627.25
+104	2631.50
+104	2635.75
+104	2640.00
+104	2644.25
+104	2648.50
+105	2629.25
+105	2633.50
+105	2637.75
+105	2642.00
+105	2646.25
+105	2650.50
+105	2654.75
+105	2659.00
+105	2663.25
+105	2667.50
+106	2655.25
+106	2659.50
+106	2663.75
+106	2668.00
+106	2672.25
+106	2676.50
+106	2680.75
+106	2685.00
+106	2689.25
+106	2693.50
+107	2681.25
+107	2685.50
+107	2689.75
+107	2694.00
+107	2698.25
+107	2702.50
+107	2706.75
+107	2711.00
+107	2715.25
+107	2719.50
+108	2707.25
+108	2711.50
+108	2715.75
+108	2720.00
+108	2724.25
+108	2728.50
+108	2732.75
+108	2737.00
+108	2741.25
+108	2745.50
+109	2733.25
+109	2737.50
+109	2741.75
+109	2746.00
+109	2750.25
+109	2754.50
+109	2758.75
+109	2763.00
+109	2767.25
+109	2771.50
+110	2759.25
+110	2763.50
+110	2767.75
+110	2772.00
+110	2776.25
+110	2780.50
+110	2784.75
+110	2789.00
+110	2793.25
+110	2797.50
+111	2785.25
+111	2789.50
+111	2793.75
+111	2798.00
+111	2802.25
+111	2806.50
+111	2810.75
+111	2815.00
+111	2819.25
+111	2823.50
+112	2804.25
+112	2808.50
+112	2812.75
+112	2817.00
+112	2821.25
+112	2825.50
+112	2829.75
+112	2834.00
+112	2838.25
+112	2842.50
+113	2830.25
+113	2834.50
+113	2838.75
+113	2843.00
+113	2847.25
+113	2851.50
+113	2855.75
+113	2860.00
+113	2864.25
+113	2868.50
+114	2856.25
+114	2860.50
+114	2864.75
+114	2869.00
+114	2873.25
+114	2877.50
+114	2881.75
+114	2886.00
+114	2890.25
+114	2894.50
+115	2882.25
+115	2886.50
+115	2890.75
+115	2895.00
+115	2899.25
+115	2903.50
+115	2907.75
+115	2912.00
+115	2916.25
+115	2920.50
+116	2908.25
+116	2912.50
+116	2916.75
+116	2921.00
+116	2925.25
+116	2929.50
+116	2933.75
+116	2938.00
+116	2942.25
+116	2946.50
+117	2934.25
+117	2938.50
+117	2942.75
+117	2947.00
+117	2951.25
+117	2955.50
+117	2959.75
+117	2964.00
+117	2968.25
+117	2972.50
+118	2960.25
+118	2964.50
+118	2968.75
+118	2973.00
+118	2977.25
+118	2981.50
+118	2985.75
+118	2990.00
+118	2994.25
+118	2998.50
+119	2979.25
+119	2983.50
+119	2987.75
+119	2992.00
+119	2996.25
+119	3000.50
+119	3004.75
+119	3009.00
+119	3013.25
+119	3017.50
+120	3005.25
+120	3009.50
+120	3013.75
+120	3018.00
+120	3022.25
+120	3026.50
+120	3030.75
+120	3035.00
+120	3039.25
+120	3043.50
+121	3031.25
+121	3035.50
+121	3039.75
+121	3044.00
+121	3048.25
+121	3052.50
+121	3056.75
+121	3061.00
+121	3065.25
+121	3069.50
+122	3057.25
+122	3061.50
+122	3065.75
+122	3070.00
+122	3074.25
+122	3078.50
+122	3082.75
+122	3087.00
+122	3091.25
+122	3095.50
+123	3083.25
+123	3087.50
+123	3091.75
+123	3096.00
+123	3100.25
+123	3104.50
+123	3108.75
+123	3113.00
+123	3117.25
+123	3121.50
+124	3109.25
+124	3113.50
+124	3117.75
+124	3122.00
+124	3126.25
+124	3130.50
+124	3134.75
+124	3139.00
+124	3143.25
+124	3147.50
+125	3135.25
+125	3139.50
+125	3143.75
+125	3148.00
+125	3152.25
+125	3156.50
+125	3160.75
+125	3165.00
+125	3169.25
+125	3173.50
+126	3154.25
+126	3158.50
+126	3162.75
+126	3167.00
+126	3171.25
+126	3175.50
+126	3179.75
+126	3184.00
+126	3188.25
+126	3192.50
+127	3180.25
+127	3184.50
+127	3188.75
+127	3193.00
+127	3197.25
+127	3201.50
+127	3205.75
+127	3210.00
+127	3214.25
+127	3218.50
+128	3206.25
+128	3210.50
+128	3214.75
+128	3219.00
+128	3223.25
+128	3227.50
+128	3231.75
+128	3236.00
+128	3240.25
+128	3244.50
+129	3232.25
+129	3236.50
+129	3240.75
+129	3245.00
+129	3249.25
+129	3253.50
+129	3257.75
+129	3262.00
+129	3266.25
+129	3270.50
+130	3258.25
+130	3262.50
+130	3266.75
+130	3271.00
+130	3275.25
+130	3279.50
+130	3283.75
+130	3288.00
+130	3292.25
+130	3296.50
+131	3284.25
+131	3288.50
+131	3292.75
+131	3297.00
+131	3301.25
+131	3305.50
+131	3309.75
+131	3314.00
+131	3318.25
+131	3322.50
+132	3310.25
+132	3314.50
+132	3318.75
+132	3323.00
+132	3327.25
+132	3331.50
+132	3335.75
+132	3340.00
+132	3344.25
+132	3348.50
+133	3329.25
+133	3333.50
+133	3337.75
+133	3342.00
+133	3346.25
+133	3350.50
+133	3354.75
+133	3359.00
+133	3363.25
+133	3367.50
+134	3355.25
+134	3359.50
+134	3363.75
+134	3368.00
+134	3372.25
+134	3376.50
+134	3380.75
+134	3385.00
+134	3389.25
+134	3393.50
+135	3381.25
+135	3385.50
+135	3389.75
+135	3394.00
+135	3398.25
+135	3402.50
+135	3406.75
+135	3411.00
+135	3415.25
+135	3419.50
+136	3407.25
+136	3411.50
+136	3415.75
+136	3420.00
+136	3424.25
+136	3428.50
+136	3432.75
+136	3437.00
+136	3441.25
+136	3445.50
+137	3433.25
+137	3437.50
+137	3441.75
+137	3446.00
+137	3450.25
+137	3454.50
+137	3458.75
+137	3463.00
+137	3467.25
+137	3471.50
+138	3459.25
+138	3463.50
+138	3467.75
+138	3472.00
+138	3476.25
+138	3480.50
+138	3484.75
+138	3489.00
+138	3493.25
+138	3497.50
+139	3485.25
+139	3489.50
+139	3493.75
+139	3498.00
+139	3502.25
+139	3506.50
+139	3510.75
+139	3515.00
+139	3519.25
+139	3523.50
+140	3504.25
+140	3508.50
+140	3512.75
+140	3517.00
+140	3521.25
+140	3525.50
+140	3529.75
+140	3534.00
+140	3538.25
+140	3542.50
+141	3530.25
+141	3534.50
+141	3538.75
+141	3543.00
+141	3547.25
+141	3551.50
+141	3555.75
+141	3560.00
+141	3564.25
+141	3568.50
+142	3556.25
+142	3560.50
+142	3564.75
+142	3569.00
+142	3573.25
+142	3577.50
+142	3581.75
+142	3586.00
+142	3590.25
+142	3594.50
+143	3582.25
+143	3586.50
+143	3590.75
+143	3595.00
+143	3599.25
+143	3603.50
+143	3607.75
+143	3612.00
+143	3616.25
+143	3620.50
+144	3608.25
+144	3612.50
+144	3616.75
+144	3621.00
+144	3625.25
+144	3629.50
+144	3633.75
+144	3638.00
+144	3642.25
+144	3646.50
+145	3634.25
+145	3638.50
+145	3642.75
+145	3647.00
+145	3651.25
+145	3655.50
+145	3659.75
+145	3664.00
+145	3668.25
+145	3672.50
+146	3660.25
+146	3664.50
+146	3668.75
+146	3673.00
+146	3677.25
+146	3681.50
+146	3685.75
+146	3690.00
+146	3694.25
+146	3698.50
+147	3679.25
+147	3683.50
+147	3687.75
+147	3692.00
+147	3696.25
+147	3700.50
+147	3704.75
+147	3709.00
+147	3713.25
+147	3717.50
+148	3705.25
+148	3709.50
+148	3713.75
+148	3718.00
+148	3722.25
+148	3726.50
+148	3730.75
+148	3735.00
+148	3739.25
+148	3743.50
+149	3731.25
+149	3735.50
+149	3739.75
+149	3744.00
+149	3748.25
+149	3752.50
+149	3756.75
+149	3761.00
+149	3765.25
+149	3769.50
+150	3757.25
+150	3761.50
+150	3765.75
+150	3770.00
+150	3774.25
+150	3778.50
+150	3782.75
+150	3787.00
+150	3791.25
+150	3795.50
+151	3783.25
+151	3787.50
+151	3791.75
+151	3796.00
+151	3800.25
+151	3804.50
+151	3808.75
+151	3813.00
+151	3817.25
+151	3821.50
+152	3809.25
+152	3813.50
+152	3817.75
+152	3822.00
+152	3826.25
+152	3830.50
+152	3834.75
+152	3839.00
+152	3843.25
+152	3847.50
+153	3835.25
+153	3839.50
+153	3843.75
+153	3848.00
+153	3852.25
+153	3856.50
+153	3860.75
+153	3865.00
+153	3869.25
+153	3873.50
+154	3854.25
+154	3858.50
+154	3862.75
+154	3867.00
+154	3871.25
+154	3875.50
+154	3879.75
+154	3884.00
+154	3888.25
+154	3892.50
+155	3880.25
+155	3884.50
+155	3888.75
+155	3893.00
+155	3897.25
+155	3901.50
+155	3905.75
+155	3910.00
+155	3914.25
+155	3918.50
+156	3906.25
+156	3910.50
+156	3914.75
+156	3919.00
+156	3923.25
+156	3927.50
+156	3931.75
+156	3936.00
+156	3940.25
+156	3944.50
+157	3932.25
+157	3936.50
+157	3940.75
+157	3945.00
+157	3949.25
+157	3953.50
+157	3957.75
+157	3962.00
+157	3966.25
+157	3970.50
+158	3958.25
+158	3962.50
+158	3966.75
+158	3971.00
+158	3975.25
+158	3979.50
+158	3983.75
+158	3988.00
+158	3992.25
+158	3996.50
+159	3984.25
+159	3988.50
+159	3992.75
+159	3997.00
+159	4001.25
+159	4005.50
+159	4009.75
+159	4014.00
+159	4018.25
+159	4022.50
+160	4010.25
+160	4014.50
+160	4018.75
+160	4023.00
+160	4027.25
+160	4031.50
+160	4035.75
+160	4040.00
+160	4044.25
+160	4048.50
+161	4029.25
+161	4033.50
+161	4037.75
+161	4042.00
+161	4046.25
+161	4050.50
+161	4054.75
+161	4059.00
+161	4063.25
+161	4067.50
+162	4055.25
+162	4059.50
+162	4063.75
+162	4068.00
+162	4072.25
+162	4076.50
+162	4080.75
+162	4085.00
+162	4089.25
+162	4093.50
+163	4081.25
+163	4085.50
+163	4089.75
+163	4094.00
+163	4098.25
+163	4102.50
+163	4106.75
+163	4111.00
+163	4115.25
+163	4119.50
+164	4107.25
+164	4111.50
+164	4115.75
+164	4120.00
+164	4124.25
+164	4128.50
+164	4132.75
+164	4137.00
+164	4141.25
+164	4145.50
+165	4133.25
+165	4137.50
+165	4141.75
+165	4146.00
+165	4150.25
+165	4154.50
+165	4158.75
+165	4163.00
+165	4167.25
+165	4171.50
+166	4159.25
+166	4163.50
+166	4167.75
+166	4172.00
+166	4176.25
+166	4180.50
+166	4184.75
+166	4189.00
+166	4193.25
+166	4197.50
+167	4185.25
+167	4189.50
+167	4193.75
+167	4198.00
+167	4202.25
+167	4206.50
+167	4210.75
+167	4215.00
+167	4219.25
+167	4223.50
+168	4204.25
+168	4208.50
+168	4212.75
+168	4217.00
+168	4221.25
+168	4225.50
+168	4229.75
+168	4234.00
+168	4238.25
+168	4242.50
+169	4230.25
+169	4234.50
+169	4238.75
+169	4243.00
+169	4247.25
+169	4251.50
+169	4255.75
+169	4260.00
+169	4264.25
+169	4268.50
+170	4256.25
+170	4260.50
+170	4264.75
+170	4269.00
+170	4273.25
+170	4277.50
+170	4281.75
+170	4286.00
+170	4290.25
+170	4294.50
+171	4282.25
+171	4286.50
+171	4290.75
+171	4295.00
+171	4299.25
+171	4303.50
+171	4307.75
+171	4312.00
+171	4316.25
+171	4320.50
+172	4308.25
+172	4312.50
+172	4316.75
+172	4321.00
+172	4325.25
+172	4329.50
+172	4333.75
+172	4338.00
+172	4342.25
+172	4346.50
+173	4334.25
+173	4338.50
+173	4342.75
+173	4347.00
+173	4351.25
+173	4355.50
+173	4359.75
+173	4364.00
+173	4368.25
+173	4372.50
+174	4360.25
+174	4364.50
+174	4368.75
+174	4373.00
+174	4377.25
+174	4381.50
+174	4385.75
+174	4390.00
+174	4394.25
+174	4398.50
+175	4379.25
+175	4383.50
+175	4387.75
+175	4392.00
+175	4396.25
+175	4400.50
+175	4404.75
+175	4409.00
+175	4413.25
+175	4417.50
+176	4405.25
+176	4409.50
+176	4413.75
+176	4418.00
+176	4422.25
+176	4426.50
+176	4430.75
+176	4435.00
+176	4439.25
+176	4443.50
+177	4431.25
+177	4435.50
+177	4439.75
+177	4444.00
+177	4448.25
+177	4452.50
+177	4456.75
+177	4461.00
+177	4465.25
+177	4469.50
+178	4457.25
+178	4461.50
+178	4465.75
+178	4470.00
+178	4474.25
+178	4478.50
+178	4482.75
+178	4487.00
+178	4491.25
+178	4495.50
+179	4483.25
+179	4487.50
+179	4491.75
+179	4496.00
+179	4500.25
+179	4504.50
+179	4508.75
+179	4513.00
+179	4517.25
+179	4521.50
+180	4509.25
+180	4513.50
+180	4517.75
+180	4522.00
+180	4526.25
+180	4530.50
+180	4534.75
+180	4539.00
+180	4543.25
+180	4547.50
+181	4535.25
+181	4539.50
+181	4543.75
+181	4548.00
+181	4552.25
+181	4556.50
+181	4560.75
+181	4565.00
+181	4569.25
+181	4573.50
+182	4554.25
+182	4558.50
+182	4562.75
+182	4567.00
+182	4571.25
+182	4575.50
+182	4579.75
+182	4584.00
+182	4588.25
+182	4592.50
+183	4580.25
+183	4584.50
+183	4588.75
+183	4593.00
+183	4597.25
+183	4601.50
+183	4605.75
+183	4610.00
+183	4614.25
+183	4618.50
+184	4606.25
+184	4610.50
+184	4614.75
+184	4619.00
+184	4623.25
+184	4627.50
+184	4631.75
+184	4636.00
+184	4640.25
+184	4644.50
+185	4632.25
+185	4636.50
+185	4640.75
+185	4645.00
+185	4649.25
+185	4653.50
+185	4657.75
+185	4662.00
+185	4666.25
+185	4670.50
+186	4658.25
+186	4662.50
+186	4666.75
+186	4671.00
+186	4675.25
+186	4679.50
+186	4683.75
+186	4688.00
+186	4692.25
+186	4696.50
+187	4684.25
+187	4688.50
+187	4692.75
+187	4697.00
+187	4701.25
+187	4705.50
+187	4709.75
+187	4714.00
+187	4718.25
+187	4722.50
+188	4710.25
+188	4714.50
+188	4718.75
+188	4723.00
+188	4727.25
+188	4731.50
+188	4735.75
+188	4740.00
+188	4744.25
+188	4748.50
+189	4729.25
+189	4733.50
+189	4737.75
+189	4742.00
+189	4746.25
+189	4750.50
+189	4754.75
+189	4759.00
+189	4763.25
+189	4767.50
+190	4755.25
+190	4759.50
+190	4763.75
+190	4768.00
+190	4772.25
+190	4776.50
+190	4780.75
+190	4785.00
+190	4789.25
+190	4793.50
+191	4781.25
+191	4785.50
+191	4789.75
+191	4794.00
+191	4798.25
+191	4802.50
+191	4806.75
+191	4811.00
+191	4815.25
+191	4819.50
+192	4807.25
+192	4811.50
+192	4815.75
+192	4820.00
+192	4824.25
+192	4828.50
+192	4832.75
+192	4837.00
+192	4841.25
+192	4845.50
+193	4833.25
+193	4837.50
+193	4841.75
+193	4846.00
+193	4850.25
+193	4854.50
+193	4858.75
+193	4863.00
+193	4867.25
+193	4871.50
+194	4859.25
+194	4863.50
+194	4867.75
+194	4872.00
+194	4876.25
+194	4880.50
+194	4884.75
+194	4889.00
+194	4893.25
+194	4897.50
+195	4885.25
+195	4889.50
+195	4893.75
+195	4898.00
+195	4902.25
+195	4906.50
+195	4910.75
+195	4915.00
+195	4919.25
+195	4923.50
+196	4904.25
+196	4908.50
+196	4912.75
+196	4917.00
+196	4921.25
+196	4925.50
+196	4929.75
+196	4934.00
+196	4938.25
+196	4942.50
+197	4930.25
+197	4934.50
+197	4938.75
+197	4943.00
+197	4947.25
+197	4951.50
+197	4955.75
+197	4960.00
+197	4964.25
+197	4968.50
+198	4956.25
+198	4960.50
+198	4964.75
+198	4969.00
+198	4973.25
+198	4977.50
+198	4981.75
+198	4986.00
+198	4990.25
+198	4994.50
+199	4982.25
+199	4986.50
+199	4990.75
+199	4995.00
+199	4999.25
+199	5003.50
+199	5007.75
+199	5012.00
+199	5016.25
+199	5020.50
+200	5008.25
+200	5012.50
+200	5016.75
+200	5021.00
+200	5025.25
+200	5029.50
+200	5033.75
+200	5038.00
+200	5042.25
+200	5046.50
+201	5034.25
+201	5038.50
+201	5042.75
+201	5047.00
+201	5051.25
+201	5055.50
+201	5059.75
+201	5064.00
+201	5068.25
+201	5072.50
+202	5060.25
+202	5064.50
+202	5068.75
+202	5073.00
+202	5077.25
+202	5081.50
+202	5085.75
+202	5090.00
+202	5094.25
+202	5098.50
+203	5079.25
+203	5083.50
+203	5087.75
+203	5092.00
+203	5096.25
+203	5100.50
+203	5104.75
+203	5109.00
+203	5113.25
+203	5117.50
+204	5105.25
+204	5109.50
+204	5113.75
+204	5118.00
+204	5122.25
+204	5126.50
+204	5130.75
+204	5135.00
+204	5139.25
+204	5143.50
+205	5131.25
+205	5135.50
+205	5139.75
+205	5144.00
+205	5148.25
+205	5152.50
+205	5156.75
+205	5161.00
+205	5165.25
+205	5169.50
+206	5157.25
+206	5161.50
+206	5165.75
+206	5170.00
+206	5174.25
+206	5178.50
+206	5182.75
+206	5187.00
+206	5191.25
+206	5195.50
+207	5183.25
+207	5187.50
+207	5191.75
+207	5196.00
+207	5200.25
+207	5204.50
+207	5208.75
+207	5213.00
+207	5217.25
+207	5221.50
+208	5209.25
+208	5213.50
+208	5217.75
+208	5222.00
+208	5226.25
+208	5230.50
+208	5234.75
+208	5239.00
+208	5243.25
+208	5247.50
+209	5235.25
+209	5239.50
+209	5243.75
+209	5248.00
+209	5252.25
+209	5256.50
+209	5260.75
+209	5265.00
+209	5269.25
+209	5273.50
+210	5254.25
+210	5258.50
+210	5262.75
+210	5267.00
+210	5271.25
+210	5275.50
+210	5279.75
+210	5284.00
+210	5288.25
+210	5292.50
+211	5280.25
+211	5284.50
+211	5288.75
+211	5293.00
+211	5297.25
+211	5301.50
+211	5305.75
+211	5310.00
+211	5314.25
+211	5318.50
+212	5306.25
+212	5310.50
+212	5314.75
+212	5319.00
+212	5323.25
+212	5327.50
+212	5331.75
+212	5336.00
+212	5340.25
+212	5344.50
+213	5332.25
+213	5336.50
+213	5340.75
+213	5345.00
+213	5349.25
+213	5353.50
+213	5357.75
+213	5362.00
+213	5366.25
+213	5370.50
+214	5358.25
+214	5362.50
+214	5366.75
+214	5371.00
+214	5375.25
+214	5379.50
+214	5383.75
+214	5388.00
+214	5392.25
+214	5396.50
+215	5384.25
+215	5388.50
+215	5392.75
+215	5397.00
+215	5401.25
+215	5405.50
+215	5409.75
+215	5414.00
+215	5418.25
+215	5422.50
+216	5410.25
+216	5414.50
+216	5418.75
+216	5423.00
+216	5427.25
+216	5431.50
+216	5435.75
+216	5440.00
+216	5444.25
+216	5448.50
+217	5429.25
+217	5433.50
+217	5437.75
+217	5442.00
+217	5446.25
+217	5450.50
+217	5454.75
+217	5459.00
+217	5463.25
+217	5467.50
+218	5455.25
+218	5459.50
+218	5463.75
+218	5468.00
+218	5472.25
+218	5476.50
+218	5480.75
+218	5485.00
+218	5489.25
+218	5493.50
+219	5481.25
+219	5485.50
+219	5489.75
+219	5494.00
+219	5498.25
+219	5502.50
+219	5506.75
+219	5511.00
+219	5515.25
+219	5519.50
+220	5507.25
+220	5511.50
+220	5515.75
+220	5520.00
+220	5524.25
+220	5528.50
+220	5532.75
+220	5537.00
+220	5541.25
+220	5545.50
+221	5533.25
+221	5537.50
+221	5541.75
+221	5546.00
+221	5550.25
+221	5554.50
+221	5558.75
+221	5563.00
+221	5567.25
+221	5571.50
+222	5559.25
+222	5563.50
+222	5567.75
+222	5572.00
+222	5576.25
+222	5580.50
+222	5584.75
+222	5589.00
+222	5593.25
+222	5597.50
+223	5585.25
+223	5589.50
+223	5593.75
+223	5598.00
+223	5602.25
+223	5606.50
+223	5610.75
+223	5615.00
+223	5619.25
+223	5623.50
+224	5604.25
+224	5608.50
+224	5612.75
+224	5617.00
+224	5621.25
+224	5625.50
+224	5629.75
+224	5634.00
+224	5638.25
+224	5642.50
+225	5630.25
+225	5634.50
+225	5638.75
+225	5643.00
+225	5647.25
+225	5651.50
+225	5655.75
+225	5660.00
+225	5664.25
+225	5668.50
+226	5656.25
+226	5660.50
+226	5664.75
+226	5669.00
+226	5673.25
+226	5677.50
+226	5681.75
+226	5686.00
+226	5690.25
+226	5694.50
+227	5682.25
+227	5686.50
+227	5690.75
+227	5695.00
+227	5699.25
+227	5703.50
+227	5707.75
+227	5712.00
+227	5716.25
+227	5720.50
+228	5708.25
+228	5712.50
+228	5716.75
+228	5721.00
+228	5725.25
+228	5729.50
+228	5733.75
+228	5738.00
+228	5742.25
+228	5746.50
+229	5734.25
+229	5738.50
+229	5742.75
+229	5747.00
+229	5751.25
+229	5755.50
+229	5759.75
+229	5764.00
+229	5768.25
+229	5772.50
+230	5760.25
+230	5764.50
+230	5768.75
+230	5773.00
+230	5777.25
+230	5781.50
+230	5785.75
+230	5790.00
+230	5794.25
+230	5798.50
+231	5779.25
+231	5783.50
+231	5787.75
+231	5792.00
+231	5796.25
+231	5800.50
+231	5804.75
+231	5809.00
+231	5813.25
+231	5817.50
+232	5805.25
+232	5809.50
+232	5813.75
+232	5818.00
+232	5822.25
+232	5826.50
+232	5830.75
+232	5835.00
+232	5839.25
+232	5843.50
+233	5831.25
+233	5835.50
+233	5839.75
+233	5844.00
+233	5848.25
+233	5852.50
+233	5856.75
+233	5861.00
+233	5865.25
+233	5869.50
+234	5857.25
+234	5861.50
+234	5865.75
+234	5870.00
+234	5874.25
+234	5878.50
+234	5882.75
+234	5887.00
+234	5891.25
+234	5895.50
+235	5883.25
+235	5887.50
+235	5891.75
+235	5896.00
+235	5900.25
+235	5904.50
+235	5908.75
+235	5913.00
+235	5917.25
+235	5921.50
+236	5909.25
+236	5913.50
+236	5917.75
+236	5922.00
+236	5926.25
+236	5930.50
+236	5934.75
+236	5939.00
+236	5943.25
+236	5947.50
+237	5935.25
+237	5939.50
+237	5943.75
+237	5948.00
+237	5952.25
+237	5956.50
+237	5960.75
+237	5965.00
+237	5969.25
+237	5973.50
+238	5954.25
+238	5958.50
+238	5962.75
+238	5967.00
+238	5971.25
+238	5975.50
+238	5979.75
+238	5984.00
+238	5988.25
+238	5992.50
+239	5980.25
+239	5984.50
+239	5988.75
+239	5993.00
+239	5997.25
+239	6001.50
+239	6005.75
+239	6010.00
+239	6014.25
+239	6018.50
+240	6006.25
+240	6010.50
+240	6014.75
+240	6019.00
+240	6023.25
+240	6027.50
+240	6031.75
+240	6036.00
+240	6040.25
+240	6044.50
+241	6032.25
+241	6036.50
+241	6040.75
+241	6045.00
+241	6049.25
+241	6053.50
+241	6057.75
+241	6062.00
+241	6066.25
+241	6070.50
+242	6058.25
+242	6062.50
+242	6066.75
+242	6071.00
+242	6075.25
+242	6079.50
+242	6083.75
+242	6088.00
+242	6092.25
+242	6096.50
+243	6084.25
+243	6088.50
+243	6092.75
+243	6097.00
+243	6101.25
+243	6105.50
+243	6109.75
+243	6114.00
+243	6118.25
+243	6122.50
+244	6110.25
+244	6114.50
+244	6118.75
+244	6123.00
+244	6127.25
+244	6131.50
+244	6135.75
+244	6140.00
+244	6144.25
+244	6148.50
+245	6129.25
+245	6133.50
+245	6137.75
+245	6142.00
+245	6146.25
+245	6150.50
+245	6154.75
+245	6159.00
+245	6163.25
+245	6167.50
+246	6155.25
+246	6159.50
+246	6163.75
+246	6168.00
+246	6172.25
+246	6176.50
+246	6180.75
+246	6185.00
+246	6189.25
+246	6193.50
+247	6181.25
+247	6185.50
+247	6189.75
+247	6194.00
+247	6198.25
+247	6202.50
+247	6206.75
+247	6211.00
+247	6215.25
+247	6219.50
+248	6207.25
+248	6211.50
+248	6215.75
+248	6220.00
+248	6224.25
+248	6228.50
+248	6232.75
+248	6237.00
+248	6241.25
+248	6245.50
+249	6233.25
+249	6237.50
+249	6241.75
+249	6246.00
+249	6250.25
+249	6254.50
+249	6258.75
+249	6263.00
+249	6267.25
+249	6271.50
+250	6259.25
+250	6263.50
+250	6267.75
+250	6272.00
+250	6276.25
+250	6280.50
+250	6284.75
+250	6289.00
+250	6293.25
+250	6297.50

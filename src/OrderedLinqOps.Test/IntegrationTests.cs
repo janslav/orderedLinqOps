@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Text;
+using FluentAssertions;
 using NUnit.Framework;
 
 namespace OrderedLinqOps.Test
@@ -14,6 +14,8 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_ReadsAndProcessesSortedCsvResults()
         {
+            // Similar to reading a sorted table from a database and grouping rows by customer key.
+            // The input is already sorted by customer_id, so OrderedGroupBy should stream through it in order.
             var rows = LoadOrderRowsFromCsv();
 
             var summary = rows
@@ -34,39 +36,39 @@ namespace OrderedLinqOps.Test
                     Total = group.Sum(r => r.Amount),
                     OrderCount = group.Count()
                 })
-                .OrderBy(x => x.CustomerId)
                 .ToList();
 
-            CollectionAssert.AreEqual(expectedSummary.Select(x => x.CustomerId), summary.Select(x => x.CustomerId));
-            Assert.That(summary.Sum(x => x.Total), Is.EqualTo(rows.Sum(x => x.Amount)).Within(0.01m));
-            Assert.That(summary.Count, Is.EqualTo(250));
+            summary.Should().BeEquivalentTo(expectedSummary, options => options.WithStrictOrdering());
+            summary.Sum(x => x.Total).Should().BeApproximately(rows.Sum(x => x.Amount), 0.01m);
+            summary.Should().HaveCount(250);
         }
 
         [Test]
         public void OrderedLinqOps_ValidatesCsvInputWithOrderedSelect()
         {
+            // Think of this as projecting the rows from a sorted database result set
+            // before passing them downstream, while checking that the order never goes backwards.
             var rows = LoadOrderRowsFromCsv();
 
             var projected = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
                 {
-                    customerId,
-                    row.Region,
-                    row.Amount,
-                    row.Label
+                    CustomerId = customerId,
+                    Amount = row.Amount
                 })
                 .ToList();
 
-            var customerIds = projected.Select(x => x.customerId).ToList();
-            Assert.That(customerIds.Count, Is.EqualTo(rows.Count));
-            Assert.That(customerIds.Zip(customerIds.Skip(1), (previous, current) => previous <= current).All(x => x), Is.True);
-            Assert.That(projected.First().customerId, Is.EqualTo(1));
-            Assert.That(projected.Last().customerId, Is.EqualTo(250));
+            var customerIds = projected.Select(x => x.CustomerId).ToList();
+            customerIds.Should().HaveCount(rows.Count);
+            customerIds.Should().BeInAscendingOrder();
+            projected.First().CustomerId.Should().Be(1);
+            projected.Last().CustomerId.Should().Be(250);
         }
 
         [Test]
         public void OrderedLinqOps_JoinsLargePreSortedDatasets()
         {
+            // Similar to joining two sorted database tables on a primary/foreign key.
             var customers = LoadCustomerProfilesFromCsv();
             var orders = LoadOrderRowsFromCsv();
 
@@ -78,9 +80,7 @@ namespace OrderedLinqOps.Test
                     {
                         customer.CustomerId,
                         customer.Region,
-                        order.OrderId,
-                        order.Amount,
-                        order.Label
+                        order.Amount
                     })
                 .ToList();
 
@@ -92,19 +92,18 @@ namespace OrderedLinqOps.Test
                     {
                         customer.CustomerId,
                         customer.Region,
-                        order.OrderId,
-                        order.Amount,
-                        order.Label
+                        order.Amount
                     })
                 .ToList();
 
-            CollectionAssert.AreEquivalent(expectedJoined, actualJoined);
-            Assert.That(actualJoined.Count, Is.EqualTo(orders.Count));
+            actualJoined.Should().BeEquivalentTo(expectedJoined, options => options.WithStrictOrdering());
+            actualJoined.Should().HaveCount(orders.Count);
         }
 
         [Test]
         public void OrderedLinqOps_GroupJoinsLargePreSortedDatasets()
         {
+            // Similar to a LEFT OUTER JOIN in SQL where each customer still appears even without orders.
             var customers = LoadCustomerProfilesFromCsv();
             var orders = LoadOrderRowsFromCsv();
 
@@ -134,22 +133,21 @@ namespace OrderedLinqOps.Test
                     })
                 .ToList();
 
-            CollectionAssert.AreEquivalent(expectedGrouped, actualGrouped);
-            Assert.That(actualGrouped.Count, Is.EqualTo(customers.Count));
-            Assert.That(actualGrouped.Sum(x => x.TotalAmount), Is.EqualTo(orders.Sum(x => x.Amount)).Within(0.01m));
+            actualGrouped.Should().BeEquivalentTo(expectedGrouped, options => options.WithStrictOrdering());
+            actualGrouped.Should().HaveCount(customers.Count);
+            actualGrouped.Sum(x => x.TotalAmount).Should().BeApproximately(orders.Sum(x => x.Amount), 0.01m);
         }
 
         [Test]
         public void OrderedLinqOps_StreamingPipelineUsesMultipleOperatorsOnLargeSortedDataset()
         {
+            // Like a database pipeline: read sorted rows, filter/project them, then aggregate by customer.
             var rows = LoadOrderRowsFromCsv();
 
             var pipeline = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
                 {
                     CustomerId = customerId,
-                    row.Region,
-                    row.Label,
                     row.Amount
                 })
                 .OrderedGroupBy(x => x.CustomerId, x => x.Amount)
@@ -162,7 +160,6 @@ namespace OrderedLinqOps.Test
                 .ToList();
 
             var expectedPipeline = rows
-                .Select(r => new { CustomerId = r.CustomerId, Region = r.Region, Label = r.Label, Amount = r.Amount })
                 .GroupBy(x => x.CustomerId)
                 .Select(group => new
                 {
@@ -170,14 +167,13 @@ namespace OrderedLinqOps.Test
                     TotalAmount = group.Sum(x => x.Amount),
                     AverageAmount = group.Average(x => x.Amount)
                 })
-                .OrderBy(x => x.CustomerId)
                 .ToList();
 
-            Assert.That(pipeline.Count, Is.EqualTo(250));
-            Assert.That(pipeline.Sum(x => x.TotalAmount), Is.EqualTo(rows.Sum(x => x.Amount)).Within(0.01m));
-            Assert.That(pipeline[0].CustomerId, Is.EqualTo(1));
-            Assert.That(pipeline[^1].CustomerId, Is.EqualTo(250));
-            CollectionAssert.AreEquivalent(expectedPipeline.Select(x => x.CustomerId), pipeline.Select(x => x.CustomerId));
+            pipeline.Should().BeEquivalentTo(expectedPipeline, options => options.WithStrictOrdering());
+            pipeline.Should().HaveCount(250);
+            pipeline.Sum(x => x.TotalAmount).Should().BeApproximately(rows.Sum(x => x.Amount), 0.01m);
+            pipeline.First().CustomerId.Should().Be(1);
+            pipeline.Last().CustomerId.Should().Be(250);
         }
 
         private static List<OrderRow> LoadOrderRowsFromCsv()
@@ -202,11 +198,8 @@ namespace OrderedLinqOps.Test
                     var parts = line.Split('\t');
                     return new CustomerProfile(
                         CustomerId: int.Parse(parts[0], CultureInfo.InvariantCulture),
-                        Region: parts[1],
-                        Segment: parts[2],
-                        Balance: decimal.Parse(parts[3], CultureInfo.InvariantCulture));
+                        Region: parts[1]);
                 })
-                .OrderBy(x => x.CustomerId)
                 .ToList();
         }
 
@@ -220,18 +213,14 @@ namespace OrderedLinqOps.Test
                     var parts = line.Split('\t');
                     return new OrderRow(
                         CustomerId: int.Parse(parts[0], CultureInfo.InvariantCulture),
-                        OrderId: int.Parse(parts[1], CultureInfo.InvariantCulture),
-                        Region: parts[2],
-                        Amount: decimal.Parse(parts[3], CultureInfo.InvariantCulture),
-                        Label: parts[4]);
+                        Amount: decimal.Parse(parts[1], CultureInfo.InvariantCulture));
                 })
                 .OrderBy(x => x.CustomerId)
-                .ThenBy(x => x.OrderId)
                 .ToList();
         }
 
-        private sealed record OrderRow(int CustomerId, int OrderId, string Region, decimal Amount, string Label);
+        private sealed record OrderRow(int CustomerId, decimal Amount);
 
-        private sealed record CustomerProfile(int CustomerId, string Region, string Segment, decimal Balance);
+        private sealed record CustomerProfile(int CustomerId, string Region);
     }
 }
