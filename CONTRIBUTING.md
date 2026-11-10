@@ -104,8 +104,8 @@ public class OrderedGroupByTests
     {
         var input = new[] { (key: 1, value: "a"), (key: 3, value: "b"), (key: 2, value: "c") };
         
-        var ex = Assert.ThrowsAsync<ArgumentException>(async () =>
-            await input.OrderedGroupBy(x => x.key).ToListAsync());
+        var ex = Assert.Throws<ArgumentException>(() =>
+            input.OrderedGroupBy(x => x.key).ToList());
         Assert.That(ex.Message, Contains.Substring("not ordered"));
     }
 }
