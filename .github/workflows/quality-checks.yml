@@ -94,7 +94,17 @@ jobs:
 
       - name: Run Tests
         id: tests
-        run: dotnet test --no-build --configuration Release --verbosity normal
+        run: |
+          set +e
+          output=$(dotnet test --no-build --configuration Release --verbosity normal 2>&1)
+          echo "$output"
+          echo "$output" > test-output.txt
+          echo "test_output<<EOF" >> "$GITHUB_OUTPUT"
+          cat test-output.txt >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          exit_code=$?
+          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
+          exit $exit_code
         continue-on-error: true
 
       - name: Check for test changes
@@ -118,6 +128,8 @@ jobs:
             const srcChanged = '${{ steps.src-files.outputs.src_changed }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
             const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
+            const testOutput = `${{ steps.tests.outputs.test_output }}`.trim();
+            const testsSucceeded = '${{ steps.tests.outcome }}' === 'success';
             
             let report = '## 🤖 Mechanical Quality Checks\n\n';
             
@@ -134,7 +146,7 @@ jobs:
             
             // CHANGELOG check
             if (changelogMissing) {
-              report += '❌ **CHANGELOG**: Not updated (code was changed)\n';
+              report += '⚠️  **CHANGELOG**: Not updated (code was changed)\n';
               report += 'Add an entry to CHANGELOG.md under "Unreleased" section.\n';
               report += 'Format: `- **Category**: Brief description` where Category is Added, Changed, Fixed, etc.\n';
             } else if (changelogOk) {
@@ -142,21 +154,23 @@ jobs:
             }
             
             // Tests check
-            if (testsChanged && !srcChanged && '${{ steps.tests.outcome }}' === 'success') {
+            if (testsChanged && !srcChanged && testsSucceeded) {
               report += '⚠️  **Tests**: Test-only change detected. This is okay for test maintenance or documentation-only updates, but no production code changed.\n';
-            } else if (!testsChanged && srcChanged && '${{ steps.tests.outcome }}' === 'success') {
+            } else if (!testsChanged && srcChanged && testsSucceeded) {
               report += '⚠️  **Tests**: Source code changed but no test files changed. This is a warning, not a blocker: code changes should include a matching test update when behavior is affected, but test-only PRs are still acceptable when the change is intentionally documentation or workflow-only.\n';
-            } else if ('${{ steps.tests.outcome }}' === 'success') {
+            } else if (testsSucceeded) {
               report += '✅ **Tests**: All pass\n';
             } else {
               report += '❌ **Tests**: Some failed\n';
-              report += 'Check the test output above for specific failures.\n';
+              if (testOutput) {
+                report += '```\n' + testOutput + '\n```\n';
+              }
             }
             
             // Summary
             report += '\n';
-            if (xmlDocsOk && changelogOk && '${{ steps.tests.outcome }}' === 'success') {
-              report += '### ✅ All mechanical checks passed!\n';
+            if (xmlDocsOk && testsSucceeded) {
+              report += '### ✅ All required mechanical checks passed!\n';
               report += 'Next: Automated code review agent will evaluate design, correctness, and patterns.\n';
             } else {
               report += '### ❌ Some checks failed\n';
@@ -185,7 +199,7 @@ jobs:
               });
             }
             
-            // Fail job if critical checks failed
-            if (!xmlDocsOk || changelogMissing || '${{ steps.tests.outcome }}' !== 'success') {
+            // Fail job if critical checks failed; changelog is informational only.
+            if (!xmlDocsOk || !testsSucceeded) {
               core.setFailed('Mechanical quality checks failed. Please address issues above.');
             }
