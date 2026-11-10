@@ -10,8 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
+      issues: write
 
     steps:
       - name: Checkout code
