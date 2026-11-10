@@ -218,9 +218,7 @@ All checks must pass before merging.
 ## Development Setup
 
 ### Prerequisites
-- [.NET SDK 8.0](https://dotnet.microsoft.com/download) or later
-- .NET 6.0 runtime (for testing multi-target)
-
+- [.NET SDK 10.0](https://dotnet.microsoft.com/download) or later
 ### Build
 ```bash
 dotnet restore
