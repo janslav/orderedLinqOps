@@ -14,10 +14,10 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_ReadsAndProcessesSortedCsvResults()
         {
-            // Similar to reading a sorted table from a database and grouping rows by customer key.
-            // The input is already sorted by customer_id, so OrderedGroupBy should stream through it in order.
             var rows = LoadOrderRowsFromCsv();
 
+            // Similar to reading a sorted table from a database and grouping rows by customer key.
+            // Each customer may contribute multiple order rows, and OrderedGroupBy streams through the ordered stream.
             var summary = rows
                 .OrderedGroupBy(r => r.CustomerId, r => r.Amount)
                 .Select(group => new
@@ -39,17 +39,17 @@ namespace OrderedLinqOps.Test
                 .ToList();
 
             summary.Should().BeEquivalentTo(expectedSummary, options => options.WithStrictOrdering());
-            summary.Sum(x => x.Total).Should().BeApproximately(rows.Sum(x => x.Amount), 0.01m);
-            summary.Should().HaveCount(250);
+            summary.Sum(x => x.Total).Should().Be(rows.Sum(x => x.Amount));
+            summary.Should().HaveCount(150);
         }
 
         [Test]
         public void OrderedLinqOps_ValidatesCsvInputWithOrderedSelect()
         {
-            // Think of this as projecting the rows from a sorted database result set
-            // before passing them downstream, while checking that the order never goes backwards.
             var rows = LoadOrderRowsFromCsv();
 
+            // Think of this as projecting the rows from a sorted database result set
+            // before passing them downstream, while checking that the order never goes backwards.
             var projected = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
                 {
@@ -68,10 +68,10 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_JoinsLargePreSortedDatasets()
         {
-            // Similar to joining two sorted database tables on a primary/foreign key.
             var customers = LoadCustomerProfilesFromCsv();
             var orders = LoadOrderRowsFromCsv();
 
+            // Similar to joining two sorted database tables on a primary/foreign key.
             var actualJoined = orders
                 .OrderedJoin(customers,
                     order => order.CustomerId,
@@ -103,10 +103,10 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_GroupJoinsLargePreSortedDatasets()
         {
-            // Similar to a LEFT OUTER JOIN in SQL where each customer still appears even without orders.
             var customers = LoadCustomerProfilesFromCsv();
             var orders = LoadOrderRowsFromCsv();
 
+            // Similar to a LEFT OUTER JOIN in SQL where some customers have no matching orders at all.
             var actualGrouped = customers
                 .OrderedGroupJoin(orders,
                     customer => customer.CustomerId,
@@ -135,15 +135,15 @@ namespace OrderedLinqOps.Test
 
             actualGrouped.Should().BeEquivalentTo(expectedGrouped, options => options.WithStrictOrdering());
             actualGrouped.Should().HaveCount(customers.Count);
-            actualGrouped.Sum(x => x.TotalAmount).Should().BeApproximately(orders.Sum(x => x.Amount), 0.01m);
+            actualGrouped.Sum(x => x.TotalAmount).Should().Be(orders.Sum(x => x.Amount));
         }
 
         [Test]
         public void OrderedLinqOps_StreamingPipelineUsesMultipleOperatorsOnLargeSortedDataset()
         {
-            // Like a database pipeline: read sorted rows, filter/project them, then aggregate by customer.
             var rows = LoadOrderRowsFromCsv();
 
+            // Like a database pipeline: read sorted rows, project them, then aggregate by customer.
             var pipeline = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
                 {
@@ -170,8 +170,8 @@ namespace OrderedLinqOps.Test
                 .ToList();
 
             pipeline.Should().BeEquivalentTo(expectedPipeline, options => options.WithStrictOrdering());
-            pipeline.Should().HaveCount(250);
-            pipeline.Sum(x => x.TotalAmount).Should().BeApproximately(rows.Sum(x => x.Amount), 0.01m);
+            pipeline.Should().HaveCount(150);
+            pipeline.Sum(x => x.TotalAmount).Should().Be(rows.Sum(x => x.Amount));
             pipeline.First().CustomerId.Should().Be(1);
             pipeline.Last().CustomerId.Should().Be(250);
         }
