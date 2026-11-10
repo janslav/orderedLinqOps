@@ -21,4 +21,14 @@
   <ItemGroup>
     <ProjectReference Include="..\OrderedLinqOps\OrderedLinqOps.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentAssertions" Version="8.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\*.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

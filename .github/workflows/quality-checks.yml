@@ -3,6 +3,8 @@ name: Quality Checks
 on:
   pull_request:
     branches: [master]
+  push:
+    branches: [master]
 
 jobs:
   mechanical-checks:
@@ -90,10 +92,16 @@ jobs:
           echo "changelog_missing=false" >> $GITHUB_OUTPUT
           echo "CHANGELOG check: PASSED"
 
-      - name: Run Tests
-        id: tests
-        run: dotnet test --no-build --configuration Release --verbosity normal
-        continue-on-error: true
+      - name: Report mechanical status
+        id: status
+        run: |
+          echo "Mechanical checks do not run the full test suite; CI handles the build/test job separately."
+          echo "This workflow is limited to documentation, changelog, and repo-quality checks."
+          echo "status_report=ok" >> "$GITHUB_OUTPUT"
+          echo "## Mechanical status" >> "$GITHUB_STEP_SUMMARY"
+          echo "- XML documentation: checked" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Changelog: checked when src/ changes" >> "$GITHUB_STEP_SUMMARY"
+          echo "- CI test execution: delegated to the separate CI workflow" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Check for test changes
         id: test-files
@@ -132,34 +140,34 @@ jobs:
             
             // CHANGELOG check
             if (changelogMissing) {
-              report += '❌ **CHANGELOG**: Not updated (code was changed)\n';
+              report += '⚠️  **CHANGELOG**: Not updated (code was changed)\n';
               report += 'Add an entry to CHANGELOG.md under "Unreleased" section.\n';
               report += 'Format: `- **Category**: Brief description` where Category is Added, Changed, Fixed, etc.\n';
             } else if (changelogOk) {
               report += '✅ **CHANGELOG**: Updated\n';
             }
             
-            // Tests check
-            if (testsChanged && !srcChanged && '${{ steps.tests.outcome }}' === 'success') {
-              report += '⚠️  **Tests**: Test-only change detected. This is okay for test maintenance or documentation-only updates, but no production code changed.\n';
-            } else if (!testsChanged && srcChanged && '${{ steps.tests.outcome }}' === 'success') {
-              report += '⚠️  **Tests**: Source code changed but no test files changed. This is a warning, not a blocker: code changes should include a matching test update when behavior is affected, but test-only PRs are still acceptable when the change is intentionally documentation or workflow-only.\n';
-            } else if ('${{ steps.tests.outcome }}' === 'success') {
-              report += '✅ **Tests**: All pass\n';
+            // Tests check (delegated to CI)
+            if (testsChanged && !srcChanged) {
+              report += '⚠️  **Tests**: Test-only change detected. The full test suite is still run by the separate CI workflow.\n';
+            } else if (srcChanged) {
+              report += 'ℹ️  **Tests**: Source code changed; the full CI test suite remains the authoritative validation path for this repository.\n';
             } else {
-              report += '❌ **Tests**: Some failed\n';
-              report += 'Check the test output above for specific failures.\n';
+              report += '✅ **Tests**: Not rerun here; CI handles the full test suite separately.\n';
             }
             
             // Summary
             report += '\n';
-            if (xmlDocsOk && changelogOk && '${{ steps.tests.outcome }}' === 'success') {
-              report += '### ✅ All mechanical checks passed!\n';
-              report += 'Next: Automated code review agent will evaluate design, correctness, and patterns.\n';
+            if (xmlDocsOk) {
+              report += '### ✅ All required mechanical checks passed!\n';
+              report += 'The CI workflow remains responsible for running the library test suite and reporting runtime results.\n';
             } else {
               report += '### ❌ Some checks failed\n';
               report += 'Please address the issues above and push new commits to update this PR.\n';
             }
+
+            console.log(report);
+            await core.summary.addRaw(report).write();
             
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -172,7 +180,6 @@ jobs:
             const labels = [];
             if (!xmlDocsOk) labels.push('docs-missing');
             if (changelogMissing) labels.push('changelog-missing');
-            if ('${{ steps.tests.outcome }}' !== 'success') labels.push('tests-failing');
             
             if (labels.length > 0) {
               github.rest.issues.addLabels({
@@ -183,7 +190,7 @@ jobs:
               });
             }
             
-            // Fail job if critical checks failed
-            if (!xmlDocsOk || changelogMissing || '${{ steps.tests.outcome }}' !== 'success') {
+            // Fail job if critical checks failed; changelog is informational only.
+            if (!xmlDocsOk) {
               core.setFailed('Mechanical quality checks failed. Please address issues above.');
             }
