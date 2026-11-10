@@ -3,10 +3,6 @@ name: Quality Checks
 on:
   pull_request:
     branches: [master]
-    paths:
-      - 'src/**'
-      - 'CHANGELOG.md'
-      - '.github/workflows/quality-checks.yml'
 
 jobs:
   mechanical-checks:
@@ -26,7 +22,7 @@ jobs:
       - name: Set up .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '8.0.x'
+          dotnet-version: '10.0.x'
           dotnet-quality: ga
 
       - name: Restore dependencies
