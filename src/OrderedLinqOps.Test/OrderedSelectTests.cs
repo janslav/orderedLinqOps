@@ -34,7 +34,7 @@ namespace OrderedLinqOps.Test
 
             var ex = Assert.Throws<ArgumentException>(() => input.OrderedSelect(i => i, (i, j) => j * i).ToList());
 
-            Assert.That(ex!.Message, Does.Contain("At position 3 (zero-based index 2)"));
+            Assert.That(ex!.Message, Does.Contain("At zero-based index 2"));
             Assert.That(ex.Message, Does.Contain("previous key was '3', but current key is '2'"));
             Assert.That(ex.Message, Does.Contain("comparer.Compare(current, previous) = -1"));
             Assert.That(ex.Message, Does.Contain("Comparer:"));
