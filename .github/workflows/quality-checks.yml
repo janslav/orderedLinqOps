@@ -39,13 +39,18 @@ jobs:
         id: xml-docs
         run: |
           set +e
-          output=$(dotnet build -p:DocumentationFile=obj/Debug/OrderedLinqOps.xml -p:TreatWarningsAsErrors=true 2>&1 | grep -i "xml\|documentation" || true)
-          if [ -z "$output" ]; then
+          # Build and capture warnings about missing XML docs (CS1591)
+          output=$(dotnet build -p:DocumentationFile=obj/Debug/OrderedLinqOps.xml -p:TreatWarningsAsErrors=true 2>&1)
+          xml_issues=$(echo "$output" | grep -E "CS1591|XML documentation" || true)
+          
+          if [ -z "$xml_issues" ]; then
             echo "XML documentation check: PASSED ✓"
             echo "xml_docs_ok=true" >> $GITHUB_OUTPUT
           else
             echo "XML documentation check: FAILED ✗"
-            echo "xml_docs_output=$output" >> $GITHUB_OUTPUT
+            echo "xml_docs_output<<EOF" >> $GITHUB_OUTPUT
+            echo "$xml_issues" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
             echo "xml_docs_ok=false" >> $GITHUB_OUTPUT
           fi
           set -e
@@ -94,20 +99,26 @@ jobs:
             const changelogOk = '${{ steps.changelog.outputs.changelog_ok }}' === 'true';
             const changelogMissing = '${{ steps.changelog.outputs.changelog_missing }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
+            const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
             
-            let report = '## 🔍 Mechanical Quality Checks\n\n';
+            let report = '## 🤖 Mechanical Quality Checks\n\n';
             
             // XML Documentation check
             if (xmlDocsOk) {
               report += '✅ **XML Documentation**: All public APIs properly documented\n';
             } else {
-              report += '❌ **XML Documentation**: Missing or incomplete. Ensure all public methods have `<summary>`, `<param>`, `<returns>`, and `<exception>` tags.\n';
+              report += '❌ **XML Documentation**: Missing or incomplete\n';
+              if (xmlDocsOutput) {
+                report += '```\n' + xmlDocsOutput + '\n```\n';
+                report += 'Add `<summary>`, `<param>`, `<returns>`, and `<exception>` tags to all public APIs.\n';
+              }
             }
             
             // CHANGELOG check
             if (changelogMissing) {
-              report += '❌ **CHANGELOG**: Not updated. Please add an entry to CHANGELOG.md under the "Unreleased" section.\n';
-              report += '   Format: `- **Category**: Brief description` where Category is Added, Changed, Fixed, etc.\n';
+              report += '❌ **CHANGELOG**: Not updated (code was changed)\n';
+              report += 'Add an entry to CHANGELOG.md under "Unreleased" section.\n';
+              report += 'Format: `- **Category**: Brief description` where Category is Added, Changed, Fixed, etc.\n';
             } else if (changelogOk) {
               report += '✅ **CHANGELOG**: Updated\n';
             }
@@ -118,14 +129,15 @@ jobs:
             } else if ('${{ steps.tests.outcome }}' === 'success') {
               report += '✅ **Tests**: All pass\n';
             } else {
-              report += '❌ **Tests**: Some failed. See test output above.\n';
+              report += '❌ **Tests**: Some failed\n';
+              report += 'Check the test output above for specific failures.\n';
             }
             
             // Summary
             report += '\n';
             if (xmlDocsOk && changelogOk && '${{ steps.tests.outcome }}' === 'success') {
               report += '### ✅ All mechanical checks passed!\n';
-              report += 'Next: Automated code review agent will evaluate design, performance, and compatibility.\n';
+              report += 'Next: Automated code review agent will evaluate design, correctness, and patterns.\n';
             } else {
               report += '### ❌ Some checks failed\n';
               report += 'Please address the issues above and push new commits to update this PR.\n';

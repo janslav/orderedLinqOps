@@ -1,207 +1,257 @@
-# Code Review Checklist
+# Code Review Checklist for OrderedLinqOps
 
-Use this checklist when reviewing pull requests for OrderedLinqOps. This applies to both human reviewers and automated code review agents.
+Use this checklist when reviewing pull requests. This focuses on **code quality** checks—mechanical checks are pre-screened by CI.
 
-## Documentation & Communication
+---
 
-- [ ] PR title clearly describes the change (use Conventional Commits format)
-- [ ] PR description explains *why* the change is needed
-- [ ] PR description explains *what* changed
-- [ ] PR description explains *how* it was tested
-- [ ] Any breaking changes are clearly highlighted
-- [ ] Related issues are linked (e.g., "Closes #123")
+## 🤖 Pre-Screened by CI (Not Your Job)
 
-## CHANGELOG
+Before this checklist, the bot has already verified:
+- ✅ Build compiles
+- ✅ All tests pass
+- ✅ XML documentation file exists
+- ✅ CHANGELOG.md is updated (if code changed)
+- ✅ Labels applied for any failures
 
-- [ ] CHANGELOG.md has been updated in "Unreleased" section
-- [ ] CHANGELOG entry is accurate and describes user-facing changes
-- [ ] CHANGELOG uses appropriate category (Added, Changed, Fixed, etc.)
-- [ ] For bug fixes: root cause is explained (if complex)
+**If these fail**, the PR is blocked. No need to review further until they pass.
 
-## Code Quality & Standards
+The agent's job starts here: evaluate code *quality*, not just pass/fail mechanics.
 
-### XML Documentation
-- [ ] All public methods have complete XML documentation
-- [ ] All public types have `<summary>` documentation
-- [ ] All `<typeparam>`, `<param>`, and `<returns>` are documented
-- [ ] All possible exceptions have `<exception>` entries
-- [ ] `<remarks>` explain important behaviors (buffering, streaming, ordering validation)
-- [ ] Documentation is accurate and matches implementation
+---
 
-### Comments & Clarity
-- [ ] Inline comments explain **why** (not **what** the code does)
-- [ ] Comments reference relevant GitHub issues for complex logic
-- [ ] No stale or outdated comments (comments match current code behavior)
-- [ ] Code is clear enough that unnecessary comments have been removed
-- [ ] TODO/FIXME markers are justified and linked to issues if possible
+## A. Documentation Quality ⭐ (Critical)
 
-### Design & Pattern Compliance
-- [ ] For new operators: follows existing OrderedLinqOps patterns
-- [ ] Method names follow LINQ conventions (`OrderedGroupBy`, `OrderedJoin`, etc.)
-- [ ] Overloads are consistent with similar LINQ operators
-- [ ] `IComparer<TKey>?` is used correctly for optional comparers
-- [ ] Default comparer is `Comparer<TKey>.Default`
+### XML Docs: Complete & Accurate
+- [ ] `<summary>`: Clear, concise description
+- [ ] `<param>`: Every parameter documented with its role
+- [ ] `<returns>`: Explains what is returned and *how* (streaming vs buffered)
+- [ ] `<exception>`: Lists exceptions with *when* they occur
+  - Example: "when input is unsorted" (not just "ArgumentException")
+- [ ] `<remarks>`: Explains important behaviors (streaming strategy, ordering assumptions, performance)
+- [ ] Documentation **matches implementation** (not generic or outdated)
 
-## Correctness & Behavior
+### Comments: Fresh & Accurate
+- [ ] Comments explain *why* not *what* the code does
+- [ ] **NO stale comments** (if code changed, comments must be updated or removed) ⚠️ **CRITICAL**
+- [ ] Complex logic is documented
+- [ ] Ordering assumptions documented
+- [ ] Performance considerations documented
+
+### Examples & Remarks
+- [ ] For complex operators: usage examples in remarks
+- [ ] Edge cases explained
+- [ ] Known limitations documented
+
+---
+
+## B. Correctness & Behavior ⭐ (Critical)
+
+### Streaming Compliance (Memory Efficiency)
+- [ ] **NO unnecessary buffering** (no `ToList()`, `ToArray()` unless intentional)
+- [ ] Results are yielded as items are processed
+- [ ] Iterator pattern used properly:
+  ```csharp
+  using (var iterator = source.GetEnumerator())
+  {
+      while (iterator.MoveNext())
+      {
+          yield return ProcessItem(iterator.Current);
+      }
+  }
+  ```
+- [ ] Only intentional buffering (e.g., `OrderedGroupBy`) is documented
 
 ### Ordering Validation
-- [ ] Input ordering is validated during iteration (not upfront)
-- [ ] `ArgumentException` is thrown with descriptive message for unsorted input
-- [ ] Error messages include actual key values and comparison results
-- [ ] Error messages suggest remedies (e.g., "Use .OrderBy(keySelector) to pre-sort")
+- [ ] Validation happens *during iteration* (not upfront)
+- [ ] Throws `ArgumentException` when ordering is violated
+- [ ] Error message includes:
+  - Current position/key
+  - Previous key value
+  - Current key value
+  - Suggestion to fix it
+  - Example: "At position 5: previous key was 10, current key is 8. Use .OrderBy() to pre-sort."
+- [ ] Respects the provided `IComparer<TKey>`
 
-### Streaming & Memory
-- [ ] **CRITICAL**: Operator does NOT buffer unnecessary data in memory
-- [ ] Results are yielded as soon as they are available (streaming behavior)
-- [ ] Only intentional buffering (e.g., groups in `OrderedGroupBy`) exists
-- [ ] No large intermediate collections are created unnecessarily
-
-### Multi-Target Compatibility
-- [ ] Code compiles for all targets: .NET Standard 2.0, 2.1, .NET 6.0, .NET 8.0
-- [ ] No platform-specific APIs used without conditional compilation
-- [ ] Tests pass on all target frameworks
-- [ ] Appropriate `#if` directives used if framework-specific code is needed
+### Edge Cases
+- [ ] Empty sequences handled correctly
+- [ ] Single-item sequences handled correctly
+- [ ] Null inputs properly rejected with `ArgumentNullException`
+- [ ] Duplicate keys handled correctly (if relevant)
+- [ ] Large sequences handled efficiently
 
 ### Backward Compatibility
-- [ ] No breaking changes to public API (if patch/minor version)
-- [ ] Existing overloads are not modified (new overloads OK)
-- [ ] Public method signatures remain compatible
-- [ ] Exception types thrown remain the same or are subsets
-- [ ] Behavior is backward compatible (no changes to semantics)
-
-## Testing
-
-- [ ] Tests are included for new functionality
-- [ ] Bug fixes include a test that reproduces the issue
-- [ ] Tests are comprehensive (normal cases + edge cases)
-- [ ] Tests cover error conditions and exceptions
-- [ ] Tests include validation of streaming behavior (not collecting all items)
-- [ ] Tests verify all target frameworks work correctly
-- [ ] Code coverage is ≥ 85% (codecov report should show this)
-- [ ] No tests are skipped or marked as pending
-- [ ] Test names are clear and descriptive
-- [ ] Tests use NUnit conventions
-
-## Performance
-
-- [ ] No performance regressions (especially critical for streaming operators)
-- [ ] Memory allocations are minimized
-- [ ] Algorithm complexity is reasonable for typical use cases
-- [ ] For significant changes: benchmarks have been run (see #13)
-- [ ] Large dataset testing has been considered (1M+ rows)
-
-## File Organization & Naming
-
-- [ ] Files follow repository naming conventions
-- [ ] Related overloads are kept in the same file
-- [ ] No unnecessary file reorganization (unless that's the PR's purpose)
-- [ ] File paths are clear and organized by functionality
-
-## Integration
-
-- [ ] Dependencies are appropriate and minimal
-- [ ] No unnecessary external package additions
-- [ ] LGPL-3.0 license compatibility is maintained
-- [ ] Existing functionality is not broken
-
-## Security
-
-- [ ] No hardcoded secrets, API keys, or credentials
-- [ ] Input validation is present where needed
-- [ ] No unsafe code without justification
-- [ ] No SQL injection or similar injection vulnerabilities
-- [ ] Error messages don't leak sensitive information
-
-## Final Checks
-
-- [ ] PR is in "Ready for Review" state (not Draft)
-- [ ] All requested changes have been addressed
-- [ ] Code review history shows constructive feedback resolution
-- [ ] No merge conflicts
-- [ ] Branch is up-to-date with `master`
+- [ ] No changes to existing public API signatures
+- [ ] New overloads only (additions OK, breaking changes NOT OK)
+- [ ] Existing behavior unchanged
+- [ ] Exception types remain compatible
 
 ---
 
-## Review Guidelines
+## C. Multi-Target Compatibility ⭐ (Critical)
 
-### For Automated Mechanical Checks
-Focus on:
-1. CHANGELOG.md presence and format
-2. XML documentation completeness
-3. Test file presence and updates
-4. File naming conventions
-
-### For Automated Agent Review
-Focus on:
-1. Code quality and design patterns
-2. Streaming/memory efficiency
-3. Multi-target compatibility
-4. Backward compatibility
-5. Comment accuracy (especially for performance-critical code)
-6. OrderedLinqOps pattern adherence
-
-### For Human Review
-Focus on:
-1. Conceptual correctness and approach
-2. Performance implications
-3. Design decisions and trade-offs
-4. API surface consistency
-5. Final approval and sign-off
+- [ ] No framework-specific breaks across .NET Standard 2.0, 2.1, .NET 6.0, 8.0
+- [ ] No .NET 6+ syntax in .NET Standard code
+- [ ] Conditional compilation used properly if framework-specific APIs needed:
+  ```csharp
+  #if NETSTANDARD2_0
+      var result = source.Where(x => x != null);
+  #else
+      var result = source.Where(x => x is not null);
+  #endif
+  ```
+- [ ] Type constraints work across all targets
 
 ---
 
-## Common Issues to Watch For
+## D. Performance & Memory ⭐ (Critical)
 
-### Streaming Violations
-❌ **Bad**: Collecting all items to sort them first
+- [ ] **No unexpected allocations**:
+  - Enumerators reused, not recreated per iteration
+  - Comparers cached, not recreated
+  - No LINQ chains that re-enumerate
+  - Lambdas not captured unnecessarily
+
+- [ ] **Algorithm efficiency**:
+  - Time complexity matches operator's intent
+  - Acceptable performance for large datasets (1M+ items)
+  - Sorted input is leveraged (not ignored)
+
+- [ ] **Memory footprint**:
+  - Streaming = O(1) memory (not O(n))
+  - No hidden buffers or caches
+  - Minimal enumerator state
+
+---
+
+## E. Pattern Compliance ⭐ (Critical)
+
+### Follows OrderedLinqOps Conventions
+- [ ] Extension method on `IEnumerable<T>` (or `IOrderedEnumerable<T>`)
+- [ ] Generic parameters: `<TSource, TKey, TResult>` (or subset)
+- [ ] Method name matches LINQ conventions
+- [ ] `IComparer<TKey>? comparer = null` parameter (defaults to `Comparer<TKey>.Default`)
+
+### Consistent with Existing Operators
+- [ ] Similar operators have matching signatures
+- [ ] Null handling: `ArgumentNullException` for required params
+- [ ] Parameter order matches pattern
+- [ ] Exception types match pattern
+
+Standard pattern to follow:
 ```csharp
-var sorted = source.OrderBy(x => x).ToList();
-foreach (var item in sorted) { ... }
+public static IEnumerable<TResult> OperatorName<TSource, TKey, TResult>(
+    this IEnumerable<TSource> source,
+    Func<TSource, TKey> keySelector,
+    IComparer<TKey>? comparer = null)
+{
+    if (source == null) throw new ArgumentNullException(nameof(source));
+    if (keySelector == null) throw new ArgumentNullException(nameof(keySelector));
+    
+    comparer ??= Comparer<TKey>.Default;
+    
+    // Streaming implementation
+}
 ```
 
-✅ **Good**: Trusting input is already sorted
+---
+
+## F. Testing Quality ⭐ (Critical)
+
+- [ ] **Normal cases**: Typical usage patterns tested
+- [ ] **Edge cases**: Empty sequences, single items, large datasets
+- [ ] **Error conditions**: Null inputs, unsorted input, invalid parameters
+- [ ] **All exception paths**: Every `throw` statement should have a test
+- [ ] **Streaming behavior verified**: Tests check iteration count or lazy evaluation (not collecting all items)
+- [ ] **Multi-target**: Tests pass on all frameworks (.NET Standard 2.0, 2.1, .NET 6.0, 8.0)
+- [ ] **Coverage ≥ 85%**: Codecov report should show adequate coverage
+
+Example test pattern:
 ```csharp
-foreach (var item in source) { ... }
+[TestMethod]
+public void OrderedDistinct_WithSortedInput_ReturnsUniqueItems()
+{
+    var input = new[] { 1, 1, 2, 2, 3, 3 };
+    var result = input.OrderedDistinct().ToList(); // OK to call ToList() in test
+    
+    CollectionAssert.AreEqual(new[] { 1, 2, 3 }, result);
+}
 ```
 
-### Stale Comments
-❌ **Bad**: Old comment that no longer matches code
-```csharp
-// Only handle the first item
-while (iterator.MoveNext()) // But we loop over ALL items now!
+---
+
+## Common Issues to Watch
+
+### 🚩 Critical Blockers (Request Changes)
+- Breaks streaming by buffering (ToList, ToArray, etc.)
+- Missing or incorrect ordering validation
+- Breaking change to public API
+- **Stale or misleading comments** (**comments MUST stay fresh**)
+- Pattern inconsistency with existing operators
+- Multi-target compatibility broken
+- Backward compatibility violated
+
+### ⚠️ High Priority (Request Changes)
+- XML docs incomplete or inaccurate
+- Performance regression detected
+- Error messages missing or unhelpful
+- Edge cases not tested
+
+### 💡 Suggestions (Comment only)
+- Code clarity improvements
+- Better variable names
+- Test coverage edge cases
+- Performance optimizations beyond requirements
+
+---
+
+## How to Post Your Review
+
+```markdown
+## 🔍 Code Review (Automated)
+
+### ✅ Strengths
+- [What's good about this PR]
+
+### ❌ Critical Issues
+- **[File.cs:Line]**: [Issue with specific example]
+
+### ⚠️ High Priority
+- **[File.cs:Line]**: [Issue description]
+
+### 💡 Suggestions
+- [Non-blocking improvement]
+
+### 🎯 Recommendation
+[Approve / Request Changes / Comment]
 ```
 
-✅ **Good**: Updated or removed comments
-```csharp
-// Process all items, checking ordering constraint
-while (iterator.MoveNext())
-```
+**Decision Rules:**
+- **Request Changes** if any critical or high priority issues exist
+- **Approve** only if all standards met and no critical issues
+- **Comment Only** if only suggestions (no blocking)
 
-### Missing Error Context
-❌ **Bad**: Generic exception
-```csharp
-throw new ArgumentException("Invalid");
-```
+---
 
-✅ **Good**: Descriptive error with context
-```csharp
-throw new ArgumentException(
-    $"The source collection is not ordered. " +
-    $"At position {position}: previous key was {previousKey}, " +
-    $"but current key is {currentKey}. " +
-    $"Use .OrderBy(keySelector) to pre-sort the input.");
-```
+## Quick Reference: What CI Bot Checks vs. What Agent Checks
 
-### Non-Obvious Logic Without Documentation
-❌ **Bad**: Complex logic with no explanation
-```csharp
-var comparisonResult = comparer.Compare(key, grouping.key);
-if (comparisonResult > 0) { /* ... */ }
-```
+| Check | Who | What |
+|-------|-----|------|
+| Build compiles | CI Bot | Does `dotnet build` succeed? |
+| Tests pass | CI Bot | Do all tests pass? |
+| XML docs **exist** | CI Bot | Are public APIs documented? |
+| CHANGELOG updated | CI Bot | Was CHANGELOG.md changed? |
+| **XML docs *complete*** | **Agent** | **Are `<summary>`, `<param>`, `<returns>`, `<exception>` all filled out?** |
+| **Streaming correct** | **Agent** | **No buffering? Iteration done properly?** |
+| **Ordering validation** | **Agent** | **Detects unsorted input? Good error message?** |
+| **Patterns followed** | **Agent** | **Consistent with existing operators?** |
+| **Multi-target works** | **Agent** | **No breaking framework-specific code?** |
+| **Tests thorough** | **Agent** | **Edge cases covered? Streaming verified?** |
+| **Comments fresh** | **Agent** | **Updated with code changes? No stale comments?** |
 
-✅ **Good**: Explained with comment
-```csharp
-// When key > grouping.key, the group is complete and can be yielded
-var comparisonResult = comparer.Compare(key, grouping.key);
-if (comparisonResult > 0) { /* ... */ }
-```
+---
+
+## Questions?
+
+- See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution standards
+- See [.copilot-instructions.md](.copilot-instructions.md) for agent guidance
+- Review existing operators in [src/OrderedLinqOps/](src/OrderedLinqOps/) for patterns
