@@ -14,9 +14,44 @@ Thanks for contributing.
 
 - Update `CHANGELOG.md` in `Unreleased` for meaningful repository changes.
 - Follow the changelog semantics described in `CHANGELOG.md`: entries describe the delta relative to the repository state before the PR, not internal cleanup or self-corrections made while working on the same PR.
+- Make a changelog entry whenever a PR changes shipped behavior, public API surface, contributor workflow expectations, or repository-facing tooling.
 - Keep public API XML docs complete and accurate.
 - Keep comments current; remove stale comments.
 - Add/update tests for changed behavior, including edge/error cases.
+
+## Changelog Rules
+
+Write entries under the `Unreleased` section in Keep a Changelog format. Use the categories below and keep each bullet focused on the user-visible or contributor-facing delta:
+
+```md
+## [Unreleased]
+
+### Added
+- Added support for ...
+
+### Changed
+- Updated ... to ...
+
+### Fixed
+- Fixed ... when ...
+
+### Deprecated
+- Deprecated ... in favor of ...
+
+### Removed
+- Removed ...
+
+### Security
+- Fixed a vulnerability in ...
+```
+
+When to add entries:
+- Always for `src/` code changes that affect behavior, compatibility, or tooling.
+- Always for changes to contributor-facing rules or repository workflows that affect future contributors.
+- Do not add a changelog entry for pure test-only changes when no production code changed.
+- Do not add entries for internal refactors or reformatting that do not change shipped behavior.
+
+Use concise, descriptive entries that tell a reviewer what changed and why it matters.
 
 ## PR Process
 

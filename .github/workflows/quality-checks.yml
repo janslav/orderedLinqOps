@@ -52,26 +52,43 @@ jobs:
           fi
           set -e
 
+      - name: Check source changes
+        id: src-files
+        run: |
+          changed_files=$(git diff origin/master...HEAD --name-only)
+          src_changed=$(printf '%s\n' "$changed_files" | grep -E "^src/" || true)
+          if [ -z "$src_changed" ]; then
+            echo "src_changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "src_changed=true" >> $GITHUB_OUTPUT
+          fi
+
       - name: Check CHANGELOG.md updated
         id: changelog
         run: |
-          # Check if code was changed
-          code_changed=$(git diff origin/master...HEAD --name-only | grep -E "^src/" || true)
-          
+          set -e
+          changed_files=$(git diff origin/master...HEAD --name-only)
+          code_changed=$(printf '%s\n' "$changed_files" | grep -E "^src/" || true)
+          changelog_changed=$(printf '%s\n' "$changed_files" | grep -E "^CHANGELOG.md$" || true)
+
           if [ -z "$code_changed" ]; then
             echo "changelog_ok=true" >> $GITHUB_OUTPUT
-            echo "CHANGELOG check: SKIPPED (no code changes)"
-          else
-            # Code changed, check if CHANGELOG was updated
-            changelog_changed=$(git diff origin/master...HEAD --name-only | grep -E "^CHANGELOG.md$" || true)
-            
-            if [ -z "$changelog_changed" ]; then
-              echo "changelog_ok=false" >> $GITHUB_OUTPUT
-              echo "changelog_missing=true" >> $GITHUB_OUTPUT
-            else
-              echo "changelog_ok=true" >> $GITHUB_OUTPUT
-            fi
+            echo "changelog_missing=false" >> $GITHUB_OUTPUT
+            echo "CHANGELOG check: SKIPPED (no src/ changes)"
+            exit 0
           fi
+
+          if [ -z "$changelog_changed" ]; then
+            echo "changelog_ok=false" >> $GITHUB_OUTPUT
+            echo "changelog_missing=true" >> $GITHUB_OUTPUT
+            echo "CHANGELOG check: FAILED (src/ changed but CHANGELOG.md was not updated)"
+            echo "Please add a brief entry under the 'Unreleased' section in CHANGELOG.md for the user-visible or contributor-facing change."
+            exit 0
+          fi
+
+          echo "changelog_ok=true" >> $GITHUB_OUTPUT
+          echo "changelog_missing=false" >> $GITHUB_OUTPUT
+          echo "CHANGELOG check: PASSED"
 
       - name: Run Tests
         id: tests
@@ -81,7 +98,8 @@ jobs:
       - name: Check for test changes
         id: test-files
         run: |
-          test_changed=$(git diff origin/master...HEAD --name-only | grep -E "Test\.cs$" || true)
+          changed_files=$(git diff origin/master...HEAD --name-only)
+          test_changed=$(printf '%s\n' "$changed_files" | grep -E "(^|/)Test.*\.cs$|(^|/).*Tests?\.cs$" || true)
           if [ -z "$test_changed" ]; then
             echo "tests_changed=false" >> $GITHUB_OUTPUT
           else
@@ -95,6 +113,7 @@ jobs:
             const xmlDocsOk = '${{ steps.xml-docs.outputs.xml_docs_ok }}' === 'true';
             const changelogOk = '${{ steps.changelog.outputs.changelog_ok }}' === 'true';
             const changelogMissing = '${{ steps.changelog.outputs.changelog_missing }}' === 'true';
+            const srcChanged = '${{ steps.src-files.outputs.src_changed }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
             const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
             
@@ -121,8 +140,10 @@ jobs:
             }
             
             // Tests check
-            if (!testsChanged && '${{ steps.tests.outcome }}' === 'success') {
-              report += '⚠️  **Tests**: No test files changed. Ensure your code changes are covered by tests.\n';
+            if (testsChanged && !srcChanged && '${{ steps.tests.outcome }}' === 'success') {
+              report += '⚠️  **Tests**: Test-only change detected. This is okay for test maintenance or documentation-only updates, but no production code changed.\n';
+            } else if (!testsChanged && srcChanged && '${{ steps.tests.outcome }}' === 'success') {
+              report += '⚠️  **Tests**: Source code changed but no test files changed. This is a warning, not a blocker: code changes should include a matching test update when behavior is affected, but test-only PRs are still acceptable when the change is intentionally documentation or workflow-only.\n';
             } else if ('${{ steps.tests.outcome }}' === 'success') {
               report += '✅ **Tests**: All pass\n';
             } else {
