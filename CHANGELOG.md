@@ -17,7 +17,6 @@ Entries should describe the actual delta introduced by the change, not internal 
 - Simplified the PR template and contributor docs to reduce redundancy and keep the guidance aligned with the repository's actual target frameworks.
 - Updated the repository's contribution guidance to use the project file as the source of truth for supported frameworks and commit hygiene expectations.
 - Improved out-of-order exception diagnostics to include zero-based index, previous/current key values, comparer result, comparer type, and remediation guidance.
-- Added deterministic fixture-backed integration tests for realistic CSV-style ordered workloads and extended the quality workflow to validate the default branch as well as pull requests.
 
 ### Fixed
 - No fixes recorded for this release yet.
