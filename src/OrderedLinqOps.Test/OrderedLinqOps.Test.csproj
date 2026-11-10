@@ -4,7 +4,7 @@
     <PlatformTarget>x64</PlatformTarget>
     <IsPackable>false</IsPackable>
     <LangVersion>latest</LangVersion>
-    <RunSettingsFilePath>src\OrderedLinqOps.Test\OrderedLinqOps.Test.runsettings</RunSettingsFilePath>
+    <RunSettingsFilePath>$(MSBuildThisFileDirectory)OrderedLinqOps.Test.runsettings</RunSettingsFilePath>
   </PropertyGroup>
 
   <ItemGroup>
