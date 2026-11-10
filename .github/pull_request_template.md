@@ -24,7 +24,7 @@
 
 ## Checklist
 
-- [ ] CHANGELOG.md updated (required when `src/OrderedLinqOps/` changes)
+- [ ] CHANGELOG.md updated (required when `src/` changes)
 - [ ] Tests added/updated (when logic changed)
 - [ ] Public API XML docs are complete and accurate
 - [ ] `dotnet build` passes
