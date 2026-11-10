@@ -92,20 +92,12 @@ jobs:
           echo "changelog_missing=false" >> $GITHUB_OUTPUT
           echo "CHANGELOG check: PASSED"
 
-      - name: Run Tests
-        id: tests
+      - name: Report mechanical status
+        id: status
         run: |
-          set +e
-          output=$(dotnet test --no-build --configuration Release --verbosity normal 2>&1)
-          echo "$output"
-          echo "$output" > test-output.txt
-          echo "test_output<<EOF" >> "$GITHUB_OUTPUT"
-          cat test-output.txt >> "$GITHUB_OUTPUT"
-          echo "EOF" >> "$GITHUB_OUTPUT"
-          exit_code=$?
-          echo "exit_code=$exit_code" >> "$GITHUB_OUTPUT"
-          exit $exit_code
-        continue-on-error: true
+          echo "Mechanical checks do not run the full test suite; CI handles the build/test job separately."
+          echo "This workflow is limited to documentation, changelog, and repo-quality checks."
+          echo "status_report=ok" >> "$GITHUB_OUTPUT"
 
       - name: Check for test changes
         id: test-files
