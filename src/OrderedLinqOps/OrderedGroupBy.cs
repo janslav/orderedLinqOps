@@ -112,9 +112,11 @@ namespace OrderedLinqOps
                 // for the first item, there is nothing to compare it to, so we only extract the key and create the first group
                 var item = iterator.Current;
                 var grouping = (key: keySelector(item), list: new List<TElement> { elementSelector(item) });
+                var index = 0;
 
                 while (iterator.MoveNext())
                 {
+                    index++;
                     // Each item is compared to the group key. When equal, it's added to the group. 
                     // When bigger, the previous (now complete) group is yielded and new one is created.
                     item = iterator.Current;
@@ -131,7 +133,7 @@ namespace OrderedLinqOps
                     }
                     else
                     {
-                        throw new ArgumentException("The source collection is not ordered");
+                        throw new ArgumentException(BuildOutOfOrderMessage(index, grouping.key, key, comparisonResult, comparer));
                     }
                 }
 
