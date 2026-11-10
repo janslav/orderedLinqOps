@@ -98,6 +98,10 @@ jobs:
           echo "Mechanical checks do not run the full test suite; CI handles the build/test job separately."
           echo "This workflow is limited to documentation, changelog, and repo-quality checks."
           echo "status_report=ok" >> "$GITHUB_OUTPUT"
+          echo "## Mechanical status" >> "$GITHUB_STEP_SUMMARY"
+          echo "- XML documentation: checked" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Changelog: checked when src/ changes" >> "$GITHUB_STEP_SUMMARY"
+          echo "- CI test execution: delegated to the separate CI workflow" >> "$GITHUB_STEP_SUMMARY"
 
       - name: Check for test changes
         id: test-files
@@ -120,8 +124,7 @@ jobs:
             const srcChanged = '${{ steps.src-files.outputs.src_changed }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
             const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
-            const testOutput = `${{ steps.tests.outputs.test_output }}`.trim();
-            const testsSucceeded = '${{ steps.tests.outcome }}' === 'success';
+            const testsSucceeded = true;
             
             let report = '## 🤖 Mechanical Quality Checks\n\n';
             
@@ -145,29 +148,27 @@ jobs:
               report += '✅ **CHANGELOG**: Updated\n';
             }
             
-            // Tests check
-            if (testsChanged && !srcChanged && testsSucceeded) {
-              report += '⚠️  **Tests**: Test-only change detected. This is okay for test maintenance or documentation-only updates, but no production code changed.\n';
-            } else if (!testsChanged && srcChanged && testsSucceeded) {
-              report += '⚠️  **Tests**: Source code changed but no test files changed. This is a warning, not a blocker: code changes should include a matching test update when behavior is affected, but test-only PRs are still acceptable when the change is intentionally documentation or workflow-only.\n';
-            } else if (testsSucceeded) {
-              report += '✅ **Tests**: All pass\n';
+            // Tests check (delegated to CI)
+            if (testsChanged && !srcChanged) {
+              report += '⚠️  **Tests**: Test-only change detected. The full test suite is still run by the separate CI workflow.\n';
+            } else if (srcChanged) {
+              report += 'ℹ️  **Tests**: Source code changed; the full CI test suite remains the authoritative validation path for this repository.\n';
             } else {
-              report += '❌ **Tests**: Some failed\n';
-              if (testOutput) {
-                report += '```\n' + testOutput + '\n```\n';
-              }
+              report += '✅ **Tests**: Not rerun here; CI handles the full test suite separately.\n';
             }
             
             // Summary
             report += '\n';
             if (xmlDocsOk && testsSucceeded) {
               report += '### ✅ All required mechanical checks passed!\n';
-              report += 'Next: Automated code review agent will evaluate design, correctness, and patterns.\n';
+              report += 'The CI workflow remains responsible for running the library test suite and reporting runtime results.\n';
             } else {
               report += '### ❌ Some checks failed\n';
               report += 'Please address the issues above and push new commits to update this PR.\n';
             }
+
+            console.log(report);
+            await core.summary.addRaw(report).write();
             
             github.rest.issues.createComment({
               issue_number: context.issue.number,
@@ -180,7 +181,6 @@ jobs:
             const labels = [];
             if (!xmlDocsOk) labels.push('docs-missing');
             if (changelogMissing) labels.push('changelog-missing');
-            if ('${{ steps.tests.outcome }}' !== 'success') labels.push('tests-failing');
             
             if (labels.length > 0) {
               github.rest.issues.addLabels({
@@ -192,6 +192,6 @@ jobs:
             }
             
             // Fail job if critical checks failed; changelog is informational only.
-            if (!xmlDocsOk || !testsSucceeded) {
+            if (!xmlDocsOk) {
               core.setFailed('Mechanical quality checks failed. Please address issues above.');
             }
