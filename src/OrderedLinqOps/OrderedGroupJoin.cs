@@ -38,61 +38,27 @@ namespace OrderedLinqOps
             if (comparer == null)
                 comparer = Comparer<TKey>.Default;
 
-            var outerOrdered = outer.OrderedGroupBy(outerKeySelector, (k, i) => (k, i), comparer);
-            using (var outerIterator = outerOrdered.GetEnumerator())
+            var innerOrdered = inner.OrderedGroupBy(innerKeySelector, (k, i) => (k, i), comparer);
+            using (var innerIterator = innerOrdered.GetEnumerator())
             {
-                if (!outerIterator.MoveNext())
+                var innerHasValue = innerIterator.MoveNext();
+                foreach (var (outerKey, outerValue) in outer.OrderedSelect(outerKeySelector, (k, i) => (k, i), comparer))
                 {
-                    yield break;
-                }
-
-                (var outerKey, var outerGroup) = outerIterator.Current;
-
-                var innerOrdered = inner.OrderedGroupBy(innerKeySelector, (k, i) => (k, i), comparer);
-                using (var innerIterator = innerOrdered.GetEnumerator())
-                {
-                    var innerHasValue = innerIterator.MoveNext();
-
-                    while (true)
+                    while (innerHasValue)
                     {
-                        IReadOnlyCollection<TInner> innerGroup;
-
-                        if (innerHasValue)
+                        var comparisonResult = comparer.Compare(innerIterator.Current.k, outerKey);
+                        if (comparisonResult >= 0)
                         {
-                            TKey innerKey;
-                            (innerKey, innerGroup) = innerIterator.Current;
-                            var comparisonResult = comparer.Compare(innerKey, outerKey);
-
-                            if (comparisonResult < 0)
-                            {
-                                // advance (discard) inner
-                                innerHasValue = innerIterator.MoveNext();
-                                continue;
-                            }
-                            if (comparisonResult != 0)
-                            {
-                                // yield an empty group
-                                innerGroup = Array.Empty<TInner>();
-                            }
-                        }
-                        else
-                        {
-                            innerGroup = Array.Empty<TInner>();
+                            break;
                         }
 
-                        foreach (var outerValue in outerGroup)
-                        {
-                            yield return resultSelector(outerValue, innerGroup);
-                        }
-
-                        // advance outer
-                        if (!outerIterator.MoveNext())
-                        {
-                            yield break;
-                        }
-
-                        (outerKey, outerGroup) = outerIterator.Current;
+                        // advance (discard) inner groups that are below current outer key
+                        innerHasValue = innerIterator.MoveNext();
                     }
+
+                    var hasMatch = innerHasValue && comparer.Compare(innerIterator.Current.k, outerKey) == 0;
+                    var innerGroup = hasMatch ? innerIterator.Current.i : (IReadOnlyCollection<TInner>)Array.Empty<TInner>();
+                    yield return resultSelector(outerValue, innerGroup);
                 }
             }
         }

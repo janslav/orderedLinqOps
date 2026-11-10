@@ -59,10 +59,16 @@ jobs:
         run: |
           changed_files=$(git diff origin/master...HEAD --name-only)
           src_changed=$(printf '%s\n' "$changed_files" | grep -E "^src/" || true)
+          ordered_ops_changed=$(printf '%s\n' "$changed_files" | grep -E "^src/OrderedLinqOps/Ordered(GroupBy|Join|GroupJoin)\.cs$" || true)
           if [ -z "$src_changed" ]; then
             echo "src_changed=false" >> $GITHUB_OUTPUT
           else
             echo "src_changed=true" >> $GITHUB_OUTPUT
+          fi
+          if [ -z "$ordered_ops_changed" ]; then
+            echo "ordered_ops_changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "ordered_ops_changed=true" >> $GITHUB_OUTPUT
           fi
 
       - name: Check CHANGELOG.md updated
@@ -114,6 +120,66 @@ jobs:
             echo "tests_changed=true" >> $GITHUB_OUTPUT
           fi
 
+      - name: Compare Ordered benchmark regression vs master
+        id: ordered-bench
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" != "pull_request" ]; then
+            echo "benchmark_checked=false" >> "$GITHUB_OUTPUT"
+            echo "benchmark_passed=true" >> "$GITHUB_OUTPUT"
+            echo "benchmark_summary=Skipped: not a pull request event." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ "${{ steps.src-files.outputs.ordered_ops_changed }}" != "true" ]; then
+            echo "benchmark_checked=false" >> "$GITHUB_OUTPUT"
+            echo "benchmark_passed=true" >> "$GITHUB_OUTPUT"
+            echo "benchmark_summary=Skipped: Ordered operator implementation files did not change." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "benchmark_checked=true" >> "$GITHUB_OUTPUT"
+
+          git fetch origin master --depth=1
+          rm -rf /tmp/orderedlinqops-master
+          git worktree add /tmp/orderedlinqops-master origin/master
+
+          rm -rf BenchmarkDotNet.Artifacts
+          dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedGroupBy*" "*OrderedJoin*" "*OrderedGroupJoin*"
+          cp BenchmarkDotNet.Artifacts/results/OrderedOperatorsBenchmarks-report.csv /tmp/pr-ordered-bench.csv
+
+          rm -rf /tmp/orderedlinqops-master/BenchmarkDotNet.Artifacts
+          (
+            cd /tmp/orderedlinqops-master
+            dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedGroupBy*" "*OrderedJoin*" "*OrderedGroupJoin*"
+            cp BenchmarkDotNet.Artifacts/results/OrderedOperatorsBenchmarks-report.csv /tmp/master-ordered-bench.csv
+          )
+
+          set +e
+          python3 .github/scripts/compare_ordered_benchmarks.py \
+            /tmp/master-ordered-bench.csv \
+            /tmp/pr-ordered-bench.csv \
+            10 \
+            10 \
+            /tmp/ordered-bench-summary.md
+          compare_exit=$?
+          set -e
+
+          if [ "$compare_exit" -eq 0 ]; then
+            echo "benchmark_passed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "benchmark_passed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+          {
+            echo "benchmark_summary<<EOF"
+            cat /tmp/ordered-bench-summary.md
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+          cat /tmp/ordered-bench-summary.md >> "$GITHUB_STEP_SUMMARY"
+
       - name: Report Results
         uses: actions/github-script@v7
         with:
@@ -123,6 +189,9 @@ jobs:
             const changelogMissing = '${{ steps.changelog.outputs.changelog_missing }}' === 'true';
             const srcChanged = '${{ steps.src-files.outputs.src_changed }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
+            const benchmarkChecked = '${{ steps.ordered-bench.outputs.benchmark_checked }}' === 'true';
+            const benchmarkPassed = '${{ steps.ordered-bench.outputs.benchmark_passed }}' === 'true';
+            const benchmarkSummary = `${{ steps.ordered-bench.outputs.benchmark_summary }}`.trim();
             const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
             
             let report = '## 🤖 Mechanical Quality Checks\n\n';
@@ -155,10 +224,18 @@ jobs:
             } else {
               report += '✅ **Tests**: Not rerun here; CI handles the full test suite separately.\n';
             }
+
+            if (!benchmarkChecked) {
+              report += 'ℹ️  **Ordered benchmark regression**: ' + benchmarkSummary + '\n';
+            } else if (benchmarkPassed) {
+              report += '✅ **Ordered benchmark regression**: Passed against master baseline\n';
+            } else {
+              report += '❌ **Ordered benchmark regression**: Failed threshold check vs master baseline\n';
+            }
             
             // Summary
             report += '\n';
-            if (xmlDocsOk) {
+            if (xmlDocsOk && (!benchmarkChecked || benchmarkPassed)) {
               report += '### ✅ All required mechanical checks passed!\n';
               report += 'The CI workflow remains responsible for running the library test suite and reporting runtime results.\n';
             } else {
@@ -191,6 +268,6 @@ jobs:
             }
             
             // Fail job if critical checks failed; changelog is informational only.
-            if (!xmlDocsOk) {
+            if (!xmlDocsOk || (benchmarkChecked && !benchmarkPassed)) {
               core.setFailed('Mechanical quality checks failed. Please address issues above.');
             }

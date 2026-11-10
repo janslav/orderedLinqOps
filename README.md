@@ -9,7 +9,7 @@
 Alternatives to some hashing-based LINQ operators (`GroupBy`, `Join`, `GroupJoin`), based on ordered inputs. Available as a NuGet package.
 
 **Key Benefits:**
-- **Memory Efficient**: Operators don't buffer data in memory, making them ideal for large datasets
+- **Memory Efficient**: Operators avoid full-input hash buffering and process ordered data incrementally (with per-group buffering where required)
 - **Performance**: Faster than hash-based LINQ operators when data is already sorted
 - **Stream-Friendly**: Process data as it arrives without waiting for the entire collection
 

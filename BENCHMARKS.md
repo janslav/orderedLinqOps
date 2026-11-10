@@ -29,38 +29,45 @@ This document tracks performance measurements of `OrderedGroupBy`, `OrderedJoin`
 | Operator pair | Ordered mean | LINQ mean | Ordered alloc | LINQ alloc |
 |---|---:|---:|---:|---:|
 | OrderedGroupBy vs GroupBy | 21.02 μs | 25.83 μs | 57.69 KB | 74.45 KB |
-| OrderedJoin vs Join | 32.70 μs | 37.60 μs | 47.58 KB | 80.80 KB |
-| OrderedGroupJoin vs GroupJoin | 76.15 μs | 43.82 μs | 128.30 KB | 74.55 KB |
+| OrderedJoin vs Join | 38.47 μs | 43.40 μs | 47.58 KB | 80.80 KB |
+| OrderedGroupJoin vs GroupJoin | 39.23 μs | 50.89 μs | 34.52 KB | 74.55 KB |
 
 ### 10,000 rows
 
 | Operator pair | Ordered mean | LINQ mean | Ordered alloc | LINQ alloc |
 |---|---:|---:|---:|---:|
-| OrderedGroupBy vs GroupBy | 202.17 μs | 280.85 μs | 574.02 KB | 726.34 KB |
-| OrderedJoin vs Join | 335.62 μs | 275.24 μs | 469.95 KB | 622.54 KB |
-| OrderedGroupJoin vs GroupJoin | 606.01 μs | 470.96 μs | 1,058.21 KB | 726.45 KB |
+| OrderedGroupBy vs GroupBy | 246.15 μs | 333.79 μs | 574.02 KB | 726.34 KB |
+| OrderedJoin vs Join | 382.49 μs | 333.39 μs | 469.95 KB | 622.54 KB |
+| OrderedGroupJoin vs GroupJoin | 356.30 μs | 446.83 μs | 339.43 KB | 622.04 KB |
 
 ### 100,000 rows
 
 | Operator pair | Ordered mean | LINQ mean | Ordered alloc | LINQ alloc |
 |---|---:|---:|---:|---:|
-| OrderedGroupBy vs GroupBy | 2,242.81 μs | 6,432.96 μs | 5,737.23 KB | 7,645.39 KB |
-| OrderedJoin vs Join | 3,401.64 μs | 5,235.86 μs | 4,693.49 KB | 5,815.59 KB |
-| OrderedGroupJoin vs GroupJoin | 6,121.45 μs | 7,169.69 μs | 10,357.19 KB | 6,601.44 KB |
+| OrderedGroupBy vs GroupBy | 2,454.05 μs | 6,780.97 μs | 5,737.23 KB | 7,645.37 KB |
+| OrderedJoin vs Join | 3,827.03 μs | 6,164.01 μs | 4,693.50 KB | 5,815.59 KB |
+| OrderedGroupJoin vs GroupJoin | 3,638.38 μs | 8,311.91 μs | 3,388.41 KB | 6,601.43 KB |
 
 ### 1,000,000 rows
 
 | Operator pair | Ordered mean | LINQ mean | Ordered alloc | LINQ alloc |
 |---|---:|---:|---:|---:|
-| OrderedGroupBy vs GroupBy | 23,240.73 μs | 135,557.12 μs | 57,367.20 KB | 74,398.84 KB |
-| OrderedJoin vs Join | 35,557.19 μs | 85,808.28 μs | 46,927.76 KB | 64,252.03 KB |
-| OrderedGroupJoin vs GroupJoin | 70,903.85 μs | 111,924.23 μs | 116,552.85 KB | 63,958.96 KB |
+| OrderedGroupBy vs GroupBy | 26,554.91 μs | 159,858.23 μs | 57,367.20 KB | 74,398.93 KB |
+| OrderedJoin vs Join | 40,176.18 μs | 81,311.51 μs | 46,927.77 KB | 64,251.98 KB |
+| OrderedGroupJoin vs GroupJoin | 36,481.12 μs | 170,789.25 μs | 33,877.97 KB | 63,958.96 KB |
+
+## Investigation findings: why the gap can look smaller than expected
+
+- `OrderedGroupBy` and `OrderedGroupJoin` still buffer **within each key-group** (they do not buffer the entire input sequence, but they do allocate per-group collections).
+- When benchmark data has relatively small groups, hash-based LINQ can remain competitive at smaller scales, reducing the visible gap.
+- `OrderedJoin` and `OrderedGroupJoin` are sensitive to implementation details around temporary grouping.
+- We found and fixed a key issue in `OrderedGroupJoin`: the previous implementation grouped the **outer** stream first, introducing extra buffering/allocation. The current implementation streams outer elements directly and reuses the current inner grouped segment.
 
 ## Recommendations for real-world usage
 
 - Prefer **OrderedGroupBy** when input is already sorted by group key; this benchmark shows better throughput and lower allocations at all tested scales.
-- Prefer **OrderedJoin** for larger sorted datasets (100K+), where it outperforms LINQ join while keeping allocations lower.
-- Use **OrderedGroupJoin** when sorted streaming semantics are required; in this implementation it scales well in time at larger sizes but currently allocates more memory than LINQ `GroupJoin`.
+- Prefer **OrderedJoin** for larger sorted datasets (100K+), where it typically outperforms LINQ join while keeping allocations lower.
+- Prefer **OrderedGroupJoin** for sorted workloads after the current implementation fix; it now shows lower allocations and better scaling than LINQ `GroupJoin` in this benchmark.
 - For small datasets (around 1K), differences are often minor; choose readability unless streaming constraints or memory pressure are key requirements.
 
 ## Comparing/checking new PRs (industry-standard workflow)
@@ -76,4 +83,3 @@ This document tracks performance measurements of `OrderedGroupBy`, `OrderedJoin`
    - Treat regressions at 100K/1M rows as most significant for this library’s target scenarios.
 5. **Gate manually or via CI policy**:
    - Common open-source policy: fail/review PRs that regress key benchmarks beyond an agreed threshold (for example >10% time or allocation regression in critical cases).
-
