@@ -80,7 +80,9 @@ N/A
 
 ---
 
-**Remember**: Automated checks will validate:
-1. ✅ Mechanical quality (CHANGELOG, docs, tests)
-2. ✅ Code review (design, performance, compatibility)
-3. ✅ Human approval (final sign-off)
+**Remember**: Your PR will receive:
+1. ✅ **Mechanical Quality Checks** (GitHub Actions): Validates CHANGELOG, XML docs, tests
+2. ✅ **Automated Code Review** (Copilot Agent): Reviews design, performance, compatibility, patterns
+3. ✅ **Human Approval** (You or maintainers): Final sign-off
+
+The automated code review agent will analyze your changes against our [CODE_REVIEW_CHECKLIST.md](https://github.com/janslav/orderedLinqOps/blob/master/CODE_REVIEW_CHECKLIST.md) and post findings as a comment.
