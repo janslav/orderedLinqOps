@@ -39,8 +39,8 @@ jobs:
         id: xml-docs
         run: |
           set +e
-          # Build and capture warnings about missing XML docs (CS1591)
-          output=$(dotnet build -p:DocumentationFile=obj/Debug/OrderedLinqOps.xml -p:TreatWarningsAsErrors=true 2>&1)
+          # Build only the main library with XML doc validation
+          output=$(dotnet build src/OrderedLinqOps/OrderedLinqOps.csproj -p:TreatWarningsAsErrors=true 2>&1)
           xml_issues=$(echo "$output" | grep -E "CS1591|XML documentation" || true)
           
           if [ -z "$xml_issues" ]; then
