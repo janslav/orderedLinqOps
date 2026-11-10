@@ -17,7 +17,7 @@ dotnet add package OrderedLinqOps
 ```
 
 Package ID: OrderedLinqOps  
-Supported Target Frameworks: netstandard2.0, netstandard2.1, net6.0, net8.0
+Supported Target Frameworks: netstandard2.0, net10.0
 
 ## Quick summary
 
