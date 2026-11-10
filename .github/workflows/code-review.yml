@@ -27,19 +27,19 @@ jobs:
             const prNumber = context.issue.number;
             const message = `## 🤖 Automated Code Review Requested
 
-I'm analyzing this PR against our quality standards:
-- **Documentation**: XML docs, comments, clarity
-- **Correctness**: Ordering validation, streaming behavior, memory efficiency
-- **Compatibility**: Multi-target (.NET Standard, .NET 6/8), backward compatibility
-- **Performance**: Algorithm complexity, allocations, large dataset handling
-- **Testing**: Coverage, edge cases, framework compatibility
-- **Patterns**: OrderedLinqOps conventions and style
+            I'm analyzing this PR against our quality standards:
+            - **Documentation**: XML docs, comments, clarity
+            - **Correctness**: Ordering validation, streaming behavior, memory efficiency
+            - **Compatibility**: Multi-target (.NET Standard, .NET 6/8), backward compatibility
+            - **Performance**: Algorithm complexity, allocations, large dataset handling
+            - **Testing**: Coverage, edge cases, framework compatibility
+            - **Patterns**: OrderedLinqOps conventions and style
 
-Check back in a moment for detailed findings based on [CODE_REVIEW_CHECKLIST.md](https://github.com/janslav/orderedLinqOps/blob/master/CODE_REVIEW_CHECKLIST.md).
+            Check back in a moment for detailed findings based on [CODE_REVIEW_CHECKLIST.md](https://github.com/janslav/orderedLinqOps/blob/master/CODE_REVIEW_CHECKLIST.md).
 
----
-See [.copilot-instructions.md](https://github.com/janslav/orderedLinqOps/blob/master/.copilot-instructions.md) for review guidance.`;
-            
+            ---
+            See [.copilot-instructions.md](https://github.com/janslav/orderedLinqOps/blob/master/.copilot-instructions.md) for review guidance.`;
+
             github.rest.issues.createComment({
               issue_number: prNumber,
               owner: context.repo.owner,
