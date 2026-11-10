@@ -43,11 +43,13 @@ namespace OrderedLinqOps
                 // for the first item, there is nothing to compare it to, so we only extract the key
                 var item = iterator.Current;
                 var previousKey = keySelector(item);
+                var index = 0;
                 yield return resultSelector(previousKey, item);
 
                 // for all the other items, we compare the current key to the previous one
                 while (iterator.MoveNext())
                 {
+                    index++;
                     item = iterator.Current;
                     var key = keySelector(item);
 
@@ -59,7 +61,7 @@ namespace OrderedLinqOps
                     }
                     else
                     {
-                        throw new ArgumentException("The source collection is not ordered");
+                        throw new ArgumentException(BuildOutOfOrderMessage(index, previousKey, key, comparisonResult, comparer));
                     }
                 }
             }
