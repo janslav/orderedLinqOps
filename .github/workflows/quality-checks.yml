@@ -1,0 +1,168 @@
+name: Quality Checks
+
+on:
+  pull_request:
+    branches: [master]
+
+jobs:
+  mechanical-checks:
+    name: Mechanical Quality Checks
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+          dotnet-quality: ga
+
+      - name: Restore dependencies
+        run: dotnet restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Check XML Documentation
+        id: xml-docs
+        run: |
+          set +e
+          # Build only the main library with XML doc validation
+          output=$(dotnet build src/OrderedLinqOps/OrderedLinqOps.csproj -p:TreatWarningsAsErrors=true 2>&1)
+          xml_issues=$(echo "$output" | grep -E "CS1591|XML documentation" || true)
+          
+          if [ -z "$xml_issues" ]; then
+            echo "XML documentation check: PASSED ✓"
+            echo "xml_docs_ok=true" >> $GITHUB_OUTPUT
+          else
+            echo "XML documentation check: FAILED ✗"
+            echo "xml_docs_output<<EOF" >> $GITHUB_OUTPUT
+            echo "$xml_issues" >> $GITHUB_OUTPUT
+            echo "EOF" >> $GITHUB_OUTPUT
+            echo "xml_docs_ok=false" >> $GITHUB_OUTPUT
+          fi
+          set -e
+
+      - name: Check CHANGELOG.md updated
+        id: changelog
+        run: |
+          # Check if code was changed
+          code_changed=$(git diff origin/master...HEAD --name-only | grep -E "^src/" || true)
+          
+          if [ -z "$code_changed" ]; then
+            echo "changelog_ok=true" >> $GITHUB_OUTPUT
+            echo "CHANGELOG check: SKIPPED (no code changes)"
+          else
+            # Code changed, check if CHANGELOG was updated
+            changelog_changed=$(git diff origin/master...HEAD --name-only | grep -E "^CHANGELOG.md$" || true)
+            
+            if [ -z "$changelog_changed" ]; then
+              echo "changelog_ok=false" >> $GITHUB_OUTPUT
+              echo "changelog_missing=true" >> $GITHUB_OUTPUT
+            else
+              echo "changelog_ok=true" >> $GITHUB_OUTPUT
+            fi
+          fi
+
+      - name: Run Tests
+        id: tests
+        run: dotnet test --no-build --configuration Release --verbosity normal
+        continue-on-error: true
+
+      - name: Check for test changes
+        id: test-files
+        run: |
+          test_changed=$(git diff origin/master...HEAD --name-only | grep -E "Test\.cs$" || true)
+          if [ -z "$test_changed" ]; then
+            echo "tests_changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "tests_changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Report Results
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const xmlDocsOk = '${{ steps.xml-docs.outputs.xml_docs_ok }}' === 'true';
+            const changelogOk = '${{ steps.changelog.outputs.changelog_ok }}' === 'true';
+            const changelogMissing = '${{ steps.changelog.outputs.changelog_missing }}' === 'true';
+            const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
+            const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
+            
+            let report = '## 🤖 Mechanical Quality Checks\n\n';
+            
+            // XML Documentation check
+            if (xmlDocsOk) {
+              report += '✅ **XML Documentation**: All public APIs properly documented\n';
+            } else {
+              report += '❌ **XML Documentation**: Missing or incomplete\n';
+              if (xmlDocsOutput) {
+                report += '```\n' + xmlDocsOutput + '\n```\n';
+                report += 'Add `<summary>`, `<param>`, `<returns>`, and `<exception>` tags to all public APIs.\n';
+              }
+            }
+            
+            // CHANGELOG check
+            if (changelogMissing) {
+              report += '❌ **CHANGELOG**: Not updated (code was changed)\n';
+              report += 'Add an entry to CHANGELOG.md under "Unreleased" section.\n';
+              report += 'Format: `- **Category**: Brief description` where Category is Added, Changed, Fixed, etc.\n';
+            } else if (changelogOk) {
+              report += '✅ **CHANGELOG**: Updated\n';
+            }
+            
+            // Tests check
+            if (!testsChanged && '${{ steps.tests.outcome }}' === 'success') {
+              report += '⚠️  **Tests**: No test files changed. Ensure your code changes are covered by tests.\n';
+            } else if ('${{ steps.tests.outcome }}' === 'success') {
+              report += '✅ **Tests**: All pass\n';
+            } else {
+              report += '❌ **Tests**: Some failed\n';
+              report += 'Check the test output above for specific failures.\n';
+            }
+            
+            // Summary
+            report += '\n';
+            if (xmlDocsOk && changelogOk && '${{ steps.tests.outcome }}' === 'success') {
+              report += '### ✅ All mechanical checks passed!\n';
+              report += 'Next: Automated code review agent will evaluate design, correctness, and patterns.\n';
+            } else {
+              report += '### ❌ Some checks failed\n';
+              report += 'Please address the issues above and push new commits to update this PR.\n';
+            }
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: report
+            });
+            
+            // Add labels based on failures
+            const labels = [];
+            if (!xmlDocsOk) labels.push('docs-missing');
+            if (changelogMissing) labels.push('changelog-missing');
+            if ('${{ steps.tests.outcome }}' !== 'success') labels.push('tests-failing');
+            
+            if (labels.length > 0) {
+              github.rest.issues.addLabels({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                labels: labels
+              });
+            }
+            
+            // Fail job if critical checks failed
+            if (!xmlDocsOk || changelogMissing || '${{ steps.tests.outcome }}' !== 'success') {
+              core.setFailed('Mechanical quality checks failed. Please address issues above.');
+            }
