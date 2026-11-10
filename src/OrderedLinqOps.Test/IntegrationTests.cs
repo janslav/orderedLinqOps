@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
@@ -13,8 +14,7 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_ReadsAndProcessesSortedCsvResults()
         {
-            var csv = BuildOrdersCsv(customerCount: 250, ordersPerCustomer: 10);
-            var rows = ParseOrdersCsv(csv);
+            var rows = LoadOrderRowsFromCsv();
 
             var summary = rows
                 .OrderedGroupBy(r => r.CustomerId, r => r.Amount)
@@ -26,16 +26,26 @@ namespace OrderedLinqOps.Test
                 })
                 .ToList();
 
-            Assert.That(summary.Count, Is.EqualTo(250));
+            var expectedSummary = rows
+                .GroupBy(r => r.CustomerId)
+                .Select(group => new
+                {
+                    CustomerId = group.Key,
+                    Total = group.Sum(r => r.Amount),
+                    OrderCount = group.Count()
+                })
+                .OrderBy(x => x.CustomerId)
+                .ToList();
+
+            CollectionAssert.AreEqual(expectedSummary.Select(x => x.CustomerId), summary.Select(x => x.CustomerId));
             Assert.That(summary.Sum(x => x.Total), Is.EqualTo(rows.Sum(x => x.Amount)).Within(0.01m));
-            Assert.That(summary.First().CustomerId, Is.EqualTo(1));
-            Assert.That(summary.Last().CustomerId, Is.EqualTo(250));
+            Assert.That(summary.Count, Is.EqualTo(250));
         }
 
         [Test]
         public void OrderedLinqOps_ValidatesCsvInputWithOrderedSelect()
         {
-            var rows = BuildOrders(customerCount: 250, ordersPerCustomer: 10);
+            var rows = LoadOrderRowsFromCsv();
 
             var projected = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
@@ -57,8 +67,8 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_JoinsLargePreSortedDatasets()
         {
-            var customers = BuildCustomerProfiles(customerCount: 250);
-            var orders = BuildOrders(customerCount: 250, ordersPerCustomer: 10);
+            var customers = LoadCustomerProfilesFromCsv();
+            var orders = LoadOrderRowsFromCsv();
 
             var actualJoined = orders
                 .OrderedJoin(customers,
@@ -95,8 +105,8 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_GroupJoinsLargePreSortedDatasets()
         {
-            var customers = BuildCustomerProfiles(customerCount: 250);
-            var orders = BuildOrders(customerCount: 250, ordersPerCustomer: 10);
+            var customers = LoadCustomerProfilesFromCsv();
+            var orders = LoadOrderRowsFromCsv();
 
             var actualGrouped = customers
                 .OrderedGroupJoin(orders,
@@ -132,7 +142,7 @@ namespace OrderedLinqOps.Test
         [Test]
         public void OrderedLinqOps_StreamingPipelineUsesMultipleOperatorsOnLargeSortedDataset()
         {
-            var rows = BuildOrders(customerCount: 500, ordersPerCustomer: 12);
+            var rows = LoadOrderRowsFromCsv();
 
             var pipeline = rows
                 .OrderedSelect(r => r.CustomerId, (customerId, row) => new
@@ -151,63 +161,53 @@ namespace OrderedLinqOps.Test
                 })
                 .ToList();
 
-            Assert.That(pipeline.Count, Is.EqualTo(500));
+            var expectedPipeline = rows
+                .Select(r => new { CustomerId = r.CustomerId, Region = r.Region, Label = r.Label, Amount = r.Amount })
+                .GroupBy(x => x.CustomerId)
+                .Select(group => new
+                {
+                    CustomerId = group.Key,
+                    TotalAmount = group.Sum(x => x.Amount),
+                    AverageAmount = group.Average(x => x.Amount)
+                })
+                .OrderBy(x => x.CustomerId)
+                .ToList();
+
+            Assert.That(pipeline.Count, Is.EqualTo(250));
             Assert.That(pipeline.Sum(x => x.TotalAmount), Is.EqualTo(rows.Sum(x => x.Amount)).Within(0.01m));
             Assert.That(pipeline[0].CustomerId, Is.EqualTo(1));
-            Assert.That(pipeline[^1].CustomerId, Is.EqualTo(500));
+            Assert.That(pipeline[^1].CustomerId, Is.EqualTo(250));
+            CollectionAssert.AreEquivalent(expectedPipeline.Select(x => x.CustomerId), pipeline.Select(x => x.CustomerId));
         }
 
-        private static List<OrderRow> BuildOrders(int customerCount, int ordersPerCustomer)
+        private static List<OrderRow> LoadOrderRowsFromCsv()
         {
-            var regions = new[] { "North", "South", "East", "West" };
-            var labels = new[] { "new", "repeat", "vip", "standard" };
-
-            var rows = Enumerable.Range(1, customerCount)
-                .SelectMany(customerId => Enumerable.Range(1, ordersPerCustomer)
-                    .Select(orderIndex => new OrderRow(
-                        CustomerId: customerId,
-                        OrderId: ((customerId - 1) * ordersPerCustomer) + orderIndex,
-                        Region: regions[(customerId + orderIndex) % regions.Length],
-                        Amount: (customerId * 25m) + (orderIndex * 4.25m) + (customerId % 7),
-                        Label: $"{labels[(customerId + orderIndex) % labels.Length]}-{customerId}-{orderIndex}")))
-                .OrderBy(x => x.CustomerId)
-                .ThenBy(x => x.OrderId)
-                .ToList();
-
-            return rows;
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "orders.csv");
+            return ParseOrdersCsv(File.ReadAllText(path));
         }
 
-        private static IReadOnlyList<CustomerProfile> BuildCustomerProfiles(int customerCount)
+        private static List<CustomerProfile> LoadCustomerProfilesFromCsv()
         {
-            var regions = new[] { "North", "South", "East", "West" };
-            var segments = new[] { "retail", "enterprise", "partner", "priority" };
+            var path = Path.Combine(TestContext.CurrentContext.TestDirectory, "Data", "customers.csv");
+            return ParseCustomersCsv(File.ReadAllText(path));
+        }
 
-            return Enumerable.Range(1, customerCount)
-                .Select(customerId => new CustomerProfile(
-                    CustomerId: customerId,
-                    Region: regions[(customerId - 1) % regions.Length],
-                    Segment: segments[(customerId - 1) % segments.Length],
-                    Balance: customerId * 1000m + (customerId % 17) * 25m))
+        private static List<CustomerProfile> ParseCustomersCsv(string csv)
+        {
+            return csv
+                .Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries)
+                .Skip(1)
+                .Select(line =>
+                {
+                    var parts = line.Split('\t');
+                    return new CustomerProfile(
+                        CustomerId: int.Parse(parts[0], CultureInfo.InvariantCulture),
+                        Region: parts[1],
+                        Segment: parts[2],
+                        Balance: decimal.Parse(parts[3], CultureInfo.InvariantCulture));
+                })
                 .OrderBy(x => x.CustomerId)
                 .ToList();
-        }
-
-        private static string BuildOrdersCsv(int customerCount, int ordersPerCustomer)
-        {
-            var builder = new StringBuilder();
-            builder.AppendLine("customer_id\torder_id\tregion\tamount\tlabel");
-
-            foreach (var row in BuildOrders(customerCount, ordersPerCustomer))
-            {
-                builder.AppendLine(string.Join("\t",
-                    row.CustomerId,
-                    row.OrderId,
-                    row.Region,
-                    row.Amount.ToString("0.00", CultureInfo.InvariantCulture),
-                    row.Label));
-            }
-
-            return builder.ToString();
         }
 
         private static List<OrderRow> ParseOrdersCsv(string csv)

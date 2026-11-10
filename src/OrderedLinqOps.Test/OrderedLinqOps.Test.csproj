@@ -21,4 +21,10 @@
   <ItemGroup>
     <ProjectReference Include="..\OrderedLinqOps\OrderedLinqOps.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Data\*.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
