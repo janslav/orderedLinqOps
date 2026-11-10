@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <Authors>Jan Slavetinsky</Authors>
     <Company></Company>
     <Product>OrderedLinqOps</Product>
@@ -11,7 +11,7 @@
     <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/janslav/orderedLinqOps</PackageProjectUrl>
-    <PackageReleaseNotes>Updated to modern .NET SDK, fixed code quality issues, added multi-targeting support for .NET Standard 2.0/2.1, .NET 6.0 and .NET 8.0</PackageReleaseNotes>
+    <PackageReleaseNotes>Updated targeting to .NET Standard 2.0 and .NET 10.0, with modern SDK/tooling compatibility.</PackageReleaseNotes>
 
     <PackageTags>linq</PackageTags>
     <NeutralLanguage>en-US</NeutralLanguage>
