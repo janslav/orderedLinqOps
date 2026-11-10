@@ -145,15 +145,22 @@ jobs:
           rm -rf /tmp/orderedlinqops-master
           git worktree add /tmp/orderedlinqops-master origin/master
 
+          if [ ! -f /tmp/orderedlinqops-master/src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj ]; then
+            echo "benchmark_checked=false" >> "$GITHUB_OUTPUT"
+            echo "benchmark_passed=true" >> "$GITHUB_OUTPUT"
+            echo "benchmark_summary=Skipped: master branch has no benchmark project yet for Ordered regression comparison." >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
           rm -rf BenchmarkDotNet.Artifacts
-          dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedGroupBy*" "*OrderedJoin*" "*OrderedGroupJoin*"
-          cp BenchmarkDotNet.Artifacts/results/OrderedOperatorsBenchmarks-report.csv /tmp/pr-ordered-bench.csv
+          dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedRegressionBenchmarks*"
+          cp BenchmarkDotNet.Artifacts/results/OrderedRegressionBenchmarks-report.csv /tmp/pr-ordered-bench.csv
 
           rm -rf /tmp/orderedlinqops-master/BenchmarkDotNet.Artifacts
           (
             cd /tmp/orderedlinqops-master
-            dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedGroupBy*" "*OrderedJoin*" "*OrderedGroupJoin*"
-            cp BenchmarkDotNet.Artifacts/results/OrderedOperatorsBenchmarks-report.csv /tmp/master-ordered-bench.csv
+            dotnet run -c Release --project src/OrderedLinqOps.Benchmarks/OrderedLinqOps.Benchmarks.csproj -- --filter "*OrderedRegressionBenchmarks*"
+            cp BenchmarkDotNet.Artifacts/results/OrderedRegressionBenchmarks-report.csv /tmp/master-ordered-bench.csv
           )
 
           set +e

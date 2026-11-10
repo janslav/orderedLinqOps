@@ -20,6 +20,7 @@ Entries should describe the actual delta introduced by the change, not internal 
 - Improved out-of-order exception diagnostics to include zero-based index, previous/current key values, comparer result, comparer type, and remediation guidance.
 - Updated benchmark documentation with investigation findings on per-group buffering behavior and refreshed benchmark results.
 - Clarified README memory-efficiency wording to reflect incremental processing with per-group buffering.
+- Narrowed mechanical benchmark regression checks to a representative Ordered-only benchmark suite and added a guard that skips comparison when `master` does not yet contain the benchmark project.
 
 ### Fixed
 - Reduced `OrderedGroupJoin` allocations by removing unnecessary outer pre-grouping and streaming outer elements directly.
