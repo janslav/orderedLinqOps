@@ -16,6 +16,15 @@ Alternatives to some hashing-based LINQ operators (`GroupBy`, `Join`, `GroupJoin
 **Important Limitation:**
 - Input collections **must be pre-sorted** by the key. If not sorted, an exception is thrown during iteration.
 
+## Performance Benchmarks
+
+Detailed benchmark methodology and measured results are in [BENCHMARKS.md](BENCHMARKS.md), including:
+- Execution time and memory allocations across 1K, 10K, 100K, and 1M rows
+- Ordered vs standard LINQ comparisons for `GroupBy`, `Join`, and `GroupJoin`
+- Guidance for benchmark comparison in new PRs
+
+In short: when data is already sorted and large, `OrderedGroupBy` and `OrderedJoin` are usually the best choices; check the benchmark tables for exact trade-offs by operator and dataset size.
+
 ## Installation
 
 Install via NuGet Package Manager:

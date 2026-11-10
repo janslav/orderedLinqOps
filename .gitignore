@@ -249,3 +249,4 @@ ModelManifest.xml
 # Code coverage results
 coverage/
 TestResults/
+BenchmarkDotNet.Artifacts/
