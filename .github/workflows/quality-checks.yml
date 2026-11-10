@@ -124,7 +124,6 @@ jobs:
             const srcChanged = '${{ steps.src-files.outputs.src_changed }}' === 'true';
             const testsChanged = '${{ steps.test-files.outputs.tests_changed }}' === 'true';
             const xmlDocsOutput = `${{ steps.xml-docs.outputs.xml_docs_output }}`.trim();
-            const testsSucceeded = true;
             
             let report = '## 🤖 Mechanical Quality Checks\n\n';
             
@@ -159,7 +158,7 @@ jobs:
             
             // Summary
             report += '\n';
-            if (xmlDocsOk && testsSucceeded) {
+            if (xmlDocsOk) {
               report += '### ✅ All required mechanical checks passed!\n';
               report += 'The CI workflow remains responsible for running the library test suite and reporting runtime results.\n';
             } else {
